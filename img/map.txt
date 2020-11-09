@@ -1,0 +1,2 @@
+wall3=Wall(0,0)
+MainGame.wallList.append(wall3)

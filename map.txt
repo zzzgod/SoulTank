@@ -1,0 +1,1 @@
+self.wallList.append(Wall(0,0))
