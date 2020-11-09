@@ -718,6 +718,6 @@ class Explode():
 
 
 if __name__=='__main__':
-    # zzz yyds
+    # z yyds
     MainGame().startGame()
     # MainGame().getTextSuface()
