@@ -1,9 +1,8 @@
 import pygame,random
-from Base import BaseItem
 import music
 GAME_WIDTH=1140
 GAME_HEIGHT=720
-class Tank(BaseItem):
+class Tank():
     # 添加距离左边left 距离上边top
     def __init__(self, left, top):
         # 保存加载的图片

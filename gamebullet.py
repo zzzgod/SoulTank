@@ -1,12 +1,11 @@
 import pygame
 import music
-from Base import BaseItem
 from gameExplode import Explode
 GAME_WIDTH=1140
 GAME_HEIGHT=720
 
 #子弹类
-class Bullet(BaseItem):
+class Bullet():
     def __init__(self,tank):
         #加载图片
         self.image=pygame.image.load('img/enemymissile.gif')
