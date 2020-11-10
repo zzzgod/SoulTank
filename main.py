@@ -3,7 +3,6 @@ import pygame,time,random
 from pygame.sprite import Sprite
 import music
 import gamewall
-from gamewall import Wall
 '''
 单人模式
     剧情模式
