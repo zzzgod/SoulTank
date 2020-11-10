@@ -1,7 +1,10 @@
-import pygame,random
+import pygame, random
 import music
-GAME_WIDTH=1140
-GAME_HEIGHT=720
+
+GAME_WIDTH = 1140
+GAME_HEIGHT = 720
+
+
 class Tank():
     # 添加距离左边left 距离上边top
     def __init__(self, left, top):
@@ -62,7 +65,7 @@ class Tank():
         return self.touch
 
     # 射击
-    def shot(self,Bullet):
+    def shot(self, Bullet):
         return Bullet(self)
 
     #
@@ -71,14 +74,14 @@ class Tank():
         self.rect.top = self.oldTop
 
     # 检测坦克是否与墙壁发生碰撞
-    def hitWall(self,MainGame):
+    def hitWall(self, MainGame):
         for wall in MainGame.wallList:
             if pygame.sprite.collide_rect(self, wall):
                 # 将坐标设置为移动之前的坐标
                 self.stay()
 
     # 展示坦克的方法
-    def displayTank(self,MainGame):
+    def displayTank(self, MainGame):
         # 获取展示的对象
         self.image = self.images[self.direction]
         # 调用blit方法展示
@@ -93,7 +96,7 @@ class MyTank(Tank):
         self.hp = 5
 
     # 检测我方坦克与敌方坦克发生碰撞
-    def myTank_hit_enemyTank(self,MainGame):
+    def myTank_hit_enemyTank(self, MainGame):
         # 循环遍历敌方坦克列表
         for enemyTank in MainGame.enemyTankList:
             if pygame.sprite.collide_rect(self, enemyTank):
@@ -131,7 +134,7 @@ class EnemyTank(Tank):
         self.hp = 100
 
     # 敌方坦克与我方坦克是否发生碰撞
-    def enemyTank_hit_myTank(self,MainGame):
+    def enemyTank_hit_myTank(self, MainGame):
         if pygame.sprite.collide_rect(self, MainGame.my_tank):
             self.stay()
 
@@ -163,36 +166,40 @@ class EnemyTank(Tank):
                 self.step = -1
 
     # 重写shot()
-    def shot(self,Bullet):
+    def shot(self, Bullet):
         # 随机生成100以内的数
         num = random.randint(1, 1000)
         if num < 30:
             return Bullet(self)
 
-#创建我方坦克的方法
+
+# 创建我方坦克的方法
 def createMytank(MainGame):
     MainGame.my_tank = MyTank(350, 300)
     music.Music('img/start.wav')
+
+
 # 初始化敌方坦克，并将敌方坦克添加到列表中
 def createEnemyTank(MainGame):
-    top=100
-    #循环生成敌方坦克
+    top = 100
+    # 循环生成敌方坦克
     for i in range(MainGame.enemyTankCount):
-        left=random.randint(0,600)
-        speed=random.randint(1,4)
-        enemy=EnemyTank(left,top,speed)
+        left = random.randint(0, 600)
+        speed = random.randint(1, 4)
+        enemy = EnemyTank(left, top, speed)
         MainGame.enemyTankList.append(enemy)
 
+
 # 循环遍历敌方坦克列表，展示敌方坦克
-def  blitEnemyTank(MainGame,Bullet):
+def blitEnemyTank(MainGame, Bullet):
     for enemyTank in MainGame.enemyTankList:
-        #判断当前敌方坦克是否活着
+        # 判断当前敌方坦克是否活着
         if enemyTank.live:
             enemyTank.displayTank(MainGame)
             enemyTank.randMove()
-             #调用检测是否与墙壁碰撞
+            # 调用检测是否与墙壁碰撞
             enemyTank.hitWall(MainGame)
-            #检测敌方坦克是否与我方坦克发生碰撞
+            # 检测敌方坦克是否与我方坦克发生碰撞
             if MainGame.my_tank and MainGame.my_tank.live:
                 enemyTank.enemyTank_hit_myTank(MainGame)
             # 发射子弹
@@ -201,5 +208,5 @@ def  blitEnemyTank(MainGame,Bullet):
             if enemyBullet:
                 # 将敌方子弹存储到敌方子弹列表中
                 MainGame.enemyBulletList.append(enemyBullet)
-        else:#不活着，从敌方坦克列表中移除
+        else:  # 不活着，从敌方坦克列表中移除
             MainGame.enemyTankList.remove(enemyTank)

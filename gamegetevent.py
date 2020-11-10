@@ -1,11 +1,14 @@
-import pygame,time
+import pygame, time
 import music
 import gametank
 from gamebullet import Bullet
-SCREEN_WIDTH=1280
-SCREEN_HEIGHT=720
-lasttime=0
-fullscreen=0
+
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
+lasttime = 0
+fullscreen = 0
+
+
 def getEvent(MainGame):
     # 获取所有事件
     eventList = pygame.event.get()
@@ -34,28 +37,28 @@ def getEvent(MainGame):
                     gametank.createMytank(MainGame)
             if MainGame.my_tank and MainGame.my_tank.live:
                 # 判断按下的是上、下、左、右
-                if event.key == pygame.K_a :
+                if event.key == pygame.K_a:
                     # 切换方向
                     MainGame.my_tank.direction = 'L'
                     # 修改坦克的开关状态
                     MainGame.my_tank.stop = False
                     # MainGame.my_tank.move()
                     print('按下a键，坦克向左移动')
-                elif event.key == pygame.K_d :
+                elif event.key == pygame.K_d:
                     # 切换方向
                     MainGame.my_tank.direction = 'R'
                     # 修改坦克的开关状态
                     MainGame.my_tank.stop = False
                     # MainGame.my_tank.move()
                     print('按下d键，坦克向右移动')
-                elif event.key == pygame.K_w :
+                elif event.key == pygame.K_w:
                     # 切换方向
                     MainGame.my_tank.direction = 'U'
                     # 修改坦克的开关状态
                     MainGame.my_tank.stop = False
                     # MainGame.my_tank.move()
                     print('按下w键，坦克向上移动')
-                elif event.key == pygame.K_s :
+                elif event.key == pygame.K_s:
                     # 切换方向
                     MainGame.my_tank.direction = 'D'
                     # 修改坦克的开关状态

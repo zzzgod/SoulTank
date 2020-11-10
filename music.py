@@ -1,4 +1,6 @@
 import pygame
+
+
 def Music(load_music):
     # 初始化音乐混合器
     pygame.mixer.init()

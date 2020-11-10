@@ -1,4 +1,5 @@
 from maingame import MainGame
+
 '''
 单人模式
     剧情模式
@@ -17,6 +18,6 @@ from maingame import MainGame
     
 退出
 '''
-if __name__=='__main__':
+if __name__ == '__main__':
     # zzz yyds
     MainGame().startGame()

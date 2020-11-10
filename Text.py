@@ -1,7 +1,10 @@
 import pygame
-TEXT_COLOR_RED=pygame.Color(255,0,0)
-TEXT_COLOR_GREEN=pygame.Color(50,205,50)
-TEXT_COLOR_YELLOW=pygame.Color(255,255,0)
+
+TEXT_COLOR_RED = pygame.Color(255, 0, 0)
+TEXT_COLOR_GREEN = pygame.Color(50, 205, 50)
+TEXT_COLOR_YELLOW = pygame.Color(255, 255, 0)
+
+
 def getTextSufaceGreen(text):
     # 初始化字体模块
     pygame.font.init()
