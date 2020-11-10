@@ -1,5 +1,3 @@
-#导入pygame模块
-import pygame
 from maingame import MainGame
 '''
 单人模式
@@ -19,11 +17,6 @@ from maingame import MainGame
     
 退出
 '''
-SCREEN_WIDTH=1280
-SCREEN_HEIGHT=720
-BG_COLOR=pygame.Color(0,0,0)
-
 if __name__=='__main__':
-    # z yyds
+    # zzz yyds
     MainGame().startGame()
-    # MainGame().getTextSuface()
