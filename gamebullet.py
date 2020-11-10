@@ -1,9 +1,6 @@
 import pygame
 import music
 from Base import BaseItem
-import gametank
-from gametank import MyTank,EnemyTank
-import gameExplode
 from gameExplode import Explode
 GAME_WIDTH=1140
 GAME_HEIGHT=720

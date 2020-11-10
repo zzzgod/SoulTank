@@ -1,15 +1,7 @@
-import pygame
-import pygame,time,random
+import pygame,time
 import music
-import gamewall
-from Base import BaseItem
 import gametank
-from gametank import MyTank,EnemyTank
-import gameExplode
-from gameExplode import Explode
 from gamebullet import Bullet
-import gamebullet
-import Text
 SCREEN_WIDTH=1280
 SCREEN_HEIGHT=720
 lasttime=0
