@@ -1,1 +1,3 @@
+print("map size:1140*720,range:0<=x*60<=18*60,0<=y*60<=11*60")
 MainGame.wallList.append(Wall(0,0))
+MainGame.wallList.append(Wall(18*60,11*60))

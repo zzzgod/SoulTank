@@ -14,7 +14,7 @@ class Wall():
         self.hp=3
 def displayWall(Wall,MainGame):
     MainGame.window.blit(Wall.image,Wall.rect)
-    # 循环遍历墙壁列表，展示墙壁
+# 循环遍历墙壁列表，展示墙壁
 def blitWall(MainGame):
     for wall in MainGame.wallList:
         #判断墙壁是否存活
