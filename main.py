@@ -2,6 +2,8 @@
 import pygame,time,random
 from pygame.sprite import Sprite
 import music
+import gamewall
+from gamewall import Wall
 '''
 单人模式
     剧情模式
@@ -67,7 +69,7 @@ class MainGame():
         #初始化敌方坦克，并将敌方坦克添加到列表中
         self.createEnemyTank()
         #初始化墙壁
-        self.createWall()
+        gamewall.createWall(MainGame)
         #设置窗口的标题
         pygame.display.set_caption('坦克大战1.03')
         while True:
@@ -109,7 +111,7 @@ class MainGame():
             #循环遍历敌方子弹列表，展示敌方子弹
             self.blitEnemyBullet()
             #循环遍历墙壁列表，展示墙壁
-            self.blitWall()
+            gamewall.blitWall(MainGame)
             #循环遍历爆炸列表，展示爆炸效果
             self.blitExplode()
             self.blitbigExplode()
@@ -125,29 +127,6 @@ class MainGame():
                     MainGame.my_tank.myTank_hit_enemyTank()
 
             pygame.display.update()
-    # 循环遍历墙壁列表，展示墙壁
-    def blitWall(self):
-        for wall in MainGame.wallList:
-            #判断墙壁是否存活
-            if wall.live:
-                #调用墙壁的显示方法
-                wall.displayWall()
-            else:
-                #从墙壁列表移出
-                MainGame.wallList.remove(wall)
-    #初始化墙壁
-    def createWall(self):
-        with open('map.txt','r') as f:
-            commands = f.readlines()
-            for i in commands:
-                eval(i.strip())
-        for i in range(19):
-             #初始化墙壁
-             wall1=Wall(i*60,220)
-             wall2=Wall(i*60,420)
-             #将墙壁添加到列表中
-             MainGame.wallList.append(wall1)
-             MainGame.wallList.append(wall2)
     #创建我方坦克的方法
     def createMytank(self):
         MainGame.my_tank = MyTank(350, 300)
@@ -634,22 +613,7 @@ class Bullet(BaseItem):
                     explode = Explode(MainGame.my_tank)
                     # 将爆炸对象添加到爆炸列表中
                     MainGame.explodeList.append(explode)
-class Wall():
-    def __init__(self,left,top):
-        #加载墙壁图片
-        self.image=pygame.image.load('img/walls.gif')
-        #获取墙壁的区域
-        self.rect=self.image.get_rect()
-        #设置位置left、top
-        self.rect.left=left
-        self.rect.top=top
-        #是否存活
-        self.live=True
-        #设置生命值
-        self.hp=3
-    #展示墙壁的方法
-    def displayWall(self):
-        MainGame.window.blit(self.image,self.rect)
+
 class Explode():
     def __init__(self,tank):
         #爆炸的位置由当前子弹打中的坦克位置决定
