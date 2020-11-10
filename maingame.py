@@ -6,13 +6,13 @@ from gamebullet import Bullet
 import gamebullet
 import Text
 import gamegetevent
+from constant import *
 
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
+
 BG_COLOR = pygame.Color(0, 0, 0)
 
 
-class MainGame():
+class MainGame:
     window = None
     my_tank = None
     # 存储敌方坦克的列表
@@ -98,7 +98,7 @@ class MainGame():
                 if not MainGame.my_tank.stop:
                     MainGame.my_tank.move()
                     # 检测我方坦克是否与墙壁发生碰撞
-                    MainGame.my_tank.hitWall(MainGame)
+                    MainGame.my_tank.hit_wall(MainGame)
                     # 检测我方坦克是否与敌方坦克发生碰撞
                     MainGame.my_tank.myTank_hit_enemyTank(MainGame)
             pygame.display.update()

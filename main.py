@@ -1,5 +1,4 @@
 from maingame import MainGame
-
 '''
 单人模式
     剧情模式

@@ -2,6 +2,7 @@ import pygame, time
 import music
 import gametank
 from gamebullet import Bullet
+from constant import *
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720

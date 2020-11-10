@@ -1,4 +1,5 @@
 import pygame
+from constant import *
 
 
 class Wall():

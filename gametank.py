@@ -1,8 +1,6 @@
 import pygame, random
+from constant import *
 import music
-
-GAME_WIDTH = 1140
-GAME_HEIGHT = 720
 
 
 class Tank():
@@ -74,7 +72,7 @@ class Tank():
         self.rect.top = self.oldTop
 
     # 检测坦克是否与墙壁发生碰撞
-    def hitWall(self, MainGame):
+    def hit_wall(self, MainGame):
         for wall in MainGame.wallList:
             if pygame.sprite.collide_rect(self, wall):
                 # 将坐标设置为移动之前的坐标
@@ -198,7 +196,7 @@ def blitEnemyTank(MainGame, Bullet):
             enemyTank.displayTank(MainGame)
             enemyTank.randMove()
             # 调用检测是否与墙壁碰撞
-            enemyTank.hitWall(MainGame)
+            enemyTank.hit_wall(MainGame)
             # 检测敌方坦克是否与我方坦克发生碰撞
             if MainGame.my_tank and MainGame.my_tank.live:
                 enemyTank.enemyTank_hit_myTank(MainGame)
