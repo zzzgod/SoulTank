@@ -4,20 +4,9 @@ from constant import *
 import music
 import loading
 from classic_menu import classic
-from exit import game_exit
-'''
-冒险模式
-    地图
-经典模式
-    训练模式
-    单人模式
-    双人模式
-设置
-关于 
-退出
-'''
+
 BG_COLOR = pygame.Color(0, 0, 0)
-class menu:
+class game_exit:
     window=None
     option=0
     image_menu_maoxian = pygame.image.load('img/menu_maoxian.gif')
@@ -26,12 +15,16 @@ class menu:
     image_menu_guanyu = pygame.image.load('img/menu_guanyu.gif')
     image_menu_tuichu = pygame.image.load('img/menu_tuichu.gif')
     image_menu_exit = pygame.image.load('img/menu_exit.gif')
+    image_menu_yes = pygame.image.load('img/yes.gif')
+    image_menu_no = pygame.image.load('img/no.gif')
+    image_menu_yes_big = pygame.image.load('img/yes_big.gif')
+    image_menu_no_big = pygame.image.load('img/no_big.gif')
     def __init__(self):
         pass
     def openmenu(self):
         pygame.display.init()
         # 设置窗口的大小及显示
-        menu.window = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
+        game_exit.window = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
         # 设置窗口的标题
         pygame.display.set_caption('Soul Tank')
 
@@ -39,10 +32,18 @@ class menu:
         while True:
             #刷新频率
             time.sleep(0.02)
-            menu.window.fill(BG_COLOR)
-            menu.window.blit(image_main_background, (0, 0))
+            game_exit.window.fill(BG_COLOR)
+            game_exit.window.blit(image_main_background, (0, 0))
+            game_exit.window.blit(self.image_menu_maoxian, (900, 20))
+            game_exit.window.blit(self.image_menu_jingdian, (900, 150))
+            game_exit.window.blit(self.image_menu_shezhi, (900, 280))
+            game_exit.window.blit(self.image_menu_guanyu, (900, 410))
+            game_exit.window.blit(self.image_menu_tuichu, (800, 540))
+            game_exit.window.blit(self.image_menu_exit, (0, 0))
             # 获取事件
-            self.getEvent()
+            flag = self.getEvent()
+            if flag == 0:
+                return
             pygame.display.update()
     def getEvent(self):
         # 获取所有事件
@@ -58,38 +59,24 @@ class menu:
                 # esc键切换全屏和窗口
                 if event.key == pygame.K_RETURN:
                     music.Music('img/fire2.wav')
+                    if self.option==0:
+                        exit()
                     if self.option==1:
-                        classic().openmenu()
-                    if self.option==4:
-                        game_exit().openmenu()
-                elif event.key == pygame.K_s:
-                    music.Music('img/choose.mp3')
-                    self.option+=1
-                    if self.option>4:
-                        self.option=0
-                elif event.key == pygame.K_w:
+                        return 0
+                elif event.key == pygame.K_a:
                     music.Music('img/choose.mp3')
                     self.option-=1
                     if self.option<0:
-                        self.option=4
+                        self.option=1
+                elif event.key == pygame.K_d:
+                    music.Music('img/choose.mp3')
+                    self.option+=1
+                    if self.option>1:
+                        self.option=0
                 print(self.option)
-        o1,o2,o3,o4,o5=0,0,0,0,0
         if self.option==0:
-            o1=100
-        elif self.option==1:
-            o2=100
-        elif self.option==2:
-            o3=100
-        elif self.option==3:
-            o4=100
-        elif self.option==4:
-            o5=100
-        menu.window.blit(self.image_menu_maoxian, (900-o1, 20))
-        menu.window.blit(self.image_menu_jingdian, (900-o2, 150))
-        menu.window.blit(self.image_menu_shezhi, (900-o3, 280))
-        menu.window.blit(self.image_menu_guanyu, (900-o4, 410))
-        menu.window.blit(self.image_menu_tuichu, (900-o5, 540))
-
-if __name__ == '__main__':
-    # zzz yyds
-    menu().openmenu()
+            game_exit.window.blit(self.image_menu_yes_big, (300, 410))
+            game_exit.window.blit(self.image_menu_no, (920, 425))
+        else:
+            game_exit.window.blit(self.image_menu_yes, (300, 420))
+            game_exit.window.blit(self.image_menu_no_big, (920, 415))
