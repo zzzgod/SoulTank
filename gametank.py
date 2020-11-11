@@ -22,8 +22,6 @@ class Tank():
         # 设置区域的left 和top
         self.rect.left = left
         self.rect.top = top
-        # 速度  决定移动的快慢
-        self.speed = 5
         # 坦克移动的开关
         self.stop = True
         # 是否活着
@@ -94,6 +92,8 @@ class Tank():
 class MyTank(Tank):
     def __init__(self, left, top):
         super(MyTank, self).__init__(left, top)
+        # 速度  决定移动的快慢
+        self.speed = 5
         # 坦克血量
         self.hp = 5
 
@@ -106,6 +106,76 @@ class MyTank(Tank):
 
 
 # 敌方坦克
+class EnemyTank(Tank):
+    def __init__(self, left, top, speed):
+        # 调用父类的初始化方法
+        super(EnemyTank, self).__init__(left, top)
+        # 加载图片集
+        self.images = {
+            'U': pygame.image.load('img/enemy1U.gif'),
+            'D': pygame.image.load('img/enemy1D.gif'),
+            'L': pygame.image.load('img/enemy1L.gif'),
+            'R': pygame.image.load('img/enemy1R.gif')
+        }
+        # 方向,随机生成敌方坦克的方向
+        self.direction = self.randDirection()
+        # 根据方向获取图片
+        self.image = self.images[self.direction]
+        # 区域
+        self.rect = self.image.get_rect()
+        # 对left和top进行赋值
+        self.rect.left = left
+        self.rect.top = top
+        # 速度
+        self.speed = speed
+        # 移动开关键
+        self.flag = True
+        # 薪增加一个步数变量 step
+        self.step = 60
+        # 坦克血量
+        self.hp = 100
+        # 速度  决定移动的快慢
+        self.speed = 5
+
+    # 敌方坦克与我方坦克是否发生碰撞
+    def enemyTank_hit_myTank(self, MainGame):
+        if pygame.sprite.collide_rect(self, MainGame.my_tank):
+            self.stay()
+
+    # 随机生成敌方坦克的方向
+    def randDirection(self):
+        num = random.randint(1, 4)
+        if num == 1:
+            return 'U'
+        elif num == 2:
+            return 'D'
+        elif num == 3:
+            return "L"
+        elif num == 4:
+            return 'R'
+
+    # 敌方坦克随机移动的方法
+    def randMove(self):
+        if self.step <= 0:
+            # 修改方向
+            self.direction = self.randDirection()
+            # 让步数复位
+            self.step = 60
+        else:
+            self.touch = self.move()
+            # 让步数递减
+            self.step -= 1
+            # 如果接触墙壁就马上转向
+            if self.touch == 0:
+                self.step = -1
+
+    # 重写shot()
+    def shot(self, Bullet):
+        # 随机生成100以内的数
+        num = random.randint(1, 1000)
+        if num < 30:
+            return Bullet(self)
+
 class EnemyTank(Tank):
     def __init__(self, left, top, speed):
         # 调用父类的初始化方法
