@@ -77,6 +77,10 @@ class Tank():
             if pygame.sprite.collide_rect(self, wall):
                 # 将坐标设置为移动之前的坐标
                 self.stay()
+        for water in MainGame.waterList:
+            if pygame.sprite.collide_rect(self, water):
+                # 将坐标设置为移动之前的坐标
+                self.stay()
 
     # 展示坦克的方法
     def displayTank(self, MainGame):

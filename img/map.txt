@@ -1,2 +1,9 @@
 wall3=Wall(0,0)
 MainGame.wallList.append(wall3)
+steel3=Steel(60,0)
+MainGame.wallList.append(steel3)
+water3=Water(120,0)
+MainGame.waterList.append(water3)
+grass3=Grass(180,0)
+MainGame.grassList.append(grass3)
+
