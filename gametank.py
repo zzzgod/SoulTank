@@ -212,7 +212,7 @@ class EnemyTank_H_1(Tank,AP_enemy_122):
         if num < 10:
             return AP_enemy_122(self)
 
-# 敌方坦克
+# 敌方坦克1
 class EnemyTank_L_1(Tank,AP_enemy_57):
     def __init__(self, left, top, speed):
         # 调用父类的初始化方法
