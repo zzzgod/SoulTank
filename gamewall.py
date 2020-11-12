@@ -108,8 +108,11 @@ def createWall(MainGame):
         wall1 = Wall(i * 60, 180)
         # 将墙壁添加到列表中
         MainGame.wallList.append(wall1)
-    for i in range(4):
-        steel1 = Steel(i * 180, 420)
+        wall1 = Wall(i * 60, 240)
+        # 将墙壁添加到列表中
+        MainGame.wallList.append(wall1)
+    for i in range(3,11):
+        steel1 = Steel(i * 60, 420)
         MainGame.wallList.append(steel1)
     for i in range(4):
         water1 = Water(i * 60, 540)

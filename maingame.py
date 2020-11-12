@@ -18,7 +18,7 @@ class MainGame:
     # 存储敌方坦克的列表
     enemyTankList = []
     # 定义敌方坦克的数量
-    enemyTankCount = 10
+    enemyTankCount = 15
     # 存储我方子弹的列表
     myBulletList = []
     # 存储敌方子弹的列表

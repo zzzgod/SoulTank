@@ -81,31 +81,54 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
                     MainGame.explodeList.append(explode)
 
 
-class AP_my_1(Bullet):
+class AP_my_75(Bullet):
     def __init__(self, tank):
-        super(AP_my_1, self).__init__(tank)
+        super(AP_my_75, self).__init__(tank)
         # 子弹的贴图
         self.image = pygame.image.load('img/tankmissile.gif')
         # 子弹的速度
         self.speed = 10
         # 子弹的威力
-        self.damage = 10
+        self.damage = 1
         # 子弹的穿透力
         self.penetration = 10
 
 
-class AP_enemy_1(Bullet):
+class AP_enemy_75(Bullet):
     def __init__(self, tank):
-        super(AP_enemy_1, self).__init__(tank)
+        super(AP_enemy_75, self).__init__(tank)
         # 子弹的贴图
         self.image = pygame.image.load('img/enemymissile.gif')
         # 子弹的速度
         self.speed = 6
         # 子弹的威力
-        self.damage = 1
+        self.damage = 2
         # 子弹的穿透力
         self.penetration = 10
 
+class AP_enemy_122(Bullet):
+    def __init__(self, tank):
+        super(AP_enemy_122, self).__init__(tank)
+        # 子弹的贴图
+        self.image = pygame.image.load('img/enemymissile2.gif')
+        # 子弹的速度
+        self.speed = 12
+        # 子弹的威力
+        self.damage = 6
+        # 子弹的穿透力
+        self.penetration = 10
+
+class AP_enemy_57(Bullet):
+    def __init__(self, tank):
+        super(AP_enemy_57, self).__init__(tank)
+        # 子弹的贴图
+        self.image = pygame.image.load('img/enemymissile3.gif')
+        # 子弹的速度
+        self.speed = 8
+        # 子弹的威力
+        self.damage = 1
+        # 子弹的穿透力
+        self.penetration = 10
 
 # 移动
 def move(Bullet):

@@ -1,7 +1,7 @@
 import pygame, random
 from constant import *
 import music
-from gamebullet import AP_enemy_1
+from gamebullet import AP_enemy_75,AP_enemy_122,AP_enemy_57
 
 
 class Tank():
@@ -30,6 +30,8 @@ class Tank():
         # 新增属性原来坐标
         self.oldLeft = self.rect.left
         self.oldTop = self.rect.top
+        # 移动开关键
+        self.flag = True
 
     # 移动
     def move(self):
@@ -96,7 +98,7 @@ class MyTank(Tank):
         # 速度  决定移动的快慢
         self.speed = 5
         # 坦克血量
-        self.hp = 5
+        self.hp = 10
 
     # 检测我方坦克与敌方坦克发生碰撞
     def myTank_hit_enemyTank(self, MainGame):
@@ -107,10 +109,10 @@ class MyTank(Tank):
 
 
 # 敌方坦克
-class EnemyTank(Tank):
+class EnemyTank_M_1(Tank,AP_enemy_75):
     def __init__(self, left, top, speed):
         # 调用父类的初始化方法
-        super(EnemyTank, self).__init__(left, top)
+        super(EnemyTank_M_1, self).__init__(left, top)
         # 加载图片集
         self.images = {
             'U': pygame.image.load('img/enemy1U.gif'),
@@ -129,19 +131,12 @@ class EnemyTank(Tank):
         self.rect.top = top
         # 速度
         self.speed = speed
-        # 移动开关键
-        self.flag = True
-        # 薪增加一个步数变量 step
-        self.step = 60
         # 坦克血量
         self.hp = 1
         # 速度  决定移动的快慢
         self.speed = 3
-
-    # 敌方坦克与我方坦克是否发生碰撞
-    def enemyTank_hit_myTank(self, MainGame):
-        if pygame.sprite.collide_rect(self, MainGame.my_tank):
-            self.stay()
+        # 薪增加一个步数变量 step
+        self.step = 60
 
     # 敌方坦克随机移动的方法
     def randMove(self):
@@ -159,11 +154,120 @@ class EnemyTank(Tank):
                 self.step = -1
 
     # 重写shot()
-    def shot(self, AP_enemy_1):
+    def shot(self):
         # 随机生成100以内的数
         num = random.randint(1, 1000)
         if num < 30:
-            return AP_enemy_1(self)
+            return AP_enemy_75(self)
+
+# 敌方坦克
+class EnemyTank_H_1(Tank,AP_enemy_122):
+    def __init__(self, left, top, speed):
+        # 调用父类的初始化方法
+        super(EnemyTank_H_1, self).__init__(left, top)
+        # 加载图片集
+        self.images = {
+            'U': pygame.image.load('img/enemy2U.gif'),
+            'D': pygame.image.load('img/enemy2D.gif'),
+            'L': pygame.image.load('img/enemy2L.gif'),
+            'R': pygame.image.load('img/enemy2R.gif')
+        }
+        # 方向,随机生成敌方坦克的方向
+        self.direction = randDirection()
+        # 根据方向获取图片
+        self.image = self.images[self.direction]
+        # 区域
+        self.rect = self.image.get_rect()
+        # 对left和top进行赋值
+        self.rect.left = left
+        self.rect.top = top
+        # 速度
+        self.speed = speed
+        # 坦克血量
+        self.hp = 5
+        # 速度  决定移动的快慢
+        self.speed = 2
+        # 薪增加一个步数变量 step
+        self.step = 30
+
+    # 敌方坦克随机移动的方法
+    def randMove(self):
+        if self.step <= 0:
+            # 修改方向
+            self.direction = randDirection()
+            # 让步数复位
+            self.step = 30
+        else:
+            self.touch = self.move()
+            # 让步数递减
+            self.step -= 1
+            # 如果接触墙壁就马上转向
+            if self.touch == 0:
+                self.step = -1
+
+    # 重写shot()
+    def shot(self):
+        # 随机生成100以内的数
+        num = random.randint(1, 1000)
+        if num < 10:
+            return AP_enemy_122(self)
+
+# 敌方坦克
+class EnemyTank_L_1(Tank,AP_enemy_57):
+    def __init__(self, left, top, speed):
+        # 调用父类的初始化方法
+        super(EnemyTank_L_1, self).__init__(left, top)
+        # 加载图片集
+        self.images = {
+            'U': pygame.image.load('img/enemy4U.gif'),
+            'D': pygame.image.load('img/enemy4D.gif'),
+            'L': pygame.image.load('img/enemy4L.gif'),
+            'R': pygame.image.load('img/enemy4R.gif')
+        }
+        # 方向,随机生成敌方坦克的方向
+        self.direction = randDirection()
+        # 根据方向获取图片
+        self.image = self.images[self.direction]
+        # 区域
+        self.rect = self.image.get_rect()
+        # 对left和top进行赋值
+        self.rect.left = left
+        self.rect.top = top
+        # 速度
+        self.speed = speed
+        # 坦克血量
+        self.hp = 1
+        # 速度  决定移动的快慢
+        self.speed = 7
+        # 薪增加一个步数变量 step
+        self.step = 60
+
+    # 敌方坦克随机移动的方法
+    def randMove(self):
+        if self.step <= 0:
+            # 修改方向
+            self.direction = randDirection()
+            # 让步数复位
+            self.step = 60
+        else:
+            self.touch = self.move()
+            # 让步数递减
+            self.step -= 1
+            # 如果接触墙壁就马上转向
+            if self.touch == 0:
+                self.step = -1
+
+    # 重写shot()
+    def shot(self):
+        # 随机生成100以内的数
+        num = random.randint(1, 1000)
+        if num < 20:
+            return AP_enemy_57(self)
+
+# 敌方坦克与我方坦克是否发生碰撞
+def enemyTank_hit_myTank(enemyTank, MainGame):
+    if pygame.sprite.collide_rect(enemyTank, MainGame.my_tank):
+        enemyTank.stay()
 
 
 # 随机生成敌方坦克的方向
@@ -189,10 +293,20 @@ def createMytank(MainGame):
 def createEnemyTank(MainGame):
     top = 100
     # 循环生成敌方坦克
-    for i in range(MainGame.enemyTankCount):
+    for i in range(MainGame.enemyTankCount-9):
         left = random.randint(0, 600)
         speed = random.randint(1, 4)
-        enemy = EnemyTank(left, top, speed)
+        enemy = EnemyTank_M_1(left, top, speed)
+        MainGame.enemyTankList.append(enemy)
+    for i in range(3):
+        left = random.randint(0, 600)
+        speed = random.randint(1, 4)
+        enemy = EnemyTank_H_1(left, top, speed)
+        MainGame.enemyTankList.append(enemy)
+    for i in range(6):
+        left = random.randint(0, 600)
+        speed = random.randint(1, 4)
+        enemy = EnemyTank_L_1(left, top, speed)
         MainGame.enemyTankList.append(enemy)
 
 
@@ -207,9 +321,9 @@ def blitEnemyTank(MainGame, Bullet):
             enemyTank.hit_wall(MainGame)
             # 检测敌方坦克是否与我方坦克发生碰撞
             if MainGame.my_tank and MainGame.my_tank.live:
-                enemyTank.enemyTank_hit_myTank(MainGame)
+                enemyTank_hit_myTank(enemyTank, MainGame)
             # 发射子弹
-            enemyBullet = enemyTank.shot(AP_enemy_1)
+            enemyBullet = enemyTank.shot()
             # 敌方子弹是否是None，如果不为None则添加到敌方子弹列表中
             if enemyBullet:
                 # 将敌方子弹存储到敌方子弹列表中
