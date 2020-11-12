@@ -62,7 +62,7 @@ class menu:
                         classic().openmenu()
                     if self.option==4:
                         game_exit().openmenu()
-                        #w s 上下选择
+                        #w s 上下选择d
                 elif event.key == pygame.K_s:
                     music.Music('img/choose.mp3')
                     self.option+=1

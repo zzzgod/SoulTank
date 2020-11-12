@@ -7,13 +7,13 @@ from constant import *
 # 子弹类
 class Bullet:
     def __init__(self, tank):
-        # 加载图片
         self.image = pygame.image.load('img/enemymissile.gif')
-        self.image_my = pygame.image.load('img/tankmissile.gif')
         # 坦克的方向决定子弹的方向
         self.direction = tank.direction
         # 获取区域
         self.rect = self.image.get_rect()
+        # 子弹的状态，是否碰到墙壁，如果碰到墙壁，修改此状态
+        self.live = True
         # 子弹的left和top与方向有关
         if self.direction == 'U':
             self.rect.left = tank.rect.left + tank.rect.width / 2 - self.rect.width / 2
@@ -27,37 +27,7 @@ class Bullet:
         elif self.direction == 'R':
             self.rect.left = tank.rect.left + tank.rect.width
             self.rect.top = tank.rect.top + tank.rect.width / 2 - self.rect.width / 2
-        # 子弹的速度
-        self.speed = 6
-        # 子弹的状态，是否碰到墙壁，如果碰到墙壁，修改此状态
-        self.live = True
 
-    # 移动
-    def move(self):
-        if self.direction == 'U':
-            if self.rect.top > 0:
-                self.rect.top -= self.speed
-            else:
-                # 修改子弹的状态
-                self.live = False
-        elif self.direction == 'R':
-            if self.rect.left + self.rect.width < GAME_WIDTH:
-                self.rect.left += self.speed
-            else:
-                # 修改子弹的状态
-                self.live = False
-        elif self.direction == 'D':
-            if self.rect.top + self.rect.height < GAME_HEIGHT:
-                self.rect.top += self.speed
-            else:
-                # 修改子弹的状态
-                self.live = False
-        elif self.direction == 'L':
-            if self.rect.left > 0:
-                self.rect.left -= self.speed
-            else:
-                # 修改子弹的状态
-                self.live = False
 
     # 子弹是否碰撞墙壁
     def hit_wall(self, MainGame, Explode):
@@ -76,13 +46,7 @@ class Bullet:
                     # 将爆炸对象添加到爆炸列表中
                     MainGame.explodesmallList.append(explode)
 
-    # 展示子弹的方法
-    def display_bullet(self, main_game, tank_type):
-        # 将图片surface加载到窗口
-        if tank_type == 'Enemy':
-            main_game.window.blit(self.image, self.rect)
-        elif tank_type == 'Player':
-            main_game.window.blit(self.image_my, self.rect)
+
 
     # 子弹与坦克的碰撞
     def bullet_hit_tank(self, MainGame, tank_type):
@@ -117,17 +81,73 @@ class Bullet:
                         explode = Explode(MainGame.my_tank)
                         # 将爆炸对象添加到爆炸列表中
                         MainGame.explodeList.append(explode)
+class AP_my_1(Bullet):
+    def __init__(self,tank):
+        super(AP_my_1, self).__init__(tank)
+        #子弹的贴图
+        self.image = pygame.image.load('img/tankmissile.gif')
+        # 子弹的速度
+        self.speed = 10
+        #子弹的威力
+        self.damage = 1
+        #子弹的穿透力
+        self.penetration = 10
+
+class AP_enemy_1(Bullet):
+    def __init__(self,tank):
+        super(AP_enemy_1, self).__init__(tank)
+        #子弹的贴图
+        self.image = pygame.image.load('img/enemymissile.gif')
+        # 子弹的速度
+        self.speed = 6
+        #子弹的威力
+        self.damage = 1
+        #子弹的穿透力
+        self.penetration = 10
 
 
+
+
+ # 移动
+def move(Bullet):
+        if Bullet.direction == 'U':
+            if Bullet.rect.top > 0:
+                Bullet.rect.top -= Bullet.speed
+            else:
+                # 修改子弹的状态
+                Bullet.live = False
+        elif Bullet.direction == 'R':
+            if Bullet.rect.left + Bullet.rect.width < GAME_WIDTH:
+                Bullet.rect.left += Bullet.speed
+            else:
+                # 修改子弹的状态
+                Bullet.live = False
+        elif Bullet.direction == 'D':
+            if Bullet.rect.top + Bullet.rect.height < GAME_HEIGHT:
+                Bullet.rect.top += Bullet.speed
+            else:
+                # 修改子弹的状态
+                Bullet.live = False
+        elif Bullet.direction == 'L':
+            if Bullet.rect.left > 0:
+                Bullet.rect.left -= Bullet.speed
+            else:
+                # 修改子弹的状态
+                Bullet.live = False
+
+# 展示子弹的方法
+def display_bullet(Bullet, main_game):
+        # 将图片surface加载到窗口
+            main_game.window.blit(Bullet.image, Bullet.rect)
 
 # 循环遍历我方子弹存储列表
 def blitMyBullet(MainGame):
     for myBullet in MainGame.myBulletList:
         # 判断当前的子弹是否是活着状态，如果是则进行显示及移动，
         if myBullet.live:
-            myBullet.display_bullet(MainGame, 'Player')
+            display_bullet(myBullet,MainGame)
             # 调用子弹的移动方法
-            myBullet.move()
+            move(myBullet)
             # 调用检测我方子弹是否与敌方坦克发生碰撞
             myBullet.bullet_hit_tank(MainGame, 'EnemyTank')
             # 检测我方子弹是否与墙壁碰撞
@@ -141,8 +161,8 @@ def blitMyBullet(MainGame):
 def blitEnemyBullet(MainGame):
     for enemyBullet in MainGame.enemyBulletList:
         if enemyBullet.live:  # 判断敌方子弹是否存活
-            enemyBullet.display_bullet(MainGame, 'Enemy')
-            enemyBullet.move()
+            display_bullet(enemyBullet,MainGame)
+            move(enemyBullet)
             # 调用敌方子弹与我方坦克碰撞的方法
             enemyBullet.bullet_hit_tank(MainGame, 'PlayerTank')
             # 检测敌方子弹是否与墙壁碰撞

@@ -1,6 +1,7 @@
 import pygame, random
 from constant import *
 import music
+from gamebullet import AP_enemy_1
 
 
 class Tank():
@@ -159,11 +160,11 @@ class EnemyTank(Tank):
                 self.step = -1
 
     # 重写shot()
-    def shot(self, Bullet):
+    def shot(self, AP_enemy_1):
         # 随机生成100以内的数
         num = random.randint(1, 1000)
         if num < 30:
-            return Bullet(self)
+            return AP_enemy_1(self)
 
  # 随机生成敌方坦克的方向
 def randDirection():
@@ -208,7 +209,7 @@ def blitEnemyTank(MainGame, Bullet):
             if MainGame.my_tank and MainGame.my_tank.live:
                 enemyTank.enemyTank_hit_myTank(MainGame)
             # 发射子弹
-            enemyBullet = enemyTank.shot(Bullet)
+            enemyBullet = enemyTank.shot(AP_enemy_1)
             # 敌方子弹是否是None，如果不为None则添加到敌方子弹列表中
             if enemyBullet:
                 # 将敌方子弹存储到敌方子弹列表中
