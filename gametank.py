@@ -134,7 +134,7 @@ class EnemyTank(Tank):
         # 薪增加一个步数变量 step
         self.step = 60
         # 坦克血量
-        self.hp = 100
+        self.hp = 1
         # 速度  决定移动的快慢
         self.speed = 3
 
@@ -142,7 +142,6 @@ class EnemyTank(Tank):
     def enemyTank_hit_myTank(self, MainGame):
         if pygame.sprite.collide_rect(self, MainGame.my_tank):
             self.stay()
-
 
     # 敌方坦克随机移动的方法
     def randMove(self):
@@ -166,7 +165,8 @@ class EnemyTank(Tank):
         if num < 30:
             return AP_enemy_1(self)
 
- # 随机生成敌方坦克的方向
+
+# 随机生成敌方坦克的方向
 def randDirection():
     num = random.randint(1, 4)
     if num == 1:

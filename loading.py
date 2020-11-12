@@ -1,7 +1,10 @@
-import pygame,time
+import pygame, time
 from constant import *
 import Text
+
 BG_COLOR = pygame.Color(0, 0, 0)
+
+
 def load():
     window = None
     pygame.display.init()
@@ -9,11 +12,11 @@ def load():
     window = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
     # 设置窗口的标题
     pygame.display.set_caption('Soul Tank')
-    T=0
+    T = 0
     while True:
-        #刷新次数
-        T+=1
-        if T==50:
+        # 刷新次数
+        T += 1
+        if T == 50:
             break
         # 刷新频率
         time.sleep(0.02)

@@ -16,6 +16,7 @@ class Wall():
         # 设置生命值
         self.hp = 3
 
+
 class Steel():
     def __init__(self, left, top):
         # 加载墙壁图片
@@ -30,6 +31,7 @@ class Steel():
         # 设置生命值
         self.hp = 100
 
+
 class Water():
     def __init__(self, left, top):
         # 加载墙壁图片
@@ -43,6 +45,7 @@ class Water():
         self.live = True
         # 设置生命值
         self.hp = 1
+
 
 class Grass():
     def __init__(self, left, top):
@@ -82,6 +85,7 @@ def blitWall(MainGame):
             # 从墙壁列表移出
             MainGame.wallList.remove(water)
 
+
 def blitGrass(MainGame):
     for grass in MainGame.grassList:
         # 判断墙壁是否存活
@@ -91,8 +95,6 @@ def blitGrass(MainGame):
         else:
             # 从墙壁列表移出
             MainGame.wallList.remove(grass)
-
-
 
 
 # 初始化墙壁

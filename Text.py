@@ -41,6 +41,7 @@ def getTextSufaceRed(text):
     textSurface = font.render(text, True, TEXT_COLOR_RED)
     return textSurface
 
+
 def getTextSufaceBlack(text):
     # 初始化字体模块
     pygame.font.init()
