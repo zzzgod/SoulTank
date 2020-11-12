@@ -56,13 +56,14 @@ class game_exit:
                 exit()
             # 如果是键盘的按下
             if event.type == pygame.KEYDOWN:
-                # esc键切换全屏和窗口
+                #回车选择
                 if event.key == pygame.K_RETURN:
                     music.Music('img/fire2.wav')
                     if self.option==0:
                         exit()
                     if self.option==1:
                         return 0
+                    #a和d左右切换
                 elif event.key == pygame.K_a:
                     music.Music('img/choose.mp3')
                     self.option-=1
