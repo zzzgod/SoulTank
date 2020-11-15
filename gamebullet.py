@@ -94,6 +94,8 @@ class AP_my_75(Bullet):
         self.penetration = 10
 
 
+
+
 class AP_enemy_75(Bullet):
     def __init__(self, tank):
         super(AP_enemy_75, self).__init__(tank)
