@@ -62,7 +62,9 @@ class MainGame:
             # 给窗口设置填充色
             MainGame.window.fill(BG_COLOR)
             # 获取事件
-            gamegetevent.getEvent(MainGame)
+            flag = gamegetevent.getEvent(MainGame)
+            if flag == 0:
+                return
             # 信息板
             image_imformation = pygame.image.load('img/imformation.gif')
             MainGame.window.blit(image_imformation, (1140, 0))

@@ -30,6 +30,18 @@ def getEvent(MainGame):
                 else:
                     pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT], pygame.FULLSCREEN)
                     fullscreen = 1
+            #退出游戏
+            if event.key == pygame.K_BACKSPACE:
+                MainGame.enemyTankList .clear()
+                MainGame.myBulletList.clear()
+                MainGame.enemyBulletList.clear()
+                MainGame.explodeList.clear()
+                MainGame.explodebigList.clear()
+                MainGame.explodesmallList.clear()
+                MainGame.wallList.clear()
+                MainGame.waterList.clear()
+                MainGame.grassList.clear()
+                return 0
             # 当坦克不重在死亡
             if not MainGame.my_tank:
                 # 判断按下的是1键，让坦克重生
