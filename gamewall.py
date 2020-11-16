@@ -103,11 +103,13 @@ def createWall(MainGame, block_info: dict):
         wall = None
         if block['BlockType'] == "Wall":
             wall = Wall(block['x'] * 60, block['y'] * 60)
+            MainGame.wallList.append(wall)
         elif block['BlockType'] == "Steel":
             wall = Steel(block['x'] * 60, block['y'] * 60)
+            MainGame.wallList.append(wall)
         elif block['BlockType'] == "Grass":
             wall = Grass(block['x'] * 60, block['y'] * 60)
+            MainGame.grassList.append(wall)
         elif block['BlockType'] == "Water":
             wall = Water(block['x'] * 60, block['y'] * 60)
-        if wall is not None:
-            MainGame.wallList.append(wall)
+            MainGame.waterList.append(wall)
