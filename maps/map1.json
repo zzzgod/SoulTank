@@ -1,11 +1,8 @@
 {
   "MapBlocks": [{"BlockType": "Wall", "x": 13, "y": 4},
-    {"BlockType": "Wall", "x": 13, "y": 4},
-    {"BlockType": "Wall", "x": 14, "y": 4},
+    {"BlockType": "Grass", "x": 14, "y": 4},
     {"BlockType": "Wall", "x": 15, "y": 4},
-    {"BlockType": "Wall", "x": 16, "y": 4},
-    {"BlockType": "Steel", "x": 0, "y": 0},
-    {"BlockType": "Water", "x": 0, "y": 0}
+    {"BlockType": "Wall", "x": 16, "y": 4}
   ],
   "Player": {"x": 350, "y": 300, "Hp": 10, "Speed": 5},
   "Enemies": [{"EnemyType": "Light", "x": 100, "y": 100},

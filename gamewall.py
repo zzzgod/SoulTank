@@ -100,9 +100,14 @@ def blitGrass(MainGame):
 # 初始化墙壁
 def createWall(MainGame, block_info: dict):
     for block in block_info:
-        wall = Wall(block['x'] * 60, block['y'] * 60)
-        MainGame.wallList.append(wall)
-    # with open('map.txt', 'r') as f:
-    #     commands = f.readlines()
-    #     for i in commands:
-    #         eval(i.strip())
+        wall = None
+        if block['BlockType'] == "Wall":
+            wall = Wall(block['x'] * 60, block['y'] * 60)
+        elif block['BlockType'] == "Steel":
+            wall = Steel(block['x'] * 60, block['y'] * 60)
+        elif block['BlockType'] == "Grass":
+            wall = Grass(block['x'] * 60, block['y'] * 60)
+        elif block['BlockType'] == "Water":
+            wall = Water(block['x'] * 60, block['y'] * 60)
+        if wall is not None:
+            MainGame.wallList.append(wall)
