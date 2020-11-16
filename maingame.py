@@ -52,8 +52,8 @@ class MainGame:
             gametank.createMytank(MainGame, map_info['Player'])
             # 初始化敌方坦克，并将敌方坦克添加到列表中
             gametank.createEnemyTank(MainGame, map_info['Enemies'])
-        # 初始化墙壁
-        gamewall.createWall(MainGame)
+            # 初始化墙壁
+            gamewall.createWall(MainGame, map_info['MapBlocks'])
         # 设置窗口的标题
         pygame.display.set_caption('Soul Tank')
         while True:

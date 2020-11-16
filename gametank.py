@@ -111,7 +111,7 @@ class MyTank(Tank):
 
 # 敌方坦克
 class EnemyTank_M_1(Tank, AP_enemy_75):
-    def __init__(self, left, top, speed):
+    def __init__(self, left, top):
         # 调用父类的初始化方法
         super(EnemyTank_M_1, self).__init__(left, top)
         # 加载图片集
@@ -130,8 +130,6 @@ class EnemyTank_M_1(Tank, AP_enemy_75):
         # 对left和top进行赋值
         self.rect.left = left
         self.rect.top = top
-        # 速度
-        self.speed = speed
         # 坦克血量
         self.hp = 1
         # 速度  决定移动的快慢
@@ -164,7 +162,7 @@ class EnemyTank_M_1(Tank, AP_enemy_75):
 
 # 敌方坦克
 class EnemyTank_H_1(Tank, AP_enemy_122):
-    def __init__(self, left, top, speed):
+    def __init__(self, left, top):
         # 调用父类的初始化方法
         super(EnemyTank_H_1, self).__init__(left, top)
         # 加载图片集
@@ -183,8 +181,6 @@ class EnemyTank_H_1(Tank, AP_enemy_122):
         # 对left和top进行赋值
         self.rect.left = left
         self.rect.top = top
-        # 速度
-        self.speed = speed
         # 坦克血量
         self.hp = 5
         # 速度  决定移动的快慢
@@ -217,7 +213,7 @@ class EnemyTank_H_1(Tank, AP_enemy_122):
 
 # 敌方坦克1
 class EnemyTank_L_1(Tank, AP_enemy_57):
-    def __init__(self, left, top, speed):
+    def __init__(self, left, top):
         # 调用父类的初始化方法
         super(EnemyTank_L_1, self).__init__(left, top)
         # 加载图片集
@@ -236,8 +232,6 @@ class EnemyTank_L_1(Tank, AP_enemy_57):
         # 对left和top进行赋值
         self.rect.left = left
         self.rect.top = top
-        # 速度
-        self.speed = speed
         # 坦克血量
         self.hp = 1
         # 速度  决定移动的快慢
@@ -295,23 +289,16 @@ def createMytank(MainGame, tank_info: dict):
 
 # 初始化敌方坦克，并将敌方坦克添加到列表中
 def createEnemyTank(MainGame, tank_info: dict):
-    top = 100
-    # 循环生成敌方坦克
-    for i in range(MainGame.enemyTankCount - 9):
-        left = random.randint(0, 600)
-        speed = random.randint(1, 4)
-        enemy = EnemyTank_M_1(left, top, speed)
-        MainGame.enemyTankList.append(enemy)
-    for i in range(3):
-        left = random.randint(0, 600)
-        speed = random.randint(1, 4)
-        enemy = EnemyTank_H_1(left, top, speed)
-        MainGame.enemyTankList.append(enemy)
-    for i in range(6):
-        left = random.randint(0, 600)
-        speed = random.randint(1, 4)
-        enemy = EnemyTank_L_1(left, top, speed)
-        MainGame.enemyTankList.append(enemy)
+    for tank in tank_info:
+        if tank['EnemyType'] == "Light":
+            enemy = EnemyTank_L_1(tank['x'], tank['y'])
+            MainGame.enemyTankList.append(enemy)
+        elif tank['EnemyType'] == "Middle":
+            enemy = EnemyTank_M_1(tank['x'], tank['y'])
+            MainGame.enemyTankList.append(enemy)
+        elif tank['EnemyType'] == "Heavy":
+            enemy = EnemyTank_H_1(tank['x'], tank['y'])
+            MainGame.enemyTankList.append(enemy)
 
 
 # 循环遍历敌方坦克列表，展示敌方坦克
