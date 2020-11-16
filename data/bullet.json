@@ -1,0 +1,4 @@
+{
+  "AP-Enemy-0": {"type": "xxx", "speed": 0, "damage": 0, "penetration": 0, "img": "img/enemymissile.gif"},
+  "AP-Player-0": {"type": "xxx", "speed": 0, "damage": 0, "penetration": 0, "img": "img/tankmissile.gif"}
+}

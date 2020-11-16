@@ -1,7 +1,8 @@
 import pygame, random
+import gamebullet
 from constant import *
 import music
-from gamebullet import AP_enemy_75,AP_enemy_122,AP_enemy_57
+from gamebullet import AP_enemy_75, AP_enemy_122, AP_enemy_57
 
 
 class Tank():
@@ -93,12 +94,12 @@ class Tank():
 
 # 我方坦克
 class MyTank(Tank):
-    def __init__(self, left, top):
-        super(MyTank, self).__init__(left, top)
+    def __init__(self, tank_info):
+        super(MyTank, self).__init__(tank_info['x'], tank_info['y'])
         # 速度  决定移动的快慢
-        self.speed = 5
+        self.speed = tank_info['Speed']
         # 坦克血量
-        self.hp = 10
+        self.hp = tank_info['Hp']
 
     # 检测我方坦克与敌方坦克发生碰撞
     def myTank_hit_enemyTank(self, MainGame):
@@ -109,7 +110,7 @@ class MyTank(Tank):
 
 
 # 敌方坦克
-class EnemyTank_M_1(Tank,AP_enemy_75):
+class EnemyTank_M_1(Tank, AP_enemy_75):
     def __init__(self, left, top, speed):
         # 调用父类的初始化方法
         super(EnemyTank_M_1, self).__init__(left, top)
@@ -160,8 +161,9 @@ class EnemyTank_M_1(Tank,AP_enemy_75):
         if num < 30:
             return AP_enemy_75(self)
 
+
 # 敌方坦克
-class EnemyTank_H_1(Tank,AP_enemy_122):
+class EnemyTank_H_1(Tank, AP_enemy_122):
     def __init__(self, left, top, speed):
         # 调用父类的初始化方法
         super(EnemyTank_H_1, self).__init__(left, top)
@@ -212,8 +214,9 @@ class EnemyTank_H_1(Tank,AP_enemy_122):
         if num < 10:
             return AP_enemy_122(self)
 
+
 # 敌方坦克1
-class EnemyTank_L_1(Tank,AP_enemy_57):
+class EnemyTank_L_1(Tank, AP_enemy_57):
     def __init__(self, left, top, speed):
         # 调用父类的初始化方法
         super(EnemyTank_L_1, self).__init__(left, top)
@@ -264,6 +267,7 @@ class EnemyTank_L_1(Tank,AP_enemy_57):
         if num < 20:
             return AP_enemy_57(self)
 
+
 # 敌方坦克与我方坦克是否发生碰撞
 def enemyTank_hit_myTank(enemyTank, MainGame):
     if pygame.sprite.collide_rect(enemyTank, MainGame.my_tank):
@@ -284,16 +288,16 @@ def randDirection():
 
 
 # 创建我方坦克的方法
-def createMytank(MainGame):
-    MainGame.my_tank = MyTank(350, 300)
+def createMytank(MainGame, tank_info: dict):
+    MainGame.my_tank = MyTank(tank_info)
     music.Music('img/start.wav')
 
 
 # 初始化敌方坦克，并将敌方坦克添加到列表中
-def createEnemyTank(MainGame):
+def createEnemyTank(MainGame, tank_info: dict):
     top = 100
     # 循环生成敌方坦克
-    for i in range(MainGame.enemyTankCount-9):
+    for i in range(MainGame.enemyTankCount - 9):
         left = random.randint(0, 600)
         speed = random.randint(1, 4)
         enemy = EnemyTank_M_1(left, top, speed)

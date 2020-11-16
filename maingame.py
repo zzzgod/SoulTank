@@ -1,3 +1,4 @@
+import json
 import pygame, time
 import gamewall
 import gametank
@@ -36,16 +37,21 @@ class MainGame:
         pass
 
     # 开始游戏
-    def startGame(self):
+    def startGame(self, map_index=1):
+        # 获取地图路经
+        map_path = 'maps/map' + str(map_index) + '.json'
         # 加载主窗口
         # 初始化窗口
         pygame.display.init()
         # 设置窗口的大小及显示
         MainGame.window = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
-        # 初始化我方坦克
-        gametank.createMytank(MainGame)
-        # 初始化敌方坦克，并将敌方坦克添加到列表中
-        gametank.createEnemyTank(MainGame)
+        # 读入地图信息
+        with open(map_path, 'r') as f:
+            map_info: dict = json.load(f)
+            # 初始化我方坦克
+            gametank.createMytank(MainGame, map_info['Player'])
+            # 初始化敌方坦克，并将敌方坦克添加到列表中
+            gametank.createEnemyTank(MainGame, map_info['Enemies'])
         # 初始化墙壁
         gamewall.createWall(MainGame)
         # 设置窗口的标题
