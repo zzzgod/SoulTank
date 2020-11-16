@@ -47,7 +47,7 @@ def getEvent(MainGame):
                 # 判断按下的是1键，让坦克重生
                 if event.key == pygame.K_1:
                     # 让我方坦克重生及调用创建坦克的方法
-                    gametank.createMytank(MainGame)
+                    gametank.createMytank(MainGame,tank_info=dict)
             if MainGame.my_tank and MainGame.my_tank.live:
                 # 判断按下的是上、下、左、右
                 if event.key == pygame.K_a:
