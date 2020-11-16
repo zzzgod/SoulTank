@@ -27,8 +27,10 @@ def load_map(index: int) -> None:
 if __name__ == '__main__':
     window = pygame.display.set_mode((1280, 720))
     pygame.display.set_caption('地图编辑器')
-    load_map(1)
+    load_map(2)
+    img_imformation = pygame.image.load('imformation.gif')
     while True:
+        window.blit(img_imformation, (1140, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit(0)

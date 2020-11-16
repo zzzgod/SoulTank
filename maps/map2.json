@@ -1,0 +1,26 @@
+{
+  "MapBlocks": [
+{"BlockType": "Wall", "x": 0, "y": 0},
+{"BlockType": "Steel", "x": 18, "y": 11},
+{"BlockType": "Water", "x": 17, "y": 8},
+{"BlockType": "Grass", "x": 3, "y": 0}
+  ],
+  "Player": {"x": 350, "y": 300, "Hp": 10, "Speed": 5},
+  "Enemies": [{"EnemyType": "Light", "x": 100, "y": 100},
+    {"EnemyType": "Light", "x": 100, "y": 100},
+    {"EnemyType": "Light", "x": 100, "y": 100},
+    {"EnemyType": "Light", "x": 100, "y": 100},
+    {"EnemyType": "Light", "x": 100, "y": 100},
+    {"EnemyType": "Middle", "x": 100, "y": 100},
+    {"EnemyType": "Middle", "x": 100, "y": 100},
+    {"EnemyType": "Middle", "x": 100, "y": 100},
+    {"EnemyType": "Middle", "x": 100, "y": 100},
+    {"EnemyType": "Middle", "x": 100, "y": 100},
+    {"EnemyType": "Heavy", "x": 100, "y": 100},
+    {"EnemyType": "Heavy", "x": 100, "y": 100},
+    {"EnemyType": "Heavy", "x": 100, "y": 100},
+    {"EnemyType": "Heavy", "x": 100, "y": 100},
+    {"EnemyType": "Heavy", "x": 100, "y": 100}
+  ],
+  "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}]
+}
