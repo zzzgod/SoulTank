@@ -9,7 +9,6 @@ import Text
 import gamegetevent
 from constant import *
 
-
 BG_COLOR = pygame.Color(0, 0, 0)
 
 
@@ -30,8 +29,9 @@ class MainGame:
     explodesmallList = []
     # 存储墙壁的列表
     wallList = []
-    waterList=[]
-    grassList=[]
+    waterList = []
+    grassList = []
+    map_info = None
 
     def __init__(self):
         pass
@@ -47,13 +47,13 @@ class MainGame:
         MainGame.window = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
         # 读入地图信息
         with open(map_path, 'r') as f:
-            map_info: dict = json.load(f)
+            MainGame.map_info = json.load(f)
             # 初始化我方坦克
-            gametank.createMytank(MainGame, map_info['Player'])
+            gametank.createMytank(MainGame, MainGame.map_info['Player'])
             # 初始化敌方坦克，并将敌方坦克添加到列表中
-            gametank.createEnemyTank(MainGame, map_info['Enemies'])
+            gametank.createEnemyTank(MainGame, MainGame.map_info['Enemies'])
             # 初始化墙壁
-            gamewall.createWall(MainGame, map_info['MapBlocks'])
+            gamewall.createWall(MainGame, MainGame.map_info['MapBlocks'])
         # 设置窗口的标题
         pygame.display.set_caption('Soul Tank')
         while True:

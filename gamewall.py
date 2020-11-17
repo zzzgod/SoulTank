@@ -100,7 +100,6 @@ def blitGrass(MainGame):
 # 初始化墙壁
 def createWall(MainGame, block_info: dict):
     for block in block_info:
-        wall = None
         if block['BlockType'] == "Wall":
             wall = Wall(block['x'] * 60, block['y'] * 60)
             MainGame.wallList.append(wall)
