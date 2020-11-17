@@ -37,7 +37,8 @@ class MainGame:
         pass
 
     # 开始游戏
-    def startGame(self, map_index=1):
+    def startGame(self,n):
+        map_index=n
         # 获取地图路经
         map_path = 'maps/map' + str(map_index) + '.json'
         # 加载主窗口

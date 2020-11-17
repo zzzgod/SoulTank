@@ -49,7 +49,10 @@ class singleplay:
                     music.Music('img/fire2.wav')
                     if self.option == 1:
                         loading.load()
-                        MainGame().startGame()
+                        MainGame().startGame(1)
+                    if self.option == 2:
+                        loading.load()
+                        MainGame().startGame(2)
                     if self.option == 0:
                         return 0
                 elif event.key == pygame.K_s:
