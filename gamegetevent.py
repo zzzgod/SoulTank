@@ -41,6 +41,7 @@ def getEvent(MainGame):
                 MainGame.wallList.clear()
                 MainGame.waterList.clear()
                 MainGame.grassList.clear()
+                pygame.mixer.music.stop()
                 return 0
             # 当坦克不重在死亡
             if not MainGame.my_tank:

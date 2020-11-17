@@ -54,7 +54,7 @@ class classic:
                     music.Music('img/fire2.wav')
                     if self.option == 0:
                         loading.load()
-                        MainGame().startGame()
+                        MainGame().startGame(1)
                     if self.option == 1:
                         singleplay().openmenu()
                     if self.option == 3:
