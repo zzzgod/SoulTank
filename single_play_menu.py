@@ -3,6 +3,7 @@ import pygame, time
 from constant import *
 import music
 import loading
+from gamedialogue import dialogue
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
@@ -49,6 +50,7 @@ class singleplay:
                     music.Music('img/fire2.wav')
                     if self.option == 1:
                         loading.load()
+                        dialogue().startGame(1)
                         MainGame().startGame(1)
                     if self.option == 2:
                         loading.load()

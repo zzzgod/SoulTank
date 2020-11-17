@@ -24,5 +24,5 @@ def load():
         # 获取事件
         image_main_background = pygame.image.load('img/main_background.gif')
         window.blit(image_main_background, (0, 0))
-        window.blit(Text.getTextSufaceBlack("Loading..."), (550, 650))
+        window.blit(Text.getTextSufaceBlackbig("Loading..."), (550, 650))
         pygame.display.update()
