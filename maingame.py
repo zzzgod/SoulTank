@@ -47,7 +47,7 @@ class MainGame:
         # 设置窗口的大小及显示
         MainGame.window = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
         # 读入地图信息
-        with open(map_path, 'r') as f:
+        with open(map_path, 'r', encoding='utf-8') as f:
             MainGame.map_info = json.load(f)
             # 初始化我方坦克
             gametank.createMytank(MainGame, MainGame.map_info['Player'])

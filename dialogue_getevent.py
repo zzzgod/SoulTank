@@ -38,5 +38,5 @@ def getEvent(MainGame,f):
                 MainGame.waterList.clear()
                 MainGame.grassList.clear()
                 pygame.mixer.music.stop()
-                return 0
+                return -1
     return f
