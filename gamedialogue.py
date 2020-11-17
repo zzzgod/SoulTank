@@ -61,7 +61,8 @@ class dialogue:
         with open(map_path, 'r', encoding='utf-8') as f:
             talk = json.load(f)['Dialogue']
         flag = 0
-        left_img, right_img = pygame.Surface(size=(0, 0)), pygame.Surface(size=(0, 0))
+        left_img = pygame.image.load(talk[flag]['Characters']['Left']['img']).convert_alpha()
+        right_img = pygame.image.load(talk[flag]['Characters']['Right']['img']).convert_alpha()
         while True:
             # 使用坦克移动的速度慢一点
             time.sleep(0.02)
