@@ -4,6 +4,7 @@ from constant import *
 import music
 import loading
 from single_play_menu import singleplay
+from gamedialogue import dialogue
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
@@ -54,7 +55,8 @@ class classic:
                     music.Music('img/fire2.wav')
                     if self.option == 0:
                         loading.load()
-                        MainGame().startGame(1)
+                        dialogue().startGame(0)
+                        MainGame().startGame(0)
                     if self.option == 1:
                         singleplay().openmenu()
                     if self.option == 3:

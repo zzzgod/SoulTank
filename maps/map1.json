@@ -1,110 +1,103 @@
 {
-  "MapBlocks": [{"BlockType": "Wall", "x": 13, "y": 4},
-    {"BlockType": "Wall", "x": 13, "y": 4},
-    {"BlockType": "Wall", "x": 14, "y": 4},
-    {"BlockType": "Wall", "x": 15, "y": 4},
-    {"BlockType": "Wall", "x": 16, "y": 4},
-    {"BlockType": "Wall", "x": 13, "y": 5},
-    {"BlockType": "Wall", "x": 14, "y": 5},
-    {"BlockType": "Wall", "x": 13, "y": 6},
-    {"BlockType": "Wall", "x": 14, "y": 7},
-    {"BlockType": "Wall", "x": 13, "y": 7},
-    {"BlockType": "Wall", "x": 15, "y": 6},
-    {"BlockType": "Wall", "x": 15, "y": 5},
-    {"BlockType": "Wall", "x": 15, "y": 7},
-    {"BlockType": "Wall", "x": 12, "y": 5},
-    {"BlockType": "Wall", "x": 12, "y": 6},
-    {"BlockType": "Wall", "x": 11, "y": 6},
-    {"BlockType": "Wall", "x": 10, "y": 5},
-    {"BlockType": "Wall", "x": 10, "y": 6},
-    {"BlockType": "Wall", "x": 9, "y": 6},
-    {"BlockType": "Wall", "x": 8, "y": 5},
-    {"BlockType": "Wall", "x": 7, "y": 5},
-    {"BlockType": "Wall", "x": 1, "y": 4},
-    {"BlockType": "Wall", "x": 1, "y": 5},
-    {"BlockType": "Wall", "x": 2, "y": 4},
-    {"BlockType": "Wall", "x": 2, "y": 5},
-    {"BlockType": "Steel", "x": 12, "y": 0},
-    {"BlockType": "Steel", "x": 12, "y": 1},
-    {"BlockType": "Steel", "x": 12, "y": 3},
-    {"BlockType": "Steel", "x": 12, "y": 4},
-    {"BlockType": "Steel", "x": 12, "y": 7},
-    {"BlockType": "Steel", "x": 12, "y": 10},
-    {"BlockType": "Steel", "x": 12, "y": 11},
-    {"BlockType": "Water", "x": 17, "y": 8},
-    {"BlockType": "Water", "x": 17, "y": 5},
-    {"BlockType": "Water", "x": 16, "y": 7},
-    {"BlockType": "Water", "x": 16, "y": 6},
-    {"BlockType": "Water", "x": 16, "y": 8},
-    {"BlockType": "Water", "x": 17, "y": 9},
-    {"BlockType": "Water", "x": 16, "y": 9},
-    {"BlockType": "Water", "x": 17, "y": 10},
-    {"BlockType": "Water", "x": 16, "y": 0},
-    {"BlockType": "Water", "x": 16, "y": 1},
-    {"BlockType": "Water", "x": 17, "y": 1},
-    {"BlockType": "Water", "x": 18, "y": 2},
-    {"BlockType": "Grass", "x": 3, "y": 0},
-    {"BlockType": "Grass", "x": 3, "y": 1},
-    {"BlockType": "Grass", "x": 3, "y": 2},
-    {"BlockType": "Grass", "x": 3, "y": 3},
-    {"BlockType": "Grass", "x": 3, "y": 4},
-    {"BlockType": "Grass", "x": 3, "y": 5},
-    {"BlockType": "Grass", "x": 3, "y": 6},
-    {"BlockType": "Grass", "x": 3, "y": 7},
-    {"BlockType": "Grass", "x": 3, "y": 8},
-    {"BlockType": "Grass", "x": 3, "y": 9},
-    {"BlockType": "Grass", "x": 3, "y": 10},
-    {"BlockType": "Grass", "x": 3, "y": 11},
-    {"BlockType": "Grass", "x": 11, "y": 0},
-    {"BlockType": "Grass", "x": 11, "y": 1},
-    {"BlockType": "Grass", "x": 11, "y": 3},
-    {"BlockType": "Grass", "x": 11, "y": 4},
-    {"BlockType": "Grass", "x": 11, "y": 7},
-    {"BlockType": "Grass", "x": 11, "y": 8},
-    {"BlockType": "Grass", "x": 11, "y": 10},
-    {"BlockType": "Grass", "x": 11, "y": 11},
-    {"BlockType": "Grass", "x": 2, "y": 0},
-    {"BlockType": "Grass", "x": 2, "y": 1},
-    {"BlockType": "Grass", "x": 2, "y": 2},
-    {"BlockType": "Grass", "x": 2, "y": 3},
-    {"BlockType": "Grass", "x": 2, "y": 6},
-    {"BlockType": "Grass", "x": 2, "y": 7},
-    {"BlockType": "Grass", "x": 2, "y": 8},
-    {"BlockType": "Grass", "x": 2, "y": 9},
-    {"BlockType": "Grass", "x": 2, "y": 10},
-    {"BlockType": "Grass", "x": 2, "y": 11},
-    {"BlockType": "Grass", "x": 13, "y": 0},
-    {"BlockType": "Grass", "x": 13, "y": 1},
-    {"BlockType": "Grass", "x": 13, "y": 3},
-    {"BlockType": "Grass", "x": 13, "y": 11},
-    {"BlockType": "Grass", "x": 13, "y": 10},
-    {"BlockType": "Grass", "x": 13, "y": 8},
-    {"BlockType": "Grass", "x": 18, "y": 0},
-    {"BlockType": "Grass", "x": 18, "y": 1},
-    {"BlockType": "Grass", "x": 0, "y": 9},
-    {"BlockType": "Grass", "x": 0, "y": 10},
-    {"BlockType": "Grass", "x": 0, "y": 2},
-    {"BlockType": "Grass", "x": 18, "y": 6},
-    {"BlockType": "Grass", "x": 17, "y": 7},
-    {"BlockType": "Grass", "x": 17, "y": 6},
-    {"BlockType": "Grass", "x": 18, "y": 8}
+  "MapBlocks": [
+{"BlockType": "Wall", "x": 13, "y": 4},
+{"BlockType": "Wall", "x": 14, "y": 4},
+{"BlockType": "Wall", "x": 15, "y": 4},
+{"BlockType": "Wall", "x": 16, "y": 4},
+{"BlockType": "Wall", "x": 13, "y": 5},
+{"BlockType": "Wall", "x": 14, "y": 5},
+{"BlockType": "Wall", "x": 13, "y": 6},
+{"BlockType": "Wall", "x": 14, "y": 7},
+{"BlockType": "Wall", "x": 13, "y": 7},
+{"BlockType": "Wall", "x": 15, "y": 6},
+{"BlockType": "Wall", "x": 15, "y": 5},
+{"BlockType": "Wall", "x": 15, "y": 7},
+{"BlockType": "Wall", "x": 12, "y": 5},
+{"BlockType": "Wall", "x": 12, "y": 6},
+{"BlockType": "Wall", "x": 11, "y": 6},
+{"BlockType": "Wall", "x": 10, "y": 5},
+{"BlockType": "Wall", "x": 10, "y": 6},
+{"BlockType": "Wall", "x": 9, "y": 6},
+{"BlockType": "Wall", "x": 8, "y": 5},
+{"BlockType": "Wall", "x": 7, "y": 5},
+{"BlockType": "Wall", "x": 1, "y": 4},
+{"BlockType": "Wall", "x": 1, "y": 5},
+{"BlockType": "Wall", "x": 2, "y": 4},
+{"BlockType": "Wall", "x": 2, "y": 5},
+{"BlockType": "Steel", "x": 12, "y": 0},
+{"BlockType": "Steel", "x": 12, "y": 1},
+{"BlockType": "Steel", "x": 12, "y": 3},
+{"BlockType": "Steel", "x": 12, "y": 4},
+{"BlockType": "Steel", "x": 12, "y": 7},
+{"BlockType": "Steel", "x": 12, "y": 10},
+{"BlockType": "Steel", "x": 12, "y": 11},
+{"BlockType": "Water", "x": 17, "y": 8},
+{"BlockType": "Water", "x": 17, "y": 5},
+{"BlockType": "Water", "x": 16, "y": 7},
+{"BlockType": "Water", "x": 16, "y": 6},
+{"BlockType": "Water", "x": 16, "y": 8},
+{"BlockType": "Water", "x": 17, "y": 9},
+{"BlockType": "Water", "x": 16, "y": 9},
+{"BlockType": "Water", "x": 17, "y": 10},
+{"BlockType": "Water", "x": 16, "y": 0},
+{"BlockType": "Water", "x": 16, "y": 1},
+{"BlockType": "Water", "x": 17, "y": 1},
+{"BlockType": "Water", "x": 18, "y": 2},
+{"BlockType": "Grass", "x": 3, "y": 0},
+{"BlockType": "Grass", "x": 3, "y": 1},
+{"BlockType": "Grass", "x": 3, "y": 2},
+{"BlockType": "Grass", "x": 3, "y": 3},
+{"BlockType": "Grass", "x": 3, "y": 4},
+{"BlockType": "Grass", "x": 3, "y": 5},
+{"BlockType": "Grass", "x": 3, "y": 6},
+{"BlockType": "Grass", "x": 3, "y": 7},
+{"BlockType": "Grass", "x": 3, "y": 8},
+{"BlockType": "Grass", "x": 3, "y": 9},
+{"BlockType": "Grass", "x": 3, "y": 10},
+{"BlockType": "Grass", "x": 3, "y": 11},
+{"BlockType": "Grass", "x": 11, "y": 0},
+{"BlockType": "Grass", "x": 11, "y": 1},
+{"BlockType": "Grass", "x": 11, "y": 3},
+{"BlockType": "Grass", "x": 11, "y": 4},
+{"BlockType": "Grass", "x": 11, "y": 7},
+{"BlockType": "Grass", "x": 11, "y": 8},
+{"BlockType": "Grass", "x": 11, "y": 10},
+{"BlockType": "Grass", "x": 11, "y": 11},
+{"BlockType": "Grass", "x": 2, "y": 0},
+{"BlockType": "Grass", "x": 2, "y": 1},
+{"BlockType": "Grass", "x": 2, "y": 2},
+{"BlockType": "Grass", "x": 2, "y": 3},
+{"BlockType": "Grass", "x": 2, "y": 4},
+{"BlockType": "Grass", "x": 2, "y": 5},
+{"BlockType": "Grass", "x": 2, "y": 6},
+{"BlockType": "Grass", "x": 2, "y": 7},
+{"BlockType": "Grass", "x": 2, "y": 8},
+{"BlockType": "Grass", "x": 2, "y": 9},
+{"BlockType": "Grass", "x": 2, "y": 10},
+{"BlockType": "Grass", "x": 2, "y": 11},
+{"BlockType": "Grass", "x": 13, "y": 0},
+{"BlockType": "Grass", "x": 13, "y": 1},
+{"BlockType": "Grass", "x": 13, "y": 3},
+{"BlockType": "Grass", "x": 13, "y": 11},
+{"BlockType": "Grass", "x": 13, "y": 10},
+{"BlockType": "Grass", "x": 13, "y": 8},
+{"BlockType": "Grass", "x": 18, "y": 0},
+{"BlockType": "Grass", "x": 18, "y": 1},
+{"BlockType": "Grass", "x": 0, "y": 9},
+{"BlockType": "Grass", "x": 0, "y": 10},
+{"BlockType": "Grass", "x": 0, "y": 2},
+{"BlockType": "Grass", "x": 18, "y": 6},
+{"BlockType": "Grass", "x": 17, "y": 7},
+{"BlockType": "Grass", "x": 17, "y": 6},
+{"BlockType": "Grass", "x": 18, "y": 8}
   ],
-  "Player": {"x": 350, "y": 300, "Hp": 10, "Speed": 5},
-  "Enemies": [{"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
+  "Player": {"x": 350, "y": 300, "Hp": 2, "Speed": 5},
+  "Enemies": [
+    {"EnemyType": "Middle", "x": 1050, "y": 0},
+    {"EnemyType": "Middle", "x": 600, "y": 100},
     {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100}
+    {"EnemyType": "Middle", "x": 800, "y": 100},
+    {"EnemyType": "Middle", "x": 600, "y": 100}
   ],
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
   "Dialogue": [
@@ -114,9 +107,7 @@
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["庆历四年春，滕子京谪守巴陵郡。",
-      "越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧",
-      "制，刻唐贤今人诗赋于其上，属予作文以记之。"]
+      "Content": ["物换星移，沧海桑田。故人已逝，故国安在？"]
     },
     {
       "Characters":
@@ -124,83 +115,115 @@
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["予观夫巴陵胜状，在洞庭一湖。",
-      "衔远山，吞长江，浩浩汤汤，横无际涯，朝晖夕阴，气",
-      "象万千。此则岳阳楼之大观也，前人之述备矣。"]},
+      "Content": ["如今与我为伴的，只剩下将熄的篝火与身边的她。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["然则北通巫峡，南极潇湘，迁客骚人，多会于此，览物",
-      "之情，得无异乎？"]},
+      "Content": ["我依偎着冰冷的负重轮，然而心中的温暖却不曾散去。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["若夫淫雨霏霏，连月不开，阴风怒号，浊浪排空，日星",
-      "隐曜，山岳潜形，商旅不行，樯倾楫摧，薄暮冥冥，虎",
-      "啸猿啼。"]},
+      "Content": ["思绪缥缈间，旧日故土的回忆不禁映入眼前。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极",
-      "而悲者矣。"]},
+      "Content": ["教官：完成了几个月的基础训练，大家想必已经很了解",
+      "各自的职责和操作了。今天，是我们第一次野外实战。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["至若春和景明，波澜不惊，上下天光，一碧万顷，沙鸥",
-      "翔集，锦鳞游泳，岸芷汀兰，郁郁青青。"]},
+      "Content": ["教官：驾驶员，好好利用 W A S D，激发出你们坦克的",
+      "机动潜力。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌",
-      "互答，此乐何极！"]},
+      "Content": ["教官：炮手，用你们的 J 打出穿甲弹，把敌人打碎！还",
+      "记得提前量的计算方法吧。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜",
-      "洋洋者矣。"]},
+      "Content": ["教官：装填手，打起精神来看看你们的臂膀，我不允许",
+      "谁的坦克射的比对面那些空壳慢！"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["嗟夫！予尝求古仁人之心，或异二者之为，何哉？",
-      "不以物喜，不以己悲；居庙堂之高则忧其民；处江湖之",
-      "远则忧其君。"]},
+      "Content": ["教官：车长，盯好敌人，看好自己，还有脚下的路！"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["是进亦忧，退亦忧。然则何时而乐耶？",
-      "其必曰“先天下之忧而忧，后天下之乐而乐”乎！"]},
+      "Content": ["教官：利用起周围的建筑，如果有必要，打烂那些砖墙，",
+      "但切记不要开进灌木丛和树林里。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["噫！微斯人，吾谁与归？",
-      "时六年九月十五日。"]
-    }
+      "Content": ["炮手：（小声）教官可真是啰嗦，赶紧让我开打吧！"]
+    },
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["驾驶员：（小声）少说点吧，真正的强者已经踩住油门",
+      "了。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["教官：最后，乱开炮的，把车开水里的，给我包下这个",
+      "月全排的车辆清洗。"]
+    },
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["装填手：...唉，在可预见的未来，你们两个又要去造福",
+      "全排兄弟了。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["教官：各车组量力而行，有危险随时报告。"]
+    },
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["教官：那么，作战开始！目标，歼灭所有敌人！"]}
   ]
 }
