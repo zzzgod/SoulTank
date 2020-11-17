@@ -30,6 +30,7 @@ def getEvent(MainGame,f):
                     pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT], pygame.FULLSCREEN)
                     fullscreen = 1
             if event.key == pygame.K_RETURN:
+                music.Music('img/press.mp3')
                 return f+1
             #退出游戏
             elif event.key == pygame.K_SPACE:
