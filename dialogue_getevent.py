@@ -9,7 +9,7 @@ lasttime = 0
 fullscreen = 0
 
 
-def getEvent(MainGame,f):
+def getEvent(MainGame):
     # 获取所有事件
     eventList = pygame.event.get()
     # 遍历事件
@@ -31,7 +31,7 @@ def getEvent(MainGame,f):
                     fullscreen = 1
             if event.key == pygame.K_RETURN:
                 music.Music('img/press.mp3')
-                return f+1
+                return 1
             #退出游戏
             elif event.key == pygame.K_SPACE:
                 MainGame.wallList.clear()
@@ -39,4 +39,4 @@ def getEvent(MainGame,f):
                 MainGame.grassList.clear()
                 pygame.mixer.music.stop()
                 return -1
-    return f
+    return 0

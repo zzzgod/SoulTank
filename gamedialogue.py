@@ -12,6 +12,18 @@ from maingame import MainGame
 BG_COLOR = pygame.Color(0, 0, 0)
 
 
+# def ashing_img(img, ratio) -> None:
+#     width, height = img.get_size()
+#     ratio = 1 - ratio
+#     for i in range(width):
+#         for j in range(height):
+#             color = img.get_at((i, j))
+#             color.r = int(color.r * ratio)
+#             color.g = int(color.g * ratio)
+#             color.b = int(color.b * ratio)
+#             img.set_at((i, j), color)
+
+
 class dialogue:
     window = None
     # 存储墙壁的列表
@@ -47,17 +59,25 @@ class dialogue:
         image_shadow = pygame.image.load('img/shadow.png')
         pygame.mixer.music.stop()
         with open(map_path, 'r', encoding='utf-8') as f:
-            text = json.load(f)['Dialog']
+            talk = json.load(f)['Dialogue']
         flag = 0
+        left_img, right_img = pygame.Surface(size=(0, 0)), pygame.Surface(size=(0, 0))
         while True:
             # 使用坦克移动的速度慢一点
             time.sleep(0.02)
             # 给窗口设置填充色
             dialogue.window.fill(BG_COLOR)
             # 获取事件
-            flag = dialogue_getevent.getEvent(dialogue, flag)
-            if flag == -1:
+            rtv = dialogue_getevent.getEvent(dialogue)
+            # 如果挑过了剧情
+            if rtv == -1:
                 return
+            elif rtv == 1:
+                flag += 1
+                if flag == len(talk):
+                    return
+                left_img = pygame.image.load(talk[flag]['Characters']['Left']['img']).convert_alpha()
+                right_img = pygame.image.load(talk[flag]['Characters']['Right']['img']).convert_alpha()
             # 信息板
             dialogue.window.blit(image_imformation, (1140, 0))
             # 绘制图标
@@ -68,10 +88,11 @@ class dialogue:
             # 循环遍历草列表，展示草
             gamewall.blitGrass(dialogue)
             dialogue.window.blit(image_shadow, (0, 0))
+            # 显示人物图片
+            dialogue.window.blit(left_img, (-200, 0))
+            dialogue.window.blit(right_img, (780, 0))
             # 绘制对话框
             dialogue.window.blit(image_dialogue, (0, 0))
-            if flag == len(text):
-                return
-            for i, line in enumerate(text[flag]):
+            for i, line in enumerate(talk[flag]['Content']):
                 dialogue.window.blit(Text.getTextSufaceBlacksmall(line), (200, 500 + 60 * i))
             pygame.display.update()
