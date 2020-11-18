@@ -1,8 +1,9 @@
 import pygame, random
+import json
 import gamebullet
 from constant import *
 import music
-from gamebullet import AP_enemy_75, AP_enemy_122, AP_enemy_57
+from gamebullet import EnemyBullet
 
 
 class Tank():
@@ -110,32 +111,44 @@ class MyTank(Tank):
 
 
 # 敌方坦克
-class EnemyTank_M_1(Tank, AP_enemy_75):
-    def __init__(self, left, top):
+class EnemyTank(Tank):
+    def __init__(self, tank_type, left, top):
         # 调用父类的初始化方法
-        super(EnemyTank_M_1, self).__init__(left, top)
-        # 加载图片集
-        self.images = {
-            'U': pygame.image.load('img/enemy1U.gif'),
-            'D': pygame.image.load('img/enemy1D.gif'),
-            'L': pygame.image.load('img/enemy1L.gif'),
-            'R': pygame.image.load('img/enemy1R.gif')
-        }
-        # 方向,随机生成敌方坦克的方向
-        self.direction = randDirection()
-        # 根据方向获取图片
-        self.image = self.images[self.direction]
-        # 区域
-        self.rect = self.image.get_rect()
-        # 对left和top进行赋值
-        self.rect.left = left
-        self.rect.top = top
-        # 坦克血量
-        self.hp = 1
-        # 速度  决定移动的快慢
-        self.speed = 3
-        # 薪增加一个步数变量 step
-        self.step = 60
+        super(EnemyTank, self).__init__(left, top)
+        # 从文件中读取指定类型坦克的信息
+        f = None
+        if tank_type == 'LightTank':
+            f = open('entity/enemies/LightTank.json', 'r')
+        elif tank_type == 'MediumTank':
+            f = open('entity/enemies/MediumTank.json', 'r')
+        elif tank_type == 'HeavyTank':
+            f = open('entity/enemies/HeavyTank.json', 'r')
+        if f is not None:
+            tank_info: dict = json.load(f)
+            # 加载图片集
+            self.images = {
+                'U': pygame.image.load(tank_info['img']['Up']),
+                'D': pygame.image.load(tank_info['img']['Down']),
+                'L': pygame.image.load(tank_info['img']['Left']),
+                'R': pygame.image.load(tank_info['img']['Right'])
+            }
+            # 方向,随机生成敌方坦克的方向
+            self.direction = randDirection()
+            # 根据方向获取图片
+            self.image = self.images[self.direction]
+            # 区域
+            self.rect = self.image.get_rect()
+            # 对left和top进行赋值
+            self.rect.left = left
+            self.rect.top = top
+            # 坦克血量
+            self.hp = tank_info['Health']
+            # 速度  决定移动的快慢
+            self.speed = tank_info['Speed']
+            # 薪增加一个步数变量 step
+            self.step = 60
+        else:
+            raise ValueError('敌方坦克类型错误！')
 
     # 敌方坦克随机移动的方法
     def randMove(self):
@@ -157,109 +170,7 @@ class EnemyTank_M_1(Tank, AP_enemy_75):
         # 随机生成100以内的数
         num = random.randint(1, 1000)
         if num < 30:
-            return AP_enemy_75(self)
-
-
-# 敌方坦克
-class EnemyTank_H_1(Tank, AP_enemy_122):
-    def __init__(self, left, top):
-        # 调用父类的初始化方法
-        super(EnemyTank_H_1, self).__init__(left, top)
-        # 加载图片集
-        self.images = {
-            'U': pygame.image.load('img/enemy2U.gif'),
-            'D': pygame.image.load('img/enemy2D.gif'),
-            'L': pygame.image.load('img/enemy2L.gif'),
-            'R': pygame.image.load('img/enemy2R.gif')
-        }
-        # 方向,随机生成敌方坦克的方向
-        self.direction = randDirection()
-        # 根据方向获取图片
-        self.image = self.images[self.direction]
-        # 区域
-        self.rect = self.image.get_rect()
-        # 对left和top进行赋值
-        self.rect.left = left
-        self.rect.top = top
-        # 坦克血量
-        self.hp = 5
-        # 速度  决定移动的快慢
-        self.speed = 2
-        # 薪增加一个步数变量 step
-        self.step = 30
-
-    # 敌方坦克随机移动的方法
-    def randMove(self):
-        if self.step <= 0:
-            # 修改方向
-            self.direction = randDirection()
-            # 让步数复位
-            self.step = 30
-        else:
-            self.touch = self.move()
-            # 让步数递减
-            self.step -= 1
-            # 如果接触墙壁就马上转向
-            if self.touch == 0:
-                self.step = -1
-
-    # 重写shot()
-    def shot(self):
-        # 随机生成100以内的数
-        num = random.randint(1, 1000)
-        if num < 10:
-            return AP_enemy_122(self)
-
-
-# 敌方坦克1
-class EnemyTank_L_1(Tank, AP_enemy_57):
-    def __init__(self, left, top):
-        # 调用父类的初始化方法
-        super(EnemyTank_L_1, self).__init__(left, top)
-        # 加载图片集
-        self.images = {
-            'U': pygame.image.load('img/enemy4U.gif'),
-            'D': pygame.image.load('img/enemy4D.gif'),
-            'L': pygame.image.load('img/enemy4L.gif'),
-            'R': pygame.image.load('img/enemy4R.gif')
-        }
-        # 方向,随机生成敌方坦克的方向
-        self.direction = randDirection()
-        # 根据方向获取图片
-        self.image = self.images[self.direction]
-        # 区域
-        self.rect = self.image.get_rect()
-        # 对left和top进行赋值
-        self.rect.left = left
-        self.rect.top = top
-        # 坦克血量
-        self.hp = 1
-        # 速度  决定移动的快慢
-        self.speed = 7
-        # 薪增加一个步数变量 step
-        self.step = 60
-
-    # 敌方坦克随机移动的方法
-    def randMove(self):
-        if self.step <= 0:
-            # 修改方向
-            self.direction = randDirection()
-            # 让步数复位
-            self.step = 60
-        else:
-            self.touch = self.move()
-            # 让步数递减
-            self.step -= 1
-            # 如果接触墙壁就马上转向
-            if self.touch == 0:
-                self.step = -1
-
-    # 重写shot()
-    def shot(self):
-        # 随机生成100以内的数
-        num = random.randint(1, 1000)
-        if num < 20:
-            return AP_enemy_57(self)
+            return EnemyBullet(self, 'AP75')
 
 
 # 敌方坦克与我方坦克是否发生碰撞
@@ -291,13 +202,13 @@ def createMytank(MainGame, tank_info: dict):
 def createEnemyTank(MainGame, tank_info: dict):
     for tank in tank_info:
         if tank['EnemyType'] == "Light":
-            enemy = EnemyTank_L_1(tank['x'], tank['y'])
+            enemy = EnemyTank('LightTank', tank['x'], tank['y'])
             MainGame.enemyTankList.append(enemy)
         elif tank['EnemyType'] == "Middle":
-            enemy = EnemyTank_M_1(tank['x'], tank['y'])
+            enemy = EnemyTank('MediumTank', tank['x'], tank['y'])
             MainGame.enemyTankList.append(enemy)
         elif tank['EnemyType'] == "Heavy":
-            enemy = EnemyTank_H_1(tank['x'], tank['y'])
+            enemy = EnemyTank('HeavyTank', tank['x'], tank['y'])
             MainGame.enemyTankList.append(enemy)
 
 

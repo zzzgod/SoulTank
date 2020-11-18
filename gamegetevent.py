@@ -1,7 +1,7 @@
 import pygame, time
 import music
 import gametank
-from gamebullet import AP_my_75
+from gamebullet import MyBullet
 from constant import *
 
 SCREEN_WIDTH = 1280
@@ -90,7 +90,7 @@ def getEvent(MainGame):
                     print(timediffer)
                     if timediffer > 1:
                         # 创建我方坦克发射的子弹
-                        myBullet = AP_my_75(MainGame.my_tank)
+                        myBullet = MyBullet(MainGame.my_tank, 'myAP75')
                         MainGame.myBulletList.append(myBullet)
                         # 我方坦克发射子弹添加音效
                         music.Music('img/fire1.wav')

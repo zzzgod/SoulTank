@@ -1,0 +1,8 @@
+{
+  "Health": 1,
+  "Bullet": "AP57",
+  "Armor": 0,
+  "Speed": 7,
+  "img": {"Up": "img/tank/LightTankUp.gif", "Down": "img/tank/LightTankDown.gif",
+    "Left": "img/tank/LightTankLeft.gif", "Right": "img/tank/LightTankRight.gif"}
+}

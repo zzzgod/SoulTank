@@ -1,5 +1,6 @@
 import pygame
 import music
+import json
 from gameExplode import Explode
 from constant import *
 
@@ -7,7 +8,7 @@ from constant import *
 # 子弹类
 class Bullet:
     def __init__(self, tank):
-        self.image = pygame.image.load('img/enemymissile.gif')
+        self.image = pygame.image.load('img/bullet/AP75.gif')
         # 坦克的方向决定子弹的方向
         self.direction = tank.direction
         # 获取区域
@@ -29,21 +30,23 @@ class Bullet:
             self.rect.top = tank.rect.top + tank.rect.width / 2 - self.rect.width / 2
 
     # 子弹是否碰撞墙壁
+
+
 def hit_wall(bullet, MainGame, Explode):
-        # 循环遍历墙壁列表
-        for wall in MainGame.wallList:
-            if pygame.sprite.collide_rect(bullet, wall):
-                # 修改子弹的生存状态，让子弹消失
-                bullet.live = False
-                # 墙壁的生命值减小
-                wall.hp -= bullet.damage
-                if wall.hp <= 0:
-                    # 修改墙壁的生存状态
-                    wall.live = False
-                    # 产生爆炸对象
-                    explode = Explode(wall)
-                    # 将爆炸对象添加到爆炸列表中
-                    MainGame.explodesmallList.append(explode)
+    # 循环遍历墙壁列表
+    for wall in MainGame.wallList:
+        if pygame.sprite.collide_rect(bullet, wall):
+            # 修改子弹的生存状态，让子弹消失
+            bullet.live = False
+            # 墙壁的生命值减小
+            wall.hp -= bullet.damage
+            if wall.hp <= 0:
+                # 修改墙壁的生存状态
+                wall.live = False
+                # 产生爆炸对象
+                explode = Explode(wall)
+                # 将爆炸对象添加到爆炸列表中
+                MainGame.explodesmallList.append(explode)
 
 
 # 子弹与坦克的碰撞
@@ -81,56 +84,51 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
                     MainGame.explodeList.append(explode)
 
 
-class AP_my_75(Bullet):
-    def __init__(self, tank):
-        super(AP_my_75, self).__init__(tank)
-        # 子弹的贴图
-        self.image = pygame.image.load('img/tankmissile.gif')
-        # 子弹的速度
-        self.speed = 10
-        # 子弹的威力
-        self.damage = 1
-        # 子弹的穿透力
-        self.penetration = 10
+class MyBullet(Bullet):
+    def __init__(self, tank, bullet_type):
+        super(MyBullet, self).__init__(tank)
+        f = None
+        if bullet_type == 'myAP75':
+            f = open('entity/bullet/myAP75.json')
+        if f is not None:
+            bullet_info: dict = json.load(f)
+            # 子弹的贴图
+            self.image = pygame.image.load(bullet_info['img'])
+            # 子弹的速度
+            self.speed = bullet_info['Speed']
+            # 子弹的威力
+            self.damage = bullet_info['Damage']
+            # 子弹的穿透力
+            self.penetration = bullet_info['Penetration']
+            f.close()
+        else:
+            raise TypeError('玩家子弹类型错误！')
 
 
+class EnemyBullet(Bullet):
+    def __init__(self, tank, bullet_type):
+        super(EnemyBullet, self).__init__(tank)
+        f = None
+        if bullet_type == 'AP57':
+            f = open('entity/bullet/AP57.json')
+        elif bullet_type == 'AP75':
+            f = open('entity/bullet/AP75.json')
+        elif bullet_type == 'AP122':
+            f = open('entity/bullet/AP122.json')
+        if f is not None:
+            bullet_info: dict = json.load(f)
+            # 子弹的贴图
+            self.image = pygame.image.load(bullet_info['img'])
+            # 子弹的速度
+            self.speed = bullet_info['Speed']
+            # 子弹的威力
+            self.damage = bullet_info['Damage']
+            # 子弹的穿透力
+            self.penetration = bullet_info['Penetration']
+            f.close()
+        else:
+            raise TypeError('敌方子弹类型错误！')
 
-
-class AP_enemy_75(Bullet):
-    def __init__(self, tank):
-        super(AP_enemy_75, self).__init__(tank)
-        # 子弹的贴图
-        self.image = pygame.image.load('img/enemymissile.gif')
-        # 子弹的速度
-        self.speed = 6
-        # 子弹的威力
-        self.damage = 2
-        # 子弹的穿透力
-        self.penetration = 10
-
-class AP_enemy_122(Bullet):
-    def __init__(self, tank):
-        super(AP_enemy_122, self).__init__(tank)
-        # 子弹的贴图
-        self.image = pygame.image.load('img/enemymissile2.gif')
-        # 子弹的速度
-        self.speed = 12
-        # 子弹的威力
-        self.damage = 6
-        # 子弹的穿透力
-        self.penetration = 10
-
-class AP_enemy_57(Bullet):
-    def __init__(self, tank):
-        super(AP_enemy_57, self).__init__(tank)
-        # 子弹的贴图
-        self.image = pygame.image.load('img/enemymissile3.gif')
-        # 子弹的速度
-        self.speed = 8
-        # 子弹的威力
-        self.damage = 1
-        # 子弹的穿透力
-        self.penetration = 10
 
 # 移动
 def move(Bullet):
@@ -177,7 +175,7 @@ def blitMyBullet(MainGame):
             # 调用检测我方子弹是否与敌方坦克发生碰撞
             bullet_hit_tank(myBullet, MainGame, 'EnemyTank')
             # 检测我方子弹是否与墙壁碰撞
-            hit_wall(myBullet,MainGame, Explode)
+            hit_wall(myBullet, MainGame, Explode)
         # 否则在列表中删除
         else:
             MainGame.myBulletList.remove(myBullet)
@@ -192,6 +190,6 @@ def blitEnemyBullet(MainGame):
             # 调用敌方子弹与我方坦克碰撞的方法
             bullet_hit_tank(enemyBullet, MainGame, 'PlayerTank')
             # 检测敌方子弹是否与墙壁碰撞
-            hit_wall(enemyBullet,MainGame, Explode)
+            hit_wall(enemyBullet, MainGame, Explode)
         else:
             MainGame.enemyBulletList.remove(enemyBullet)
