@@ -10,6 +10,20 @@ lasttime = 0
 fullscreen = 0
 
 
+def pause_menu(MainGame):
+    # 加载图片
+    pause_img = pygame.image.load('img/interface/PauseMenu.png').convert()
+    while True:
+        # 获取所有事件
+        event_list = pygame.event.get()
+        for event in event_list:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                return
+        MainGame.window.blit(pause_img, (0, 0))
+        pygame.display.update()
+        time.sleep(0.001)
+
+
 def getEvent(MainGame):
     # 获取所有事件
     eventList = pygame.event.get()
@@ -20,7 +34,10 @@ def getEvent(MainGame):
         if event.type == pygame.QUIT:
             exit()
         # 如果是键盘的按下
-        if event.type == pygame.KEYDOWN:
+        elif event.type == pygame.KEYDOWN:
+            # 如果处于暂停状态
+            if event.key == pygame.K_p:
+                pause_menu(MainGame)
             # esc键切换全屏和窗口
             if event.key == pygame.K_ESCAPE:
                 global fullscreen
@@ -30,9 +47,9 @@ def getEvent(MainGame):
                 else:
                     pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT], pygame.FULLSCREEN)
                     fullscreen = 1
-            #退出游戏
-            if event.key == pygame.K_BACKSPACE:
-                MainGame.enemyTankList .clear()
+            # 退出游戏
+            elif event.key == pygame.K_BACKSPACE:
+                MainGame.enemyTankList.clear()
                 MainGame.myBulletList.clear()
                 MainGame.enemyBulletList.clear()
                 MainGame.explodeList.clear()
@@ -42,7 +59,7 @@ def getEvent(MainGame):
                 MainGame.waterList.clear()
                 MainGame.grassList.clear()
                 pygame.mixer.music.stop()
-                return 0
+                exit(0)
             # 当坦克不重在死亡
             if not MainGame.my_tank:
                 # 判断按下的是1键，让坦克重生

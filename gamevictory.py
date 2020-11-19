@@ -69,5 +69,5 @@ class victory:
                 # 如果是键盘的按下
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_BACKSPACE:
-                        return -1
+                        exit(0)
             pygame.display.update()

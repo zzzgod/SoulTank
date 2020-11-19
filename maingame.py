@@ -38,7 +38,7 @@ class MainGame:
         pass
 
     # 开始游戏
-    def startGame(self,n):
+    def startGame(self, n):
         map_index=n
         # 获取地图路经
         map_path = 'maps/map' + str(map_index) + '.json'
@@ -64,9 +64,7 @@ class MainGame:
             # 给窗口设置填充色
             MainGame.window.fill(BG_COLOR)
             # 获取事件
-            flag = gamegetevent.getEvent(MainGame)
-            if flag == 0:
-                return
+            gamegetevent.getEvent(MainGame)
             # 信息板
             image_imformation = pygame.image.load('img/imformation.gif')
             MainGame.window.blit(image_imformation, (1140, 0))
@@ -108,9 +106,7 @@ class MainGame:
             gameExplode.blitsmallExplode(MainGame)
             # 判断是否有敌人剩余
             if not self.enemyTankList:
-                flag=victory().startGame(1)
-            if flag==-1:
-                return
+                victory().startGame(1)
             # 如果坦克的开关是开启，才可以移动
             if MainGame.my_tank and MainGame.my_tank.live:
                 if not MainGame.my_tank.stop:

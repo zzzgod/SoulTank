@@ -1,6 +1,5 @@
 import pygame, random
 import json
-import gamebullet
 from constant import *
 import music
 from gamebullet import EnemyBullet
