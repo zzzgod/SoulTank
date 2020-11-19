@@ -62,14 +62,14 @@ def pause_menu(MainGame):
             del MainGame.my_tank
             MainGame.window.blit(Text.getTextSufaceRed('0'), (1220, 110))
             MainGame.my_tank = None
+        # 循环遍历墙壁列表，展示墙壁
+        gamewall.blitWall(MainGame)
         # 循环遍历敌方坦克列表，展示敌方坦克
         gametank.blitEnemyTank(MainGame, Bullet)
         # 循环遍历显示我方坦克的子弹
         gamebullet.blitMyBullet(MainGame)
         # 循环遍历敌方子弹列表，展示敌方子弹
         gamebullet.blitEnemyBullet(MainGame)
-        # 循环遍历墙壁列表，展示墙壁
-        gamewall.blitWall(MainGame)
         # 循环遍历草列表，展示草
         gamewall.blitGrass(MainGame)
         # 循环遍历爆炸列表，展示爆炸效果

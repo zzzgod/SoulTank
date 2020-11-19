@@ -98,14 +98,14 @@ class MainGame:
             gamebullet.checkMyBullet(MainGame)
             # 循环遍历敌方子弹列表，检查敌方子弹
             gamebullet.checkEnemyBullet(MainGame)
+            # 循环遍历墙壁列表，展示墙壁
+            gamewall.blitWall(MainGame)
             # 循环遍历敌方坦克列表，展示敌方坦克
             gametank.blitEnemyTank(MainGame, Bullet)
             # 循环遍历显示我方坦克的子弹
             gamebullet.blitMyBullet(MainGame)
             # 循环遍历敌方子弹列表，展示敌方子弹
             gamebullet.blitEnemyBullet(MainGame)
-            # 循环遍历墙壁列表，展示墙壁
-            gamewall.blitWall(MainGame)
             # 循环遍历草列表，展示草
             gamewall.blitGrass(MainGame)
             # 循环遍历爆炸列表，展示爆炸效果
@@ -114,7 +114,17 @@ class MainGame:
             gameExplode.blitsmallExplode(MainGame)
             # 判断是否有敌人剩余
             if not self.enemyTankList:
-                victory().startGame(1)
+                if victory().startGame(1):
+                    MainGame.enemyTankList.clear()
+                    MainGame.myBulletList.clear()
+                    MainGame.enemyBulletList.clear()
+                    MainGame.explodeList.clear()
+                    MainGame.explodebigList.clear()
+                    MainGame.explodesmallList.clear()
+                    MainGame.wallList.clear()
+                    MainGame.waterList.clear()
+                    MainGame.grassList.clear()
+                    return
             # 如果坦克的开关是开启，才可以移动
             if MainGame.my_tank and MainGame.my_tank.live:
                 if not MainGame.my_tank.stop:
