@@ -17,7 +17,13 @@ from exit import game_exit
             更换装备
                 装备大类
                     火炮：单发炮，弹夹炮
-                    弹种：AP,HE,APCR,HEAT，APCBC（被帽风帽穿甲弹）,APHE,APFSDS(?),HESH
+                    弹种：
+                        AP->APCR
+                            APCBC
+                            APHE
+                            APFSDS(?)
+                        HE->HEAT
+                            HESH
                     引擎：燃气涡轮增压，
                     悬挂装置：液气悬挂，扭杆悬挂，克里斯蒂悬挂
                     内置配件：输弹机（增加射速），炮队镜（去草）

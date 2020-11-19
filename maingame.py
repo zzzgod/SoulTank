@@ -8,6 +8,7 @@ import gamebullet
 import Text
 import gamegetevent
 from constant import *
+from gamevictory import victory
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
@@ -105,7 +106,11 @@ class MainGame:
             gameExplode.blitExplode(MainGame)
             gameExplode.blitbigExplode(MainGame)
             gameExplode.blitsmallExplode(MainGame)
-            # 调用移动方法
+            # 判断是否有敌人剩余
+            if not self.enemyTankList:
+                flag=victory().startGame(1)
+            if flag==-1:
+                return
             # 如果坦克的开关是开启，才可以移动
             if MainGame.my_tank and MainGame.my_tank.live:
                 if not MainGame.my_tank.stop:
