@@ -147,6 +147,8 @@ class EnemyTank(Tank):
             self.speed = tank_info['Speed']
             # 薪增加一个步数变量 step
             self.step = 60
+            # 保存坦克信息
+            self.info = tank_info
         else:
             raise ValueError('敌方坦克类型错误！')
 
@@ -170,7 +172,7 @@ class EnemyTank(Tank):
         # 随机生成100以内的数
         num = random.randint(1, 1000)
         if num < 30:
-            return EnemyBullet(self, 'AP75')
+            return EnemyBullet(self, self.info['Bullet'])
 
 
 # 敌方坦克与我方坦克是否发生碰撞
