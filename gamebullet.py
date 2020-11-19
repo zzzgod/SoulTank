@@ -167,9 +167,15 @@ def display_bullet(Bullet, main_game):
 # 循环遍历我方子弹存储列表
 def blitMyBullet(MainGame):
     for myBullet in MainGame.myBulletList:
-        # 判断当前的子弹是否是活着状态，如果是则进行显示及移动，
+        # 判断当前的子弹是否是活着状态，如果是则进行显示
         if myBullet.live:
             display_bullet(myBullet, MainGame)
+
+# 循环遍历我方子弹存储列表
+def checkMyBullet(MainGame):
+    for myBullet in MainGame.myBulletList:
+        # 判断当前的子弹是否是活着状态，如果是则进行移动，
+        if myBullet.live:
             # 调用子弹的移动方法
             move(myBullet)
             # 调用检测我方子弹是否与敌方坦克发生碰撞
@@ -186,6 +192,11 @@ def blitEnemyBullet(MainGame):
     for enemyBullet in MainGame.enemyBulletList:
         if enemyBullet.live:  # 判断敌方子弹是否存活
             display_bullet(enemyBullet, MainGame)
+
+# 循环遍历敌方子弹列表
+def checkEnemyBullet(MainGame):
+    for enemyBullet in MainGame.enemyBulletList:
+        if enemyBullet.live:  # 判断敌方子弹是否存活
             move(enemyBullet)
             # 调用敌方子弹与我方坦克碰撞的方法
             bullet_hit_tank(enemyBullet, MainGame, 'PlayerTank')

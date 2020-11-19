@@ -219,6 +219,12 @@ def blitEnemyTank(MainGame, Bullet):
         # 判断当前敌方坦克是否活着
         if enemyTank.live:
             enemyTank.displayTank(MainGame)
+
+# 循环遍历敌方坦克列表，检查敌方坦克
+def checkEnemyTank(MainGame, Bullet):
+    for enemyTank in MainGame.enemyTankList:
+        # 判断当前敌方坦克是否活着
+        if enemyTank.live:
             enemyTank.randMove()
             # 调用检测是否与墙壁碰撞
             enemyTank.hit_wall(MainGame)
