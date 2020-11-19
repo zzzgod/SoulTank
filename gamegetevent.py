@@ -12,12 +12,12 @@ fullscreen = 0
 
 def pause_menu(MainGame):
     # 加载图片
-    pause_img = pygame.image.load('img/interface/PauseMenu.png').convert()
+    pause_img = pygame.image.load('img/interface/PauseMenu.png')
     while True:
         # 获取所有事件
         event_list = pygame.event.get()
         for event in event_list:
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+            if event.type == pygame.KEYDOWN:
                 return
         MainGame.window.blit(pause_img, (0, 0))
         pygame.display.update()
@@ -59,7 +59,7 @@ def getEvent(MainGame):
                 MainGame.waterList.clear()
                 MainGame.grassList.clear()
                 pygame.mixer.music.stop()
-                exit(0)
+                return True
             # 当坦克不重在死亡
             if not MainGame.my_tank:
                 # 判断按下的是1键，让坦克重生
@@ -121,3 +121,4 @@ def getEvent(MainGame):
                         MainGame.my_tank.direction == 'D' and event.key == pygame.K_s) or (
                         MainGame.my_tank.direction == 'R' and event.key == pygame.K_d):
                     MainGame.my_tank.stop = True
+    return False
