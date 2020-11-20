@@ -37,6 +37,9 @@ class MainGame:
     def __init__(self):
         pass
 
+    def show_all(self):
+        pass
+
     # 开始游戏
     def startGame(self, n):
         map_index=n

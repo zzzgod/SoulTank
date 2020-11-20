@@ -15,6 +15,12 @@ class Bullet:
         self.rect = self.image.get_rect()
         # 子弹的状态，是否碰到墙壁，如果碰到墙壁，修改此状态
         self.live = True
+        # 子弹的速度
+        self.speed = 0
+        # 子弹的威力
+        self.damage = 0
+        # 子弹的穿透力
+        self.penetration = 0
         # 子弹的left和top与方向有关
         if self.direction == 'U':
             self.rect.left = tank.rect.left + tank.rect.width / 2 - self.rect.width / 2
