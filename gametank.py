@@ -122,6 +122,8 @@ class EnemyTank(Tank):
             f = open('entity/enemies/MediumTank.json', 'r')
         elif tank_type == 'HeavyTank':
             f = open('entity/enemies/HeavyTank.json', 'r')
+        elif tank_type == 'TankDestroyer':
+            f = open('entity/enemies/TankDestroyer.json', 'r')
         if f is not None:
             tank_info: dict = json.load(f)
             # 加载图片集
@@ -210,6 +212,9 @@ def createEnemyTank(MainGame, tank_info: dict):
             MainGame.enemyTankList.append(enemy)
         elif tank['EnemyType'] == "Heavy":
             enemy = EnemyTank('HeavyTank', tank['x'], tank['y'])
+            MainGame.enemyTankList.append(enemy)
+        elif tank['EnemyType'] == "Destroyer":
+            enemy = EnemyTank('TankDestroyer', tank['x'], tank['y'])
             MainGame.enemyTankList.append(enemy)
 
 
