@@ -7,7 +7,7 @@ import music
 BG_COLOR = pygame.Color(0, 0, 0)
 
 
-class victory:
+class defeat:
     window = None
     # 存储墙壁的列表
     wallList = []
@@ -27,38 +27,38 @@ class victory:
         # 初始化窗口
         pygame.display.init()
         # 设置窗口的大小及显示
-        victory.window = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
+        defeat.window = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
         # 读入地图信息
         with open(map_path, 'r', encoding='utf-8') as f:
-            victory.map_info = json.load(f)
+            defeat.map_info = json.load(f)
             # 初始化墙壁
-            gamewall.createWall(victory, victory.map_info['MapBlocks'])
+            gamewall.createWall(defeat, defeat.map_info['MapBlocks'])
         # 设置窗口的标题
         pygame.display.set_caption('Soul Tank')
         image_enemy_tank_hp = pygame.image.load('img/my_tank_hp_black.gif')
         image_enemy_tank_num = pygame.image.load('img/enemy_tank_num_black.gif')
         image_imformation = pygame.image.load('img/imformation.gif')
-        image_victory = pygame.image.load('img/victory.gif')
+        image_defeat = pygame.image.load('img/defeat.gif')
         image_shadow = pygame.image.load('img/shadow.png')
         pygame.mixer.music.stop()
-        music.Music('img/victory.wav')
+        music.Music('img/defeat.mp3')
         flag = 0
         while True:
             # 使用坦克移动的速度慢一点
             time.sleep(0.02)
             # 给窗口设置填充色
-            victory.window.fill(BG_COLOR)
+            defeat.window.fill(BG_COLOR)
             # 信息板
-            victory.window.blit(image_imformation, (1140, 0))
+            defeat.window.blit(image_imformation, (1140, 0))
             # 绘制图标
-            victory.window.blit(image_enemy_tank_num, (1170, 25))
-            victory.window.blit(image_enemy_tank_hp, (1170, 100))
+            defeat.window.blit(image_enemy_tank_num, (1170, 25))
+            defeat.window.blit(image_enemy_tank_hp, (1170, 100))
             # 循环遍历墙壁列表，展示墙壁
-            gamewall.blitWall(victory)
+            gamewall.blitWall(defeat)
             # 循环遍历草列表，展示草
-            gamewall.blitGrass(victory)
-            victory.window.blit(image_shadow, (0, 0))
-            victory.window.blit(image_victory, (0, 0))
+            gamewall.blitGrass(defeat)
+            defeat.window.blit(image_shadow, (0, 0))
+            defeat.window.blit(image_defeat, (0, 0))
             eventList = pygame.event.get()
             # 遍历事件
             for event in eventList:

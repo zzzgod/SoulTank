@@ -9,6 +9,7 @@ import Text
 import gamegetevent
 from constant import *
 from gamevictory import victory
+from gamedefeat import defeat
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
@@ -117,7 +118,7 @@ class MainGame:
             gameExplode.blitsmallExplode(MainGame)
             # 判断是否有敌人剩余
             if not self.enemyTankList:
-                if victory().startGame(1):
+                if victory().startGame(n):
                     MainGame.enemyTankList.clear()
                     MainGame.myBulletList.clear()
                     MainGame.enemyBulletList.clear()
@@ -136,4 +137,16 @@ class MainGame:
                     MainGame.my_tank.hit_wall(MainGame)
                     # 检测我方坦克是否与敌方坦克发生碰撞
                     MainGame.my_tank.myTank_hit_enemyTank(MainGame)
+            else:
+                if defeat().startGame(n):
+                    MainGame.enemyTankList.clear()
+                    MainGame.myBulletList.clear()
+                    MainGame.enemyBulletList.clear()
+                    MainGame.explodeList.clear()
+                    MainGame.explodebigList.clear()
+                    MainGame.explodesmallList.clear()
+                    MainGame.wallList.clear()
+                    MainGame.waterList.clear()
+                    MainGame.grassList.clear()
+                return
             pygame.display.update()

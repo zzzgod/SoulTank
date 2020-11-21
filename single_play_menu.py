@@ -54,7 +54,12 @@ class singleplay:
                         MainGame().startGame(1)
                     if self.option == 2:
                         loading.load()
+                        dialogue().startGame(2)
                         MainGame().startGame(2)
+                    if self.option == 3:
+                        loading.load()
+                        dialogue().startGame(3)
+                        MainGame().startGame(3)
                     if self.option == 0:
                         return 0
                 elif event.key == pygame.K_s:

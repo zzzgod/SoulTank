@@ -6,7 +6,6 @@ from constant import *
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 lasttime = 0
-fullscreen = 0
 
 
 def getEvent(MainGame):
@@ -20,15 +19,6 @@ def getEvent(MainGame):
             exit()
         # 如果是键盘的按下
         if event.type == pygame.KEYDOWN:
-            # esc键切换全屏和窗口
-            if event.key == pygame.K_ESCAPE:
-                global fullscreen
-                if fullscreen == 1:
-                    pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
-                    fullscreen = 0
-                else:
-                    pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT], pygame.FULLSCREEN)
-                    fullscreen = 1
             if event.key == pygame.K_RETURN:
                 music.Music('img/press.mp3')
                 return 1
