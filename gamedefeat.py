@@ -35,14 +35,11 @@ class defeat:
             gamewall.createWall(defeat, defeat.map_info['MapBlocks'])
         # 设置窗口的标题
         pygame.display.set_caption('Soul Tank')
-        image_enemy_tank_hp = pygame.image.load('img/my_tank_hp_black.gif')
-        image_enemy_tank_num = pygame.image.load('img/enemy_tank_num_black.gif')
         image_imformation = pygame.image.load('img/imformation.gif')
         image_defeat = pygame.image.load('img/defeat.gif')
         image_shadow = pygame.image.load('img/shadow.png')
         pygame.mixer.music.stop()
         music.Music('img/defeat.mp3')
-        flag = 0
         while True:
             # 使用坦克移动的速度慢一点
             time.sleep(0.02)
@@ -51,8 +48,18 @@ class defeat:
             # 信息板
             defeat.window.blit(image_imformation, (1140, 0))
             # 绘制图标
+            image_enemy_tank_num = pygame.image.load('img/enemy_tank_num_black.gif')
             defeat.window.blit(image_enemy_tank_num, (1170, 25))
-            defeat.window.blit(image_enemy_tank_hp, (1170, 100))
+            image_enemy_tank_num = pygame.image.load('img/my_tank_hp_black.gif')
+            defeat.window.blit(image_enemy_tank_num, (1170, 100))
+            image_enemy_tank_num = pygame.image.load('img/AP_num.gif')
+            defeat.window.blit(image_enemy_tank_num, (1170, 175))
+            image_enemy_tank_num = pygame.image.load('img/APCR_num.gif')
+            defeat.window.blit(image_enemy_tank_num, (1170, 250))
+            image_enemy_tank_num = pygame.image.load('img/HE_num.gif')
+            defeat.window.blit(image_enemy_tank_num, (1170, 325))
+            image_enemy_tank_num = pygame.image.load('img/HEAT_num.gif')
+            defeat.window.blit(image_enemy_tank_num, (1170, 400))
             # 循环遍历墙壁列表，展示墙壁
             gamewall.blitWall(defeat)
             # 循环遍历草列表，展示草

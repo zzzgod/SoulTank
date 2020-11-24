@@ -35,9 +35,7 @@ class Bullet:
             self.rect.left = tank.rect.left + tank.rect.width
             self.rect.top = tank.rect.top + tank.rect.width / 2 - self.rect.width / 2
 
-    # 子弹是否碰撞墙壁
-
-
+# 子弹是否碰撞墙壁
 def hit_wall(bullet, MainGame, Explode):
     # 循环遍历墙壁列表
     for wall in MainGame.wallList:
@@ -71,6 +69,7 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
                 explode = Explode(enemyTank)
                 # 将爆炸对象添加到爆炸列表中
                 MainGame.explodeList.append(explode)
+                break
     elif tank_type == 'PlayerTank':
         if MainGame.my_tank and MainGame.my_tank.live:
             if pygame.sprite.collide_rect(MainGame.my_tank, bullet):

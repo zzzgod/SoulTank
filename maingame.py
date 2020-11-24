@@ -19,10 +19,10 @@ class MainGame:
     my_tank = None
     # 存储敌方坦克的列表
     enemyTankList = []
-    # 定义敌方坦克的数量
-    enemyTankCount = 15
     # 存储我方子弹的列表
     myBulletList = []
+    #定义我方AP弹数量
+    AP_num=40
     # 存储敌方子弹的列表
     enemyBulletList = []
     # 存储爆炸效果的列表
@@ -78,8 +78,17 @@ class MainGame:
             MainGame.window.blit(image_enemy_tank_num, (1170, 25))
             image_enemy_tank_num = pygame.image.load('img/my_tank_hp_black.gif')
             MainGame.window.blit(image_enemy_tank_num, (1170, 100))
+            image_enemy_tank_num = pygame.image.load('img/AP_num.gif')
+            MainGame.window.blit(image_enemy_tank_num, (1170, 175))
+            image_enemy_tank_num = pygame.image.load('img/APCR_num.gif')
+            MainGame.window.blit(image_enemy_tank_num, (1170, 250))
+            image_enemy_tank_num = pygame.image.load('img/HE_num.gif')
+            MainGame.window.blit(image_enemy_tank_num, (1170, 325))
+            image_enemy_tank_num = pygame.image.load('img/HEAT_num.gif')
+            MainGame.window.blit(image_enemy_tank_num, (1170, 400))
             # 绘制文字
             MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 35))
+            MainGame.window.blit(Text.getTextSufaceRed('%d' % self.AP_num), (1220, 185))
             # 调用坦克显示的方法
             # 判断我方坦克是否是否存活
             if MainGame.my_tank and MainGame.my_tank.live:

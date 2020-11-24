@@ -152,7 +152,7 @@ def getEvent(MainGame):
                     MainGame.my_tank.stop = False
                     # MainGame.my_tank.move()
                     print('按下s键，坦克向下移动')
-                elif event.key == pygame.K_j:
+                elif event.key == pygame.K_j and MainGame.AP_num>0:
                     print('发射子弹')
                     # 如果当前我方子弹列表的大小 射击间隔大于1才可以创建
                     nowtime = time.perf_counter()
@@ -165,6 +165,7 @@ def getEvent(MainGame):
                         # 创建我方坦克发射的子弹
                         myBullet = MyBullet(MainGame.my_tank, 'myAP75')
                         MainGame.myBulletList.append(myBullet)
+                        MainGame.AP_num-=1
                         # 我方坦克发射子弹添加音效
                         music.Music('img/fire1.wav')
                         lasttime = nowtime
