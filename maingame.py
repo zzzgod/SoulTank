@@ -25,6 +25,8 @@ class MainGame:
     AP_num=40
     # 存储敌方子弹的列表
     enemyBulletList = []
+    #存储掉落物的列表
+    dropList = []
     # 存储爆炸效果的列表
     explodeList = []
     explodebigList = []
