@@ -2,6 +2,7 @@ import pygame, random
 import json
 from constant import *
 import music
+import gamedrop
 from gamebullet import EnemyBullet
 
 
@@ -243,4 +244,6 @@ def checkEnemyTank(MainGame, Bullet):
                 # 将敌方子弹存储到敌方子弹列表中
                 MainGame.enemyBulletList.append(enemyBullet)
         else:  # 不活着，从敌方坦克列表中移除
+            # 添加掉落物
+            MainGame.dropList.append(gamedrop.Drop(enemyTank, 'AddBullet'))
             MainGame.enemyTankList.remove(enemyTank)

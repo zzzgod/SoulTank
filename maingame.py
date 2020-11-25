@@ -10,6 +10,7 @@ import gamegetevent
 from constant import *
 from gamevictory import victory
 from gamedefeat import defeat
+import gamedrop
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
@@ -111,6 +112,8 @@ class MainGame:
             gametank.checkEnemyTank(MainGame, Bullet)
             # 循环遍历检查我方坦克的子弹
             gamebullet.checkMyBullet(MainGame)
+            # 循环遍历检查掉落物
+            gamedrop.check_drop(MainGame)
             # 循环遍历敌方子弹列表，检查敌方子弹
             gamebullet.checkEnemyBullet(MainGame)
             # 循环遍历墙壁列表，展示墙壁
@@ -121,6 +124,8 @@ class MainGame:
             gamebullet.blitMyBullet(MainGame)
             # 循环遍历敌方子弹列表，展示敌方子弹
             gamebullet.blitEnemyBullet(MainGame)
+            # 循环遍历掉落物列表，展示敌方掉落物
+            gamedrop.blit_drop(MainGame)
             # 循环遍历草列表，展示草
             gamewall.blitGrass(MainGame)
             # 循环遍历爆炸列表，展示爆炸效果
@@ -152,6 +157,7 @@ class MainGame:
                 if defeat().startGame(n):
                     MainGame.enemyTankList.clear()
                     MainGame.myBulletList.clear()
+                    MainGame.dropList.clear()
                     MainGame.enemyBulletList.clear()
                     MainGame.explodeList.clear()
                     MainGame.explodebigList.clear()

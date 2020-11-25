@@ -2,7 +2,7 @@ import pygame
 from constant import *
 
 
-class Wall():
+class Wall:
     def __init__(self, left, top):
         # 加载墙壁图片
         self.image = pygame.image.load('img/walls.gif')
@@ -17,7 +17,7 @@ class Wall():
         self.hp = 3
 
 
-class Steel():
+class Steel:
     def __init__(self, left, top):
         # 加载墙壁图片
         self.image = pygame.image.load('img/steels.gif')
