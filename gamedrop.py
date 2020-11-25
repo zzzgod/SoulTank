@@ -4,7 +4,7 @@ from gameExplode import Explode
 from constant import *
 
 
-# 子弹类
+# 掉落物类
 class drop:
     def __init__(self, tank):
         self.image = pygame.image.load('img/drop.gif')
@@ -14,7 +14,7 @@ class drop:
         self.live = True
 
 # 子弹与坦克的碰撞
-def bullet_hit_tank(bullet, MainGame, tank_type):
+def drop_hit_tank(bullet, MainGame, tank_type):
     if tank_type == 'EnemyTank':
         # 循环遍历敌方坦克列表，判断是否发生碰撞
         for enemyTank in MainGame.enemyTankList:
@@ -49,25 +49,22 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
                     MainGame.explodeList.append(explode)
 
 # 展示子弹的方法
-def display_bullet(Bullet, main_game):
+def display_drop(Bullet, main_game):
     # 将图片surface加载到窗口
     main_game.window.blit(Bullet.image, Bullet.rect)
 
 
 # 循环遍历敌方子弹列表，展示敌方子弹
-def blitEnemyBullet(MainGame):
+def blitEnemyDrop(MainGame):
     for enemyBullet in MainGame.enemyBulletList:
         if enemyBullet.live:  # 判断敌方子弹是否存活
-            display_bullet(enemyBullet, MainGame)
+            display_drop(enemyBullet, MainGame)
 
-# 循环遍历敌方子弹列表
+# 循环遍历掉落物列表
 def checkEnemyBullet(MainGame):
     for enemyBullet in MainGame.enemyBulletList:
         if enemyBullet.live:  # 判断敌方子弹是否存活
-            move(enemyBullet)
             # 调用敌方子弹与我方坦克碰撞的方法
-            bullet_hit_tank(enemyBullet, MainGame, 'PlayerTank')
-            # 检测敌方子弹是否与墙壁碰撞
-            hit_wall(enemyBullet, MainGame, Explode)
+            drop_hit_tank(enemyBullet, MainGame, 'PlayerTank')
         else:
             MainGame.enemyBulletList.remove(enemyBullet)
