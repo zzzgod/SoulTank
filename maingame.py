@@ -1,5 +1,4 @@
 import json
-import pygame, time
 import gamewall
 import gametank
 import gameExplode
@@ -24,8 +23,15 @@ class MainGame:
     enemyTankList = []
     # 存储我方子弹的列表
     myBulletList = []
-    # 定义我方AP弹数量
+    # 我方当前选中的炮弹
+    bullet_now = 0
+    # 炮弹选择框
+    bullet_choice_rect = [pygame.rect.Rect(1160, 175, 100, 45), pygame.rect.Rect(1160, 250, 100, 45),
+                          pygame.rect.Rect(1160, 325, 100, 45)]
+    # 定义我方炮弹数量
     AP_num = 10
+    APHE_num = 10
+    HE_num = 10
     # 存储敌方子弹的列表
     enemyBulletList = []
     # 存储掉落物的列表
@@ -79,7 +85,12 @@ class MainGame:
             game_show_imformation.show(MainGame)
             # 绘制文字
             MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 35))
+            # 绘制炮弹数量
             MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.AP_num), (1220, 185))
+            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.HE_num), (1220, 260))
+            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.APHE_num), (1220, 335))
+            # 绘制炮弹选择框
+            pygame.draw.rect(MainGame.window, blue, MainGame.bullet_choice_rect[MainGame.bullet_now], 4)
             # 调用坦克显示的方法
             # 判断我方坦克是否是否存活
             if MainGame.my_tank and MainGame.my_tank.live:
