@@ -5,7 +5,7 @@ from constant import *
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
-lasttime = 0
+last_time = 0
 
 
 def getEvent(MainGame):

@@ -18,7 +18,7 @@ import game_show_imformation
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
-lasttime = 0
+last_time = 0
 fullscreen = 0
 BG_COLOR = pygame.Color(0, 0, 0)
 
@@ -145,19 +145,37 @@ def getEvent(MainGame):
                     # 修改坦克的开关状态
                     MainGame.my_tank.stop = False
                     # MainGame.my_tank.move()
-                elif event.key == pygame.K_j and MainGame.AP_num>0:
-                    # 如果当前我方子弹列表的大小 射击间隔大于1才可以创建
-                    nowtime = time.perf_counter()
-                    global lasttime
-                    timediffer = nowtime - lasttime
-                    if timediffer > 1:
-                        # 创建我方坦克发射的子弹
-                        myBullet = MyBullet(MainGame.my_tank, 'myAP75')
-                        MainGame.myBulletList.append(myBullet)
-                        MainGame.AP_num-=1
-                        # 我方坦克发射子弹添加音效
-                        music.Music('img/fire1.wav')
-                        lasttime = nowtime
+                elif event.key == pygame.K_j:
+                    # 射击间隔大于1才可以创建
+                    now_time = time.perf_counter()
+                    global last_time
+                    time_differ = now_time - last_time
+                    if time_differ > 1:
+                        # 判断的当前选中的是哪种炮弹
+                        # 记录是否成功发射
+                        flag = 0
+                        my_bullet = None
+                        # 当前是穿甲弹
+                        if MainGame.bullet_now == 0 and MainGame.AP_num > 0:
+                            flag = 1
+                            my_bullet = MyBullet(MainGame.my_tank, 'myAP75')
+                            MainGame.AP_num -= 1
+                        # 当前是高爆弹
+                        if MainGame.bullet_now == 1 and MainGame.HE_num > 0:
+                            flag = 1
+                            my_bullet = MyBullet(MainGame.my_tank, 'myAP75')
+                            MainGame.HE_num -= 1
+                        # 当前是高爆穿甲弹
+                        if MainGame.bullet_now == 2 and MainGame.APHE_num > 0:
+                            flag = 1
+                            my_bullet = MyBullet(MainGame.my_tank, 'myAP75')
+                            MainGame.APHE_num -= 1
+                        if flag:
+                            # 创建我方坦克发射的子弹
+                            MainGame.myBulletList.append(my_bullet)
+                            # 我方坦克发射子弹添加音效
+                            music.Music('img/fire1.wav')
+                            last_time = now_time
                 elif event.key == pygame.K_1:
                     # 切换至第一种炮弹
                     MainGame.bullet_now = 0
