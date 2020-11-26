@@ -25,6 +25,7 @@ BG_COLOR = pygame.Color(0, 0, 0)
   总伤害(All_Damage)=（火炮火力(fire)+炮弹伤害(gun_Damage)）*浮动系数(0.8~1.2)*对结构精准系数(to_structure_accuracy，初始为1)
  未穿透时：
   总伤害=（火炮火力+炮弹伤害）*浮动系数*对结构精准系数*0.2
+  
 '''
 
 class MainGame:
