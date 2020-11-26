@@ -46,7 +46,7 @@ def getTextSufaceBlackbig(text):
     # 初始化字体模块
     pygame.font.init()
     # 查看所有的字体名称
-    # print(pygame.font.get_fonts())
+    #print(pygame.font.get_fonts())
     # 获取字体Font对象
     font = pygame.font.SysFont('heiti', 72)
     # 绘制文字信息

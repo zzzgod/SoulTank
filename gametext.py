@@ -7,7 +7,7 @@ class FlashMessage(pygame.sprite.Sprite):
     def __init__(self, center_x: int, center_y: int, last_time_ms: int, s: str, *args, color: pygame.color.Color = None,
                  font_name: pygame.font.Font = None, font_size: int = None):
         if font_name is None:
-            font_name = 'kaiti'
+            font_name = 'simhei'
         if font_size is None:
             font_size = 32
         if color is None:
@@ -41,7 +41,7 @@ class FlashMessage(pygame.sprite.Sprite):
             return
         # 计算该帧文字的位置，大小，字体（居中显示）
         size = self.font_size * n // self.time
-        font = pygame.font.SysFont(self.font_name, size)
+        font = pygame.font.SysFont(self.font_name, size,bold=True)
         self.image = get_message_surface(self.s, *self.args, color=self.font_color, font=font)
         self.rect = self.image.get_rect()
         x = self.x - self.rect.width // 2
