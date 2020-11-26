@@ -15,6 +15,17 @@ import gametext
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
+'''
+公式：
+穿透判定：总穿透力(All_Penetration)-总装甲值(All_Armor)>=0，可穿透
+ 总穿透力(All_Penetration)=（火炮火力(fire)+炮弹穿透(gun_Penetration)）*浮动系数(0.8~1.2)+（精准判定*100）
+  精准判定取决于对装甲精准系数(to_armor_accuracy，初始值为5%)，若触发则为1，不触发则为0
+伤害判定：
+ 穿透时：
+  总伤害(All_Damage)=（火炮火力(fire)+炮弹伤害(gun_Damage)）*浮动系数(0.8~1.2)*对结构精准系数(to_structure_accuracy，初始为1)
+ 未穿透时：
+  总伤害=（火炮火力+炮弹伤害）*浮动系数*对结构精准系数*0.2
+'''
 
 class MainGame:
     window: pygame.Surface = None
