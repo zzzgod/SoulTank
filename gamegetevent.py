@@ -159,11 +159,14 @@ def getEvent(MainGame):
                         music.Music('img/fire1.wav')
                         lasttime = nowtime
                 elif event.key == pygame.K_1:
-                    pass
-                elif event.key == pygame.K_1:
-                    pass
-                elif event.key == pygame.K_1:
-                    pass
+                    # 切换至第一种炮弹
+                    MainGame.bullet_now = 0
+                elif event.key == pygame.K_2:
+                    # 切换至第二种炮弹
+                    MainGame.bullet_now = 1
+                elif event.key == pygame.K_3:
+                    # 切换至第三种炮弹
+                    MainGame.bullet_now = 2
         # 松开方向键，坦克停止移动，修改坦克的开关状态
         if event.type == pygame.KEYUP:
             # 判断松开的键是上、下、左、右时候才停止坦克移动
