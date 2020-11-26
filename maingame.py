@@ -31,7 +31,7 @@ class MainGame:
     # 定义我方炮弹数量
     AP_num = 10
     HE_num = 10
-    APCL_num = 10
+    APCR_num = 10
     # 存储敌方子弹的列表
     enemyBulletList = []
     # 存储掉落物的列表
@@ -56,7 +56,10 @@ class MainGame:
         map_index = n
         # 获取地图路经
         map_path = 'maps/map' + str(map_index) + '.json'
+        # 定义我方炮弹数量
         MainGame.AP_num = 10
+        MainGame.HE_num = 10
+        MainGame.APCR_num = 10
         # 加载主窗口
         # 初始化窗口
         pygame.display.init()
@@ -88,7 +91,7 @@ class MainGame:
             # 绘制炮弹数量
             MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.AP_num), (1220, 185))
             MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.HE_num), (1220, 260))
-            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.APCL_num), (1220, 335))
+            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.APCR_num), (1220, 335))
             # 绘制炮弹选择框
             pygame.draw.rect(MainGame.window, blue, MainGame.bullet_choice_rect[MainGame.bullet_now], 4)
             # 调用坦克显示的方法

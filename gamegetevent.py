@@ -1,9 +1,5 @@
-import pygame, time
 import music
-import gametank
 from gamebullet import MyBullet
-from constant import *
-import json
 import pygame, time
 import gamewall
 import gametank
@@ -11,10 +7,9 @@ import gameExplode
 from gamebullet import Bullet
 import gamebullet
 import Text
-import gamegetevent
 from constant import *
-from gamevictory import victory
 import game_show_imformation
+import gamemusic
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
@@ -166,10 +161,10 @@ def getEvent(MainGame):
                             my_bullet = MyBullet(MainGame.my_tank, 'myHE75')
                             MainGame.HE_num -= 1
                         # 当前是高爆穿甲弹
-                        if MainGame.bullet_now == 2 and MainGame.APCL_num > 0:
+                        if MainGame.bullet_now == 2 and MainGame.APCR_num > 0:
                             flag = 1
-                            my_bullet = MyBullet(MainGame.my_tank, 'myAPCL75')
-                            MainGame.APHE_num -= 1
+                            my_bullet = MyBullet(MainGame.my_tank, 'myAPCR75')
+                            MainGame.APCR_num -= 1
                         if flag:
                             # 创建我方坦克发射的子弹
                             MainGame.myBulletList.append(my_bullet)
@@ -178,13 +173,19 @@ def getEvent(MainGame):
                             last_time = now_time
                 elif event.key == pygame.K_1:
                     # 切换至第一种炮弹
-                    MainGame.bullet_now = 0
+                    if MainGame.bullet_now != 0:
+                        MainGame.bullet_now = 0
+                        gamemusic.Music('music/change_bullet.mp3')
                 elif event.key == pygame.K_2:
                     # 切换至第二种炮弹
-                    MainGame.bullet_now = 1
+                    if MainGame.bullet_now != 1:
+                        MainGame.bullet_now = 1
+                        gamemusic.Music('music/change_bullet.mp3')
                 elif event.key == pygame.K_3:
                     # 切换至第三种炮弹
-                    MainGame.bullet_now = 2
+                    if MainGame.bullet_now != 2:
+                        MainGame.bullet_now = 2
+                        gamemusic.Music('music/change_bullet.mp3')
         # 松开方向键，坦克停止移动，修改坦克的开关状态
         if event.type == pygame.KEYUP:
             # 判断松开的键是上、下、左、右时候才停止坦克移动
