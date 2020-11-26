@@ -6,7 +6,10 @@ import gamedrop
 from gamebullet import EnemyBullet
 
 
-class Tank():
+class Tank:
+    health_stick_bg_color = pygame.color.Color(79, 79, 79)
+    health_stick_fg_color = pygame.color.Color(57, 229, 225)
+
     # 添加距离左边left 距离上边top
     def __init__(self, left, top):
         # 保存加载的图片
@@ -16,6 +19,11 @@ class Tank():
             'L': pygame.image.load('img/p1tankL.gif'),
             'R': pygame.image.load('img/p1tankR.gif'),
         }
+        # 血量
+        self.max_hp = 1
+        self.hp = 0
+        # 速度
+        self.speed = 0
         # 方向
         self.direction = 'L'
         # 根据当前图片的方向获取图片 surface
@@ -34,6 +42,8 @@ class Tank():
         self.oldTop = self.rect.top
         # 移动开关键
         self.flag = True
+        # 血条框
+        self.health_stick_full_rect = pygame.Rect(self.rect.left, self.rect.top - 14, self.rect.width, 4)
 
     # 移动
     def move(self):
@@ -63,6 +73,8 @@ class Tank():
                 self.rect.left += self.speed
             else:
                 self.touch = 0
+        # 更新血条框的位置
+        self.health_stick_full_rect = pygame.Rect(self.rect.left, self.rect.top - 14, self.rect.width, 4)
         return self.touch
 
     # 射击
@@ -87,6 +99,12 @@ class Tank():
 
     # 展示坦克的方法
     def displayTank(self, MainGame):
+        # 显示血条
+        pygame.draw.rect(MainGame.window, Tank.health_stick_bg_color, self.health_stick_full_rect)
+        # 当前血量的比例显示血条
+        health_stick_rect = self.health_stick_full_rect
+        health_stick_rect.width = self.hp / self.max_hp * self.rect.width
+        pygame.draw.rect(MainGame.window, Tank.health_stick_fg_color, health_stick_rect)
         # 获取展示的对象
         self.image = self.images[self.direction]
         # 调用blit方法展示
@@ -101,6 +119,7 @@ class MyTank(Tank):
         self.speed = tank_info['Speed']
         # 坦克血量
         self.hp = tank_info['Hp']
+        self.max_hp = self.hp
 
     # 检测我方坦克与敌方坦克发生碰撞
     def myTank_hit_enemyTank(self, MainGame):
@@ -145,6 +164,7 @@ class EnemyTank(Tank):
             self.rect.top = top
             # 坦克血量
             self.hp = tank_info['Health']
+            self.max_hp = self.hp
             # 速度  决定移动的快慢
             self.speed = tank_info['Speed']
             # 薪增加一个步数变量 step
@@ -225,6 +245,7 @@ def blitEnemyTank(MainGame, Bullet):
         # 判断当前敌方坦克是否活着
         if enemyTank.live:
             enemyTank.displayTank(MainGame)
+
 
 # 循环遍历敌方坦克列表，检查敌方坦克
 def checkEnemyTank(MainGame, Bullet):
