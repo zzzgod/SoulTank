@@ -14,6 +14,7 @@ import Text
 import gamegetevent
 from constant import *
 from gamevictory import victory
+import game_show_imformation
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
@@ -37,13 +38,7 @@ def pause_menu(MainGame):
             if event.type == pygame.KEYDOWN:
                 return
         # 信息板
-        image_imformation = pygame.image.load('img/imformation.gif')
-        MainGame.window.blit(image_imformation, (1140, 0))
-        # 绘制图标
-        image_enemy_tank_num = pygame.image.load('img/enemy_tank_num_black.gif')
-        MainGame.window.blit(image_enemy_tank_num, (1170, 25))
-        image_enemy_tank_num = pygame.image.load('img/my_tank_hp_black.gif')
-        MainGame.window.blit(image_enemy_tank_num, (1170, 100))
+        game_show_imformation.show(MainGame)
         # 绘制文字
         MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 35))
         # 调用坦克显示的方法

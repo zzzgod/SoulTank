@@ -60,6 +60,10 @@ class singleplay:
                         loading.load()
                         dialogue().startGame(3)
                         MainGame().startGame(3)
+                    if self.option == 4:
+                        loading.load()
+                        dialogue().startGame(4)
+                        MainGame().startGame(4)
                     if self.option == 0:
                         return 0
                 elif event.key == pygame.K_s:
