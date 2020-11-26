@@ -163,12 +163,12 @@ def getEvent(MainGame):
                         # 当前是高爆弹
                         if MainGame.bullet_now == 1 and MainGame.HE_num > 0:
                             flag = 1
-                            my_bullet = MyBullet(MainGame.my_tank, 'myAP75')
+                            my_bullet = MyBullet(MainGame.my_tank, 'myHE75')
                             MainGame.HE_num -= 1
                         # 当前是高爆穿甲弹
-                        if MainGame.bullet_now == 2 and MainGame.APHE_num > 0:
+                        if MainGame.bullet_now == 2 and MainGame.APCL_num > 0:
                             flag = 1
-                            my_bullet = MyBullet(MainGame.my_tank, 'myAP75')
+                            my_bullet = MyBullet(MainGame.my_tank, 'myAPCL75')
                             MainGame.APHE_num -= 1
                         if flag:
                             # 创建我方坦克发射的子弹

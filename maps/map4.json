@@ -104,6 +104,7 @@
   ],
   "Player": {"x": 600, "y": 660, "Hp": 3, "Speed": 5},
   "Enemies": [
+    {"EnemyType": "Heavy2", "x": 600, "y": 60},
     {"EnemyType": "Middle", "x": 600, "y": 0},
     {"EnemyType": "Middle", "x": 60, "y": 0},
     {"EnemyType": "Middle", "x": 960, "y": 0},

@@ -105,6 +105,12 @@ class MyBullet(Bullet):
         f = None
         if bullet_type == 'myAP75':
             f = open('entity/bullet/myAP75.json')
+        elif bullet_type == 'myHE75':
+            f = open('entity/bullet/myHE75.json')
+        elif bullet_type == 'myAPCL75':
+            f = open('entity/bullet/myAPCL75.json')
+        else:
+            raise ValueError('找不到指定的子弹种类。')
         if f is not None:
             bullet_info: dict = json.load(f)
             # 子弹的贴图

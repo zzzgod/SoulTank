@@ -1,8 +1,0 @@
-{
-  "Health": 20,
-  "Bullet": "AP122",
-  "Armor": 0,
-  "Speed": 1,
-  "img": {"Up": "img/tank/HeavyTank1Up.gif", "Down": "img/tank/HeavyTank1Down.gif",
-    "Left": "img/tank/HeavyTank1Left.gif", "Right": "img/tank/HeavyTank1Right.gif"}
-}
