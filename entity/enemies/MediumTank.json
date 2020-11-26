@@ -2,7 +2,7 @@
   "Health": 2,
   "Bullet": "AP75",
   "Armor": 0,
-  "Speed": 3,
+  "Speed": 2,
   "img": {"Up": "img/tank/MediumTankUp.gif", "Down": "img/tank/MediumTankDown.gif",
     "Left": "img/tank/MediumTankLeft.gif", "Right": "img/tank/MediumTankRight.gif"}
 }
