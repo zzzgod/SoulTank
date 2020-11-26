@@ -104,12 +104,7 @@
     {"EnemyType": "Heavy", "x": 100, "y": 100},
     {"EnemyType": "Heavy", "x": 100, "y": 100},
     {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Destroyer", "x": 100, "y": 100},
-    {"EnemyType": "Destroyer", "x": 100, "y": 100},
-    {"EnemyType": "Destroyer", "x": 100, "y": 100},
-    {"EnemyType": "Destroyer", "x": 100, "y": 100},
-    {"EnemyType": "Destroyer", "x": 100, "y": 100}
+    {"EnemyType": "Heavy", "x": 100, "y": 100}
   ],
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
   "Dialogue": [
