@@ -99,12 +99,13 @@ class Tank:
 
     # 展示坦克的方法
     def displayTank(self, MainGame):
-        # 显示血条
-        pygame.draw.rect(MainGame.window, Tank.health_stick_bg_color, self.health_stick_full_rect)
-        # 当前血量的比例显示血条
-        health_stick_rect = self.health_stick_full_rect
-        health_stick_rect.width = self.hp / self.max_hp * self.rect.width
-        pygame.draw.rect(MainGame.window, Tank.health_stick_fg_color, health_stick_rect)
+        if self.hp != self.max_hp:
+            # 显示血条
+            pygame.draw.rect(MainGame.window, Tank.health_stick_bg_color, self.health_stick_full_rect)
+            # 当前血量的比例显示血条
+            health_stick_rect = self.health_stick_full_rect
+            health_stick_rect.width = self.hp / self.max_hp * self.rect.width
+            pygame.draw.rect(MainGame.window, Tank.health_stick_fg_color, health_stick_rect)
         # 获取展示的对象
         self.image = self.images[self.direction]
         # 调用blit方法展示
