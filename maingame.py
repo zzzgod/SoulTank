@@ -12,22 +12,23 @@ from gamevictory import victory
 from gamedefeat import defeat
 import gamedrop
 import game_show_imformation
+import gametext
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
 
 class MainGame:
-    window = None
+    window: pygame.Surface = None
     my_tank = None
     # 存储敌方坦克的列表
     enemyTankList = []
     # 存储我方子弹的列表
     myBulletList = []
-    #定义我方AP弹数量
-    AP_num=10
+    # 定义我方AP弹数量
+    AP_num = 10
     # 存储敌方子弹的列表
     enemyBulletList = []
-    #存储掉落物的列表
+    # 存储掉落物的列表
     dropList = []
     # 存储爆炸效果的列表
     explodeList = []
@@ -38,19 +39,18 @@ class MainGame:
     waterList = []
     grassList = []
     map_info = None
-
-    def __init__(self):
-        pass
-
-    def show_all(self):
-        pass
+    # 精灵组
+    sprite_group = pygame.sprite.Group()
+    # 游戏时钟
+    clock = pygame.time.Clock()
 
     # 开始游戏
-    def startGame(self, n):
-        map_index=n
+    @staticmethod
+    def startGame(n):
+        map_index = n
         # 获取地图路经
         map_path = 'maps/map' + str(map_index) + '.json'
-        MainGame.AP_num=10
+        MainGame.AP_num = 10
         # 加载主窗口
         # 初始化窗口
         pygame.display.init()
@@ -69,7 +69,7 @@ class MainGame:
         pygame.display.set_caption('Soul Tank')
         while True:
             # 使用坦克移动的速度慢一点
-            time.sleep(0.02)
+            MainGame.clock.tick(60)
             # 给窗口设置填充色
             MainGame.window.fill(BG_COLOR)
             # 获取事件
@@ -79,11 +79,11 @@ class MainGame:
             game_show_imformation.show(MainGame)
             # 绘制文字
             MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 35))
-            MainGame.window.blit(Text.getTextSufaceRed('%d' % self.AP_num), (1220, 185))
+            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.AP_num), (1220, 185))
             # 调用坦克显示的方法
             # 判断我方坦克是否是否存活
             if MainGame.my_tank and MainGame.my_tank.live:
-                #展示我方坦克
+                # 展示我方坦克
                 MainGame.my_tank.displayTank(MainGame)
                 if MainGame.my_tank.hp > 3:
                     MainGame.window.blit(Text.getTextSufaceGreen('%d' % MainGame.my_tank.hp), (1220, 110))
@@ -120,8 +120,12 @@ class MainGame:
             gameExplode.blitExplode(MainGame)
             gameExplode.blitbigExplode(MainGame)
             gameExplode.blitsmallExplode(MainGame)
+            # 显示特效
+            time_now = pygame.time.get_ticks()
+            MainGame.sprite_group.update(time_now)
+            MainGame.sprite_group.draw(MainGame.window)
             # 判断是否有敌人剩余
-            if not self.enemyTankList:
+            if not MainGame.enemyTankList:
                 if victory().startGame(n):
                     MainGame.enemyTankList.clear()
                     MainGame.myBulletList.clear()

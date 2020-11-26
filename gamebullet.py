@@ -1,6 +1,7 @@
 import pygame
 import music
 import json
+import gametext
 from gameExplode import Explode
 from constant import *
 
@@ -34,6 +35,7 @@ class Bullet:
         elif self.direction == 'R':
             self.rect.left = tank.rect.left + tank.rect.width
             self.rect.top = tank.rect.top + tank.rect.width / 2 - self.rect.width / 2
+
 
 # 子弹是否碰撞墙壁
 def hit_wall(bullet, MainGame, Explode):
@@ -69,6 +71,10 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
                 explode = Explode(enemyTank)
                 # 将爆炸对象添加到爆炸列表中
                 MainGame.explodeList.append(explode)
+                # 添加伤害数字特效
+                sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(bullet.damage), font_size=54,
+                                               color=pygame.color.Color(255, 0, 0))
+                MainGame.sprite_group.add(sprite)
                 break
     elif tank_type == 'PlayerTank':
         if MainGame.my_tank and MainGame.my_tank.live:
@@ -87,6 +93,10 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
                     explode = Explode(MainGame.my_tank)
                     # 将爆炸对象添加到爆炸列表中
                     MainGame.explodeList.append(explode)
+                    # 添加伤害数字特效
+                    sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(bullet.damage),
+                                                   font_size=54, color=pygame.color.Color(255, 0, 0))
+                    MainGame.sprite_group.add(sprite)
 
 
 class MyBullet(Bullet):
@@ -176,6 +186,7 @@ def blitMyBullet(MainGame):
         if myBullet.live:
             display_bullet(myBullet, MainGame)
 
+
 # 循环遍历我方子弹存储列表
 def checkMyBullet(MainGame):
     for myBullet in MainGame.myBulletList:
@@ -197,6 +208,7 @@ def blitEnemyBullet(MainGame):
     for enemyBullet in MainGame.enemyBulletList:
         if enemyBullet.live:  # 判断敌方子弹是否存活
             display_bullet(enemyBullet, MainGame)
+
 
 # 循环遍历敌方子弹列表
 def checkEnemyBullet(MainGame):
