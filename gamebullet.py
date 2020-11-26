@@ -72,7 +72,8 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
                 # 将爆炸对象添加到爆炸列表中
                 MainGame.explodeList.append(explode)
                 # 添加伤害数字特效
-                sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(bullet.damage), font_size=54)
+                sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(bullet.damage), font_size=54,
+                                               color=pygame.color.Color(255, 0, 0))
                 MainGame.sprite_group.add(sprite)
                 break
     elif tank_type == 'PlayerTank':
@@ -93,7 +94,8 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
                     # 将爆炸对象添加到爆炸列表中
                     MainGame.explodeList.append(explode)
                     # 添加伤害数字特效
-                    sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(bullet.damage), font_size=54)
+                    sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(bullet.damage),
+                                                   font_size=54, color=pygame.color.Color(255, 0, 0))
                     MainGame.sprite_group.add(sprite)
 
 
