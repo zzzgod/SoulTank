@@ -3,6 +3,7 @@ import pygame, time
 import gamewall
 from constant import *
 import music
+import game_show_imformation
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
@@ -35,7 +36,6 @@ class victory:
             gamewall.createWall(victory, victory.map_info['MapBlocks'])
         # 设置窗口的标题
         pygame.display.set_caption('Soul Tank')
-        image_imformation = pygame.image.load('img/imformation.gif')
         image_victory = pygame.image.load('img/victory.gif')
         image_shadow = pygame.image.load('img/shadow.png')
         pygame.mixer.music.stop()
@@ -46,20 +46,7 @@ class victory:
             # 给窗口设置填充色
             victory.window.fill(BG_COLOR)
             # 信息板
-            victory.window.blit(image_imformation, (1140, 0))
-            # 绘制图标
-            image_enemy_tank_num = pygame.image.load('img/enemy_tank_num_black.gif')
-            victory.window.blit(image_enemy_tank_num, (1170, 25))
-            image_enemy_tank_num = pygame.image.load('img/my_tank_hp_black.gif')
-            victory.window.blit(image_enemy_tank_num, (1170, 100))
-            image_enemy_tank_num = pygame.image.load('img/AP_num.gif')
-            victory.window.blit(image_enemy_tank_num, (1170, 175))
-            image_enemy_tank_num = pygame.image.load('img/APCR_num.gif')
-            victory.window.blit(image_enemy_tank_num, (1170, 250))
-            image_enemy_tank_num = pygame.image.load('img/HE_num.gif')
-            victory.window.blit(image_enemy_tank_num, (1170, 325))
-            image_enemy_tank_num = pygame.image.load('img/HEAT_num.gif')
-            victory.window.blit(image_enemy_tank_num, (1170, 400))
+            game_show_imformation.show(victory)
             # 循环遍历墙壁列表，展示墙壁
             gamewall.blitWall(victory)
             # 循环遍历草列表，展示草

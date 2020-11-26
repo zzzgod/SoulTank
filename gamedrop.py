@@ -29,7 +29,7 @@ def drop_hit_tank(drop, MainGame, tank_type):
                 # 修改掉落物与我方坦克的状态
                 drop.live = False
                 if drop.drop_type == 'AddBullet':
-                    MainGame.AP_num += 5
+                    MainGame.AP_num += 3
                 else:
                     raise ValueError('掉落物格式不匹配。')
 

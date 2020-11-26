@@ -11,6 +11,7 @@ from constant import *
 from gamevictory import victory
 from gamedefeat import defeat
 import gamedrop
+import game_show_imformation
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
@@ -23,7 +24,7 @@ class MainGame:
     # 存储我方子弹的列表
     myBulletList = []
     #定义我方AP弹数量
-    AP_num=40
+    AP_num=10
     # 存储敌方子弹的列表
     enemyBulletList = []
     #存储掉落物的列表
@@ -49,6 +50,7 @@ class MainGame:
         map_index=n
         # 获取地图路经
         map_path = 'maps/map' + str(map_index) + '.json'
+        MainGame.AP_num=10
         # 加载主窗口
         # 初始化窗口
         pygame.display.init()
@@ -73,22 +75,8 @@ class MainGame:
             # 获取事件
             if gamegetevent.getEvent(MainGame):
                 return
-            # 信息板
-            image_imformation = pygame.image.load('img/imformation.gif')
-            MainGame.window.blit(image_imformation, (1140, 0))
-            # 绘制图标
-            image_enemy_tank_num = pygame.image.load('img/enemy_tank_num_black.gif')
-            MainGame.window.blit(image_enemy_tank_num, (1170, 25))
-            image_enemy_tank_num = pygame.image.load('img/my_tank_hp_black.gif')
-            MainGame.window.blit(image_enemy_tank_num, (1170, 100))
-            image_enemy_tank_num = pygame.image.load('img/AP_num.gif')
-            MainGame.window.blit(image_enemy_tank_num, (1170, 175))
-            image_enemy_tank_num = pygame.image.load('img/APCR_num.gif')
-            MainGame.window.blit(image_enemy_tank_num, (1170, 250))
-            image_enemy_tank_num = pygame.image.load('img/HE_num.gif')
-            MainGame.window.blit(image_enemy_tank_num, (1170, 325))
-            image_enemy_tank_num = pygame.image.load('img/HEAT_num.gif')
-            MainGame.window.blit(image_enemy_tank_num, (1170, 400))
+            # 绘制信息板
+            game_show_imformation.show(MainGame)
             # 绘制文字
             MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 35))
             MainGame.window.blit(Text.getTextSufaceRed('%d' % self.AP_num), (1220, 185))
@@ -144,6 +132,7 @@ class MainGame:
                     MainGame.wallList.clear()
                     MainGame.waterList.clear()
                     MainGame.grassList.clear()
+                    MainGame.dropList.clear()
                     return
             # 如果坦克的开关是开启，才可以移动
             if MainGame.my_tank and MainGame.my_tank.live:
@@ -165,5 +154,6 @@ class MainGame:
                     MainGame.wallList.clear()
                     MainGame.waterList.clear()
                     MainGame.grassList.clear()
+                    MainGame.dropList.clear()
                 return
             pygame.display.update()
