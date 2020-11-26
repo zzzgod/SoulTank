@@ -3,7 +3,7 @@ import json
 from constant import *
 import music
 import gamedrop
-from gamebullet import EnemyBullet
+import gamebullet
 
 
 class Tank:
@@ -78,8 +78,8 @@ class Tank:
         return self.touch
 
     # 射击
-    def shot(self, Bullet):
-        return Bullet(self)
+    def shot(self):
+        return gamebullet.Bullet(self)
 
     #
     def stay(self):
@@ -191,10 +191,10 @@ class EnemyTank(Tank):
 
     # 重写shot()
     def shot(self):
-        # 随机生成100以内的数
+        # 随机生成1000以内的数
         num = random.randint(1, 1000)
-        if num < 30:
-            return EnemyBullet(self, self.info['Bullet'])
+        if num < 20:
+            return gamebullet.EnemyBullet(self, self.info['Bullet'])
 
 
 # 敌方坦克与我方坦克是否发生碰撞

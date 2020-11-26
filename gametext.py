@@ -36,7 +36,6 @@ class FlashMessage(pygame.sprite.Sprite):
     def update(self, time_now, *args):
         # 目前显示到第几秒
         n = time_now - self.start_time
-        print('持续了', n, '毫秒。')
         if n > self.time:
             self.kill()
             return

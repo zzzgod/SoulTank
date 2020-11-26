@@ -112,11 +112,11 @@ def getEvent(MainGame):
                 pygame.mixer.music.stop()
                 return True
             # 当坦克不重在死亡
-            if not MainGame.my_tank:
+            # if not MainGame.my_tank:
                 # 判断按下的是1键，让坦克重生
-                if event.key == pygame.K_1:
-                    # 让我方坦克重生及调用创建坦克的方法
-                    gametank.createMytank(MainGame, MainGame.map_info['Player'])
+                # if event.key == pygame.K_1:
+                #     # 让我方坦克重生及调用创建坦克的方法
+                #     gametank.createMytank(MainGame, MainGame.map_info['Player'])
             if MainGame.my_tank and MainGame.my_tank.live:
                 # 判断按下的是上、下、左、右
                 if event.key == pygame.K_a:
@@ -139,23 +139,17 @@ def getEvent(MainGame):
                     # 修改坦克的开关状态
                     MainGame.my_tank.stop = False
                     # MainGame.my_tank.move()
-                    print('按下w键，坦克向上移动')
                 elif event.key == pygame.K_s:
                     # 切换方向
                     MainGame.my_tank.direction = 'D'
                     # 修改坦克的开关状态
                     MainGame.my_tank.stop = False
                     # MainGame.my_tank.move()
-                    print('按下s键，坦克向下移动')
                 elif event.key == pygame.K_j and MainGame.AP_num>0:
-                    print('发射子弹')
                     # 如果当前我方子弹列表的大小 射击间隔大于1才可以创建
                     nowtime = time.perf_counter()
                     global lasttime
                     timediffer = nowtime - lasttime
-                    print(nowtime)
-                    print(lasttime)
-                    print(timediffer)
                     if timediffer > 1:
                         # 创建我方坦克发射的子弹
                         myBullet = MyBullet(MainGame.my_tank, 'myAP75')
@@ -164,6 +158,12 @@ def getEvent(MainGame):
                         # 我方坦克发射子弹添加音效
                         music.Music('img/fire1.wav')
                         lasttime = nowtime
+                elif event.key == pygame.K_1:
+                    pass
+                elif event.key == pygame.K_1:
+                    pass
+                elif event.key == pygame.K_1:
+                    pass
         # 松开方向键，坦克停止移动，修改坦克的开关状态
         if event.type == pygame.KEYUP:
             # 判断松开的键是上、下、左、右时候才停止坦克移动
