@@ -1,5 +1,6 @@
 import pygame
 import gamemusic
+import random
 
 
 # 掉落物类
@@ -26,10 +27,18 @@ def drop_hit_tank(drop, MainGame, tank_type):
     elif tank_type == 'PlayerTank':
         if MainGame.my_tank and MainGame.my_tank.live:
             if pygame.sprite.collide_rect(MainGame.my_tank, drop):
+                ran = random.randint(1, 100)
                 # 修改掉落物与我方坦克的状态
                 drop.live = False
                 if drop.drop_type == 'AddBullet':
-                    MainGame.AP_num += 3
+                    if ran < 50:
+                        MainGame.AP_num += 5
+                    elif ran<60:
+                        MainGame.APCR_num+=5
+                    elif ran<70:
+                        MainGame.HE_num+=5
+                    else:
+                        MainGame.my_tank.hp+=100
                 else:
                     raise ValueError('掉落物格式不匹配。')
 

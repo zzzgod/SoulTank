@@ -223,7 +223,7 @@ class EnemyTank(Tank):
             # 修改方向
             self.direction = randDirection()
             # 让步数复位
-            self.step = random.randint(1, 60)
+            self.step = random.randint(40, 60)
         else:
             self.touch = self.move()
             # 让步数递减
@@ -328,4 +328,5 @@ def calculate_bullet_damage(tank: Tank, bullet: gamebullet.Bullet):
         damage *= bullet.damage_reduction_rate
     # 对伤害取整
     damage = int(damage)
+    print(tank.armor)
     return damage

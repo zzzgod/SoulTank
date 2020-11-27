@@ -65,7 +65,7 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
         for enemyTank in MainGame.enemyTankList:
             if pygame.sprite.collide_rect(enemyTank, bullet):
                 # 修改敌方坦克和我方子弹的状态
-                damage = gametank.calculate_bullet_damage(MainGame.my_tank, bullet)
+                damage = gametank.calculate_bullet_damage(enemyTank, bullet)
                 enemyTank.hp -= damage
                 if enemyTank.hp <= 0:
                     enemyTank.live = False
