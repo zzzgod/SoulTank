@@ -1,7 +1,8 @@
-import pygame
+import gametank
 import music
 import json
 import gametext
+import random
 from gameExplode import Explode
 from constant import *
 
@@ -22,6 +23,8 @@ class Bullet:
         self.damage = 0
         # 子弹的穿透力
         self.penetration = 0
+        # 子弹未击穿的伤害减益
+        self.damage_reduction_rate = 0
         # 子弹的left和top与方向有关
         if self.direction == 'U':
             self.rect.left = tank.rect.left + tank.rect.width / 2 - self.rect.width / 2
@@ -62,7 +65,8 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
         for enemyTank in MainGame.enemyTankList:
             if pygame.sprite.collide_rect(enemyTank, bullet):
                 # 修改敌方坦克和我方子弹的状态
-                enemyTank.hp -= bullet.damage
+                damage = gametank.calculate_bullet_damage(MainGame.my_tank, bullet)
+                enemyTank.hp -= damage
                 if enemyTank.hp <= 0:
                     enemyTank.live = False
                     music.Music('img/enemy1_explode.wav')
@@ -72,7 +76,7 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
                 # 将爆炸对象添加到爆炸列表中
                 MainGame.explodeList.append(explode)
                 # 添加伤害数字特效
-                sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(bullet.damage), font_size=54,
+                sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(damage), font_size=54,
                                                color=pygame.color.Color(255, 109, 29))
                 MainGame.sprite_group.add(sprite)
                 break
@@ -81,7 +85,8 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
             if pygame.sprite.collide_rect(MainGame.my_tank, bullet):
                 # 修改敌方子弹与我方坦克的状态
                 bullet.live = False
-                MainGame.my_tank.hp -= bullet.damage
+                damage = gametank.calculate_bullet_damage(MainGame.my_tank, bullet)
+                MainGame.my_tank.hp -= damage
                 if MainGame.my_tank.hp <= 0:
                     MainGame.my_tank.live = False
                     # 产生爆炸对象
@@ -94,8 +99,8 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
                     # 将爆炸对象添加到爆炸列表中
                     MainGame.explodeList.append(explode)
                     # 添加伤害数字特效
-                    sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(bullet.damage),
-                                                    font_size=54, color=pygame.color.Color(255, 109, 29))
+                    sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(damage),
+                                                   font_size=54, color=pygame.color.Color(255, 109, 29))
                     MainGame.sprite_group.add(sprite)
 
 
@@ -121,6 +126,8 @@ class MyBullet(Bullet):
             self.damage = bullet_info['Damage']
             # 子弹的穿透力
             self.penetration = bullet_info['Penetration']
+            # 子弹未击穿的伤害减益
+            self.damage_reduction_rate = bullet_info['DamageReductionRate']
             f.close()
         else:
             raise TypeError('玩家子弹类型错误！')
@@ -134,6 +141,8 @@ class EnemyBullet(Bullet):
             f = open('entity/bullet/AP57.json')
         elif bullet_type == 'AP75':
             f = open('entity/bullet/AP75.json')
+        elif bullet_type == 'AP88':
+            f = open('entity/bullet/AP88.json')
         elif bullet_type == 'AP122':
             f = open('entity/bullet/AP122.json')
         if f is not None:
@@ -146,6 +155,8 @@ class EnemyBullet(Bullet):
             self.damage = bullet_info['Damage']
             # 子弹的穿透力
             self.penetration = bullet_info['Penetration']
+            # 子弹未击穿的伤害减益
+            self.damage_reduction_rate = bullet_info['DamageReductionRate']
             f.close()
         else:
             raise TypeError('敌方子弹类型错误！')

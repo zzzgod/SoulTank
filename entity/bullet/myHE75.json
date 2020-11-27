@@ -1,6 +1,7 @@
 {
   "Speed": 10,
-  "Damage": 1,
-  "Penetration": 10,
+  "Damage": 170,
+  "Penetration": 46,
+  "DamageReductionRate": 0.3,
   "img": "img/bullet/myHE75.gif"
 }

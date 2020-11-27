@@ -1,6 +1,7 @@
 {
   "Speed": 10,
-  "Damage": 1,
-  "Penetration": 10,
+  "Damage": 135,
+  "Penetration": 150,
+  "DamageReductionRate": 0.1,
   "img": "img/bullet/myAP75.gif"
 }

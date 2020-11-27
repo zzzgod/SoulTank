@@ -86,7 +86,7 @@
     {"BlockType": "Grass", "x": 14, "y": 10},
     {"BlockType": "Grass", "x": 14, "y": 9}
   ],
-  "Player": {"x": 600, "y": 660, "Hp": 3, "Speed": 5},
+  "Player": {"x": 600, "y": 660},
   "Enemies": [
     {"EnemyType": "Middle", "x": 0, "y": 0},
     {"EnemyType": "Middle", "x": 500, "y": 0},

@@ -1,0 +1,9 @@
+{
+  "Health": 350,
+  "Bullet": "",
+  "FireRate": 1000,
+  "Armor": 85,
+  "Speed": 2.5,
+  "img": {"Up": "img/tank/PlayerTankUp.gif", "Down": "img/tank/PlayerTankDown.gif",
+    "Left": "img/tank/PlayerTankLeft.gif", "Right": "img/tank/PlayerTankRight.gif"}
+}

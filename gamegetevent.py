@@ -142,15 +142,15 @@ def getEvent(MainGame):
                     # MainGame.my_tank.move()
                 elif event.key == pygame.K_j:
                     # 射击间隔大于1才可以创建
-                    now_time = time.perf_counter()
+                    now_time = pygame.time.get_ticks()
                     global last_time
                     time_differ = now_time - last_time
-                    if time_differ > 1:
+                    if time_differ > MainGame.my_tank.fire_rate:
                         # 判断的当前选中的是哪种炮弹
                         # 记录是否成功发射
                         flag = 0
                         my_bullet = None
-                        # 当前是穿甲弹
+                        # 当前是穿甲弹d
                         if MainGame.bullet_now == 0 and MainGame.AP_num > 0:
                             flag = 1
                             my_bullet = MyBullet(MainGame.my_tank, 'myAP75')

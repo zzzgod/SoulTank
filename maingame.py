@@ -30,7 +30,7 @@ BG_COLOR = pygame.Color(0, 0, 0)
 
 class MainGame:
     window: pygame.Surface = None
-    my_tank = None
+    my_tank: gametank.MyTank = None
     # 存储敌方坦克的列表
     enemyTankList = []
     # 存储我方子弹的列表

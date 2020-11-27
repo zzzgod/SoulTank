@@ -1,6 +1,7 @@
 {
-  "Speed": 10,
-  "Damage": 1,
-  "Penetration": 10,
+  "Speed": 12,
+  "Damage": 125,
+  "Penetration": 192,
+  "DamageReductionRate": 0.08,
   "img": "img/bullet/myAPCR75.png"
 }

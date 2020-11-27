@@ -14,7 +14,7 @@ class Wall:
         # 是否存活
         self.live = True
         # 设置生命值
-        self.hp = 3
+        self.hp = 160
 
 
 class Steel:
@@ -29,7 +29,7 @@ class Steel:
         # 是否存活
         self.live = True
         # 设置生命值
-        self.hp = 100
+        self.hp = 10000
 
 
 class Water():
