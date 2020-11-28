@@ -61,9 +61,9 @@ def drop_hit_tank(drop, MainGame, tank_type):
                 # 修改掉落物与我方坦克的状态
                 drop.live = False
                 if drop.drop_type == 'AddBullet':
-                    if ran < 50:
+                    if ran <= 33:
                         MainGame.AP_num += 5
-                    elif ran < 60:
+                    elif ran <= 66:
                         MainGame.APCR_num += 5
                     else:
                         MainGame.HE_num += 5
@@ -93,6 +93,9 @@ def drop_hit_tank(drop, MainGame, tank_type):
                     # 雪花
                     for enemy_tank in MainGame.enemyTankList:
                         enemy_tank.status.add('TankSpeed', 1, -0.4, 5000)
+                elif drop.drop_type == 'Star':
+                    # 汽油
+                    MainGame.my_tank.status.add('TankSpeed', 0, 3, 10000)
                 elif drop.drop_type == 'Star':
                     pass
                 elif drop.drop_type == 'Clock':

@@ -106,6 +106,19 @@
     {"EnemyType": "Heavy", "x": 100, "y": 100},
     {"EnemyType": "Heavy", "x": 100, "y": 100}
   ],
+  "DropsProbability": {
+    "AddBullet": 0.4,
+    "Clock": 0.05,
+    "Gasoline": 0.05,
+    "Kit": 0.1,
+    "Net": 0.05,
+    "PurpleBullet": 0.05,
+    "Rage": 0.05,
+    "RedBullet": 0.05,
+    "Shield": 0.05,
+    "Snow": 0.05,
+    "Star": 0.05
+  },
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
   "Bullets": {"AP": 10, "HE": 10, "APCR": 10},
   "Time": 180,
