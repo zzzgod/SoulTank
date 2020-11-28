@@ -120,7 +120,7 @@
     "Star": 0.05
   },
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
-  "Bullets": {"AP": 10, "HE": 10, "APCR": 10},
+  "Bullets": {"AP": 30, "HE": 10, "APCR": 20},
   "Time": 180,
   "Dialogue": [
     {

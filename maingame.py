@@ -104,11 +104,11 @@ class MainGame:
             # 绘制信息板
             game_show_imformation.show(MainGame)
             # 绘制文字
-            MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 35))
+            MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 110))
             # 绘制炮弹数量
-            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.AP_num), (1220, 185))
-            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.HE_num), (1220, 260))
-            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.APCR_num), (1220, 335))
+            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.AP_num), (1220, 260))
+            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.HE_num), (1220, 335))
+            MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.APCR_num), (1220, 410))
             # 绘制炮弹选择框
             pygame.draw.rect(MainGame.window, blue, MainGame.bullet_choice_rect[MainGame.bullet_now], 4)
             # 调用坦克显示的方法
@@ -117,15 +117,15 @@ class MainGame:
                 # 展示我方坦克
                 MainGame.my_tank.displayTank(MainGame)
                 if MainGame.my_tank.status.health > 3:
-                    MainGame.window.blit(Text.getTextSufaceGreen('%d' % MainGame.my_tank.status.health), (1220, 110))
+                    MainGame.window.blit(Text.getTextSufaceGreen('%d' % MainGame.my_tank.status.health), (1220, 185))
                 elif MainGame.my_tank.status.health > 1:
-                    MainGame.window.blit(Text.getTextSufaceYellow('%d' % MainGame.my_tank.status.health), (1220, 110))
+                    MainGame.window.blit(Text.getTextSufaceYellow('%d' % MainGame.my_tank.status.health), (1220, 185))
                 else:
-                    MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.my_tank.status.health), (1220, 110))
+                    MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.my_tank.status.health), (1220, 185))
             else:
                 # 删除我方坦克
                 del MainGame.my_tank
-                MainGame.window.blit(Text.getTextSufaceRed('0'), (1220, 110))
+                MainGame.window.blit(Text.getTextSufaceRed('0'), (1220, 185))
                 MainGame.my_tank = None
             # 循环遍历敌方坦克列表，检查敌方坦克
             gametank.check_enemy_tank(MainGame, Bullet)

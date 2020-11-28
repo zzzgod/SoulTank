@@ -35,22 +35,22 @@ def pause_menu(MainGame):
         # 信息板
         game_show_imformation.show(MainGame)
         # 绘制文字
-        MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 35))
+        MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 110))
         # 调用坦克显示的方法
         # 判断我方坦克是否是否存活
         if MainGame.my_tank and MainGame.my_tank.live:
             # 展示我方坦克
             MainGame.my_tank.displayTank(MainGame)
             if MainGame.my_tank.hp > 3:
-                MainGame.window.blit(Text.getTextSufaceGreen('%d' % MainGame.my_tank.hp), (1220, 110))
+                MainGame.window.blit(Text.getTextSufaceGreen('%d' % MainGame.my_tank.hp), (1220, 185))
             elif MainGame.my_tank.hp > 1:
-                MainGame.window.blit(Text.getTextSufaceYellow('%d' % MainGame.my_tank.hp), (1220, 110))
+                MainGame.window.blit(Text.getTextSufaceYellow('%d' % MainGame.my_tank.hp), (1220, 185))
             else:
-                MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.my_tank.hp), (1220, 110))
+                MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.my_tank.hp), (1220, 185))
         else:
             # 删除我方坦克
             del MainGame.my_tank
-            MainGame.window.blit(Text.getTextSufaceRed('0'), (1220, 110))
+            MainGame.window.blit(Text.getTextSufaceRed('0'), (1220, 185))
             MainGame.my_tank = None
         # 循环遍历墙壁列表，展示墙壁
         gamewall.blitWall(MainGame)
