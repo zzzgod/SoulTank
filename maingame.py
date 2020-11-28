@@ -123,7 +123,7 @@ class MainGame:
                 MainGame.window.blit(Text.getTextSufaceRed('0'), (1220, 110))
                 MainGame.my_tank = None
             # 循环遍历敌方坦克列表，检查敌方坦克
-            gametank.checkEnemyTank(MainGame, Bullet)
+            gametank.check_enemy_tank(MainGame, Bullet)
             # 循环遍历检查我方坦克的子弹
             gamebullet.checkMyBullet(MainGame)
             # 循环遍历检查掉落物
@@ -133,7 +133,7 @@ class MainGame:
             # 循环遍历墙壁列表，展示墙壁
             gamewall.blitWall(MainGame)
             # 循环遍历敌方坦克列表，展示敌方坦克
-            gametank.blitEnemyTank(MainGame, Bullet)
+            gametank.blit_enemy_tank(MainGame, Bullet)
             # 循环遍历显示我方坦克的子弹
             gamebullet.blitMyBullet(MainGame)
             # 循环遍历敌方子弹列表，展示敌方子弹

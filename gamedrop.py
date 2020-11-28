@@ -12,6 +12,36 @@ class Drop:
         if drop_type == 'AddBullet':
             self.image = pygame.image.load('img/drop/AddBullet.gif')
             self.music = gamemusic.Music('img/get_item.wav')
+        elif drop_type == 'Clock':
+            self.image = pygame.image.load('img/drop/Clock.png')
+            self.music = gamemusic.Music('img/get_item.wav')
+        elif drop_type == 'Gasoline':
+            self.image = pygame.image.load('img/drop/Gasoline.png')
+            self.music = gamemusic.Music('img/get_item.wav')
+        elif drop_type == 'Kit':
+            self.image = pygame.image.load('img/drop/Kit.png')
+            self.music = gamemusic.Music('img/get_item.wav')
+        elif drop_type == 'Net':
+            self.image = pygame.image.load('img/drop/Net.png')
+            self.music = gamemusic.Music('img/get_item.wav')
+        elif drop_type == 'PurpleBullet':
+            self.image = pygame.image.load('img/drop/PurpleBullet.png')
+            self.music = gamemusic.Music('img/get_item.wav')
+        elif drop_type == 'Rage':
+            self.image = pygame.image.load('img/drop/Rage.png')
+            self.music = gamemusic.Music('img/get_item.wav')
+        elif drop_type == 'RedBullet':
+            self.image = pygame.image.load('img/drop/RedBullet.png')
+            self.music = gamemusic.Music('img/get_item.wav')
+        elif drop_type == 'Shield':
+            self.image = pygame.image.load('img/drop/Shield.png')
+            self.music = gamemusic.Music('img/get_item.wav')
+        elif drop_type == 'Snow':
+            self.image = pygame.image.load('img/drop/Snow.png')
+            self.music = gamemusic.Music('img/get_item.wav')
+        elif drop_type == 'Star':
+            self.image = pygame.image.load('img/drop/Star.png')
+            self.music = gamemusic.Music('img/get_item.wav')
         else:
             raise ValueError('掉落物格式不匹配。')
         # 移动掉落物至坦克
@@ -35,10 +65,24 @@ def drop_hit_tank(drop, MainGame, tank_type):
                         MainGame.AP_num += 5
                     elif ran<60:
                         MainGame.APCR_num+=5
-                    elif ran<70:
-                        MainGame.HE_num+=5
                     else:
-                        MainGame.my_tank.hp+=100
+                        MainGame.HE_num+=5
+                elif drop.drop_type == 'Kit':
+                    pass
+                elif drop.drop_type == 'Net':
+                    pass
+                elif drop.drop_type == 'PurpleBullet':
+                    pass
+                elif drop.drop_type == 'Rage':
+                    pass
+                elif drop.drop_type == 'RedBullet':
+                    pass
+                elif drop.drop_type == 'Shield':
+                    pass
+                elif drop.drop_type == 'Snow':
+                    pass
+                elif drop.drop_type == 'Star':
+                    pass
                 else:
                     raise ValueError('掉落物格式不匹配。')
 

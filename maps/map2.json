@@ -132,6 +132,7 @@
     {"EnemyType": "Light", "x": 1000, "y": 100}
   ],
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
+  "Time": 180,
   "Dialogue": [
     {
       "Characters":

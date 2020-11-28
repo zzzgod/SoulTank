@@ -103,6 +103,7 @@
     {"BlockType": "Grass", "x": 18, "y": 5}
   ],
   "Player": {"x": 600, "y": 660},
+  "Time": 180,
   "Enemies": [
     {"EnemyType": "Heavy2", "x": 600, "y": 60},
     {"EnemyType": "Middle", "x": 600, "y": 0},

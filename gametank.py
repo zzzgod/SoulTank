@@ -287,7 +287,7 @@ def createEnemyTank(MainGame, tank_info: dict):
 
 
 # 循环遍历敌方坦克列表，展示敌方坦克
-def blitEnemyTank(MainGame, Bullet):
+def blit_enemy_tank(MainGame, Bullet):
     for enemyTank in MainGame.enemyTankList:
         # 判断当前敌方坦克是否活着
         if enemyTank.live:
@@ -295,7 +295,7 @@ def blitEnemyTank(MainGame, Bullet):
 
 
 # 循环遍历敌方坦克列表，检查敌方坦克
-def checkEnemyTank(MainGame, Bullet):
+def check_enemy_tank(MainGame, Bullet):
     for enemyTank in MainGame.enemyTankList:
         # 判断当前敌方坦克是否活着
         if enemyTank.live:
