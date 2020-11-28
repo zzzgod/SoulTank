@@ -38,8 +38,8 @@ class MainGame:
     # 我方当前选中的炮弹
     bullet_now = 0
     # 炮弹选择框
-    bullet_choice_rect = [pygame.rect.Rect(1160, 175, 100, 45), pygame.rect.Rect(1160, 250, 100, 45),
-                          pygame.rect.Rect(1160, 325, 100, 45)]
+    bullet_choice_rect = [pygame.rect.Rect(1160, 250, 100, 45), pygame.rect.Rect(1160, 325, 100, 45),
+                          pygame.rect.Rect(1160, 400, 100, 45)]
     # 定义我方炮弹数量
     AP_num = 0
     HE_num = 0
@@ -63,6 +63,10 @@ class MainGame:
     clock = pygame.time.Clock()
     # 掉落物概率
     drops_probability = {}
+    # 记录游戏开始的时刻
+    time_start = 0
+    # 时间上限
+    time = 0
     # 开始游戏
     @staticmethod
     def startGame(n):
@@ -91,8 +95,12 @@ class MainGame:
             MainGame.APCR_num = MainGame.map_info['Bullets']['APCR']
             # 读取掉落物概率
             MainGame.drops_probability = MainGame.map_info['DropsProbability']
+            # 读取最大时间
+            MainGame.time = MainGame.map_info['Time']
         # 设置窗口的标题
         pygame.display.set_caption('Soul Tank')
+        # 记录开始的时刻
+        time_start = pygame.time.get_ticks()
         while True:
             # 使用坦克移动的速度慢一点
             MainGame.clock.tick(60)
@@ -103,6 +111,13 @@ class MainGame:
                 return
             # 绘制信息板
             game_show_imformation.show(MainGame)
+            # 绘制剩余时间
+            time_now = pygame.time.get_ticks()
+            rest_time = MainGame.time + time_start - time_now
+            minute = rest_time // 60000
+            second = rest_time % 60000 // 1000
+            time_info = '%02d:%02d' % (minute, second)
+            MainGame.window.blit(Text.getTextSufaceGreen(time_info), (1180, 35))
             # 绘制文字
             MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 110))
             # 绘制炮弹数量
@@ -152,7 +167,6 @@ class MainGame:
             gameExplode.blitbigExplode(MainGame)
             gameExplode.blitsmallExplode(MainGame)
             # 显示特效
-            time_now = pygame.time.get_ticks()
             MainGame.sprite_group.update(time_now)
             MainGame.sprite_group.draw(MainGame.window)
             # 判断是否有敌人剩余
@@ -170,7 +184,8 @@ class MainGame:
                     MainGame.dropList.clear()
                     return
             # 如果坦克的开关是开启，才可以移动
-            if MainGame.my_tank and MainGame.my_tank.live:
+            # 超时也是失败
+            if MainGame.my_tank and MainGame.my_tank.live and MainGame.time >= time_now:
                 if not MainGame.my_tank.stop:
                     MainGame.my_tank.move()
                     # 检测我方坦克是否与墙壁发生碰撞
@@ -178,7 +193,7 @@ class MainGame:
                     # 检测我方坦克是否与敌方坦克发生碰撞
                     MainGame.my_tank.myTank_hit_enemyTank(MainGame)
             else:
-                if defeat().startGame(n):
+                if defeat().fail(n):
                     MainGame.enemyTankList.clear()
                     MainGame.myBulletList.clear()
                     MainGame.dropList.clear()

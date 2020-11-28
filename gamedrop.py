@@ -93,13 +93,13 @@ def drop_hit_tank(drop, MainGame, tank_type):
                     # 雪花
                     for enemy_tank in MainGame.enemyTankList:
                         enemy_tank.status.add('TankSpeed', 1, -0.4, 5000)
-                elif drop.drop_type == 'Star':
+                elif drop.drop_type == 'Gasoline':
                     # 汽油
                     MainGame.my_tank.status.add('TankSpeed', 0, 3, 10000)
                 elif drop.drop_type == 'Star':
                     pass
                 elif drop.drop_type == 'Clock':
-                    pass
+                    MainGame.time += 30000
                 else:
                     raise ValueError('掉落物格式不匹配。')
 
