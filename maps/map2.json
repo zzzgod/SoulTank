@@ -241,6 +241,15 @@
     {
       "Characters":
       {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["教官：为了对付轻型坦克，这次让你们携带了新的炮弹，",
+      "高爆弹，你可以按2来切换高爆弹，当你想换回穿甲弹",
+      "时，按下1来切换。"]},
+    {
+      "Characters":
+      {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
