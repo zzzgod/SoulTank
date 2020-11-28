@@ -185,7 +185,7 @@ class MainGame:
                     return
             # 如果坦克的开关是开启，才可以移动
             # 超时也是失败
-            if MainGame.my_tank and MainGame.my_tank.live and MainGame.time >= time_now:
+            if MainGame.my_tank and MainGame.my_tank.live and rest_time >= 0:
                 if not MainGame.my_tank.stop:
                     MainGame.my_tank.move()
                     # 检测我方坦克是否与墙壁发生碰撞
