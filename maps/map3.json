@@ -103,6 +103,7 @@
     {"EnemyType": "Middle", "x": 1080, "y": 100}
   ],
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
+  "Bullets": {"AP": 20, "HE": 10, "APCR": 15},
   "Dialogue": [
     {
       "Characters":

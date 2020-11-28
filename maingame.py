@@ -68,10 +68,8 @@ class MainGame:
         map_index = n
         # 获取地图路经
         map_path = 'maps/map' + str(map_index) + '.json'
-        # 定义我方炮弹数量
-        MainGame.AP_num = 10
-        MainGame.HE_num = 10
-        MainGame.APCR_num = 10
+        # 设置炮弹选择为穿甲弹
+        MainGame.bullet_now = 0
         # 加载主窗口
         # 初始化窗口
         pygame.display.init()
@@ -86,6 +84,10 @@ class MainGame:
             gametank.createEnemyTank(MainGame, MainGame.map_info['Enemies'])
             # 初始化墙壁
             gamewall.createWall(MainGame, MainGame.map_info['MapBlocks'])
+            # 读取我方炮弹数量
+            MainGame.AP_num = MainGame.map_info['Bullets']['AP']
+            MainGame.HE_num = MainGame.map_info['Bullets']['HE']
+            MainGame.APCR_num = MainGame.map_info['Bullets']['APCR']
         # 设置窗口的标题
         pygame.display.set_caption('Soul Tank')
         while True:

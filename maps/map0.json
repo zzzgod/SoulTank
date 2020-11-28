@@ -107,6 +107,7 @@
     {"EnemyType": "Heavy", "x": 100, "y": 100}
   ],
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
+  "Bullets": {"AP": 10, "HE": 10, "APCR": 10},
   "Time": 180,
   "Dialogue": [
     {
