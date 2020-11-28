@@ -2,7 +2,7 @@ import gametank
 import music
 import json
 import gametext
-import random
+import pygame
 from gameExplode import Explode
 from constant import *
 
@@ -66,8 +66,8 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
             if pygame.sprite.collide_rect(enemyTank, bullet):
                 # 修改敌方坦克和我方子弹的状态
                 damage = gametank.calculate_bullet_damage(enemyTank, bullet)
-                enemyTank.hp -= damage
-                if enemyTank.hp <= 0:
+                enemyTank.status.health -= damage
+                if enemyTank.status.health <= 0:
                     enemyTank.live = False
                     music.Music('img/enemy1_explode.wav')
                 bullet.live = False
@@ -85,9 +85,17 @@ def bullet_hit_tank(bullet, MainGame, tank_type):
             if pygame.sprite.collide_rect(MainGame.my_tank, bullet):
                 # 修改敌方子弹与我方坦克的状态
                 bullet.live = False
+                # 如果坦克正处于隐身状态，则不受伤害
+                time_now = pygame.time.get_ticks()
+                if MainGame.my_tank.status.immune_t >= time_now:
+                    return
+                # 若处于护盾下，免疫本次伤害
+                elif MainGame.my_tank.status.immune_c > 0:
+                    MainGame.my_tank.status.immune_c -= 1
+                    return
                 damage = gametank.calculate_bullet_damage(MainGame.my_tank, bullet)
-                MainGame.my_tank.hp -= damage
-                if MainGame.my_tank.hp <= 0:
+                MainGame.my_tank.status.health -= damage
+                if MainGame.my_tank.status.health <= 0:
                     MainGame.my_tank.live = False
                     # 产生爆炸对象
                     explode = Explode(MainGame.my_tank)
@@ -163,31 +171,31 @@ class EnemyBullet(Bullet):
 
 
 # 移动
-def move(Bullet):
-    if Bullet.direction == 'U':
-        if Bullet.rect.top > 0:
-            Bullet.rect.top -= Bullet.speed
+def move(bullet):
+    if bullet.direction == 'U':
+        if bullet.rect.top > 0:
+            bullet.rect.top -= bullet.speed
         else:
             # 修改子弹的状态
-            Bullet.live = False
-    elif Bullet.direction == 'R':
-        if Bullet.rect.left + Bullet.rect.width < GAME_WIDTH:
-            Bullet.rect.left += Bullet.speed
+            bullet.live = False
+    elif bullet.direction == 'R':
+        if bullet.rect.left + bullet.rect.width < GAME_WIDTH:
+            bullet.rect.left += bullet.speed
         else:
             # 修改子弹的状态
-            Bullet.live = False
-    elif Bullet.direction == 'D':
-        if Bullet.rect.top + Bullet.rect.height < GAME_HEIGHT:
-            Bullet.rect.top += Bullet.speed
+            bullet.live = False
+    elif bullet.direction == 'D':
+        if bullet.rect.top + bullet.rect.height < GAME_HEIGHT:
+            bullet.rect.top += bullet.speed
         else:
             # 修改子弹的状态
-            Bullet.live = False
-    elif Bullet.direction == 'L':
-        if Bullet.rect.left > 0:
-            Bullet.rect.left -= Bullet.speed
+            bullet.live = False
+    elif bullet.direction == 'L':
+        if bullet.rect.left > 0:
+            bullet.rect.left -= bullet.speed
         else:
             # 修改子弹的状态
-            Bullet.live = False
+            bullet.live = False
 
 
 # 展示子弹的方法

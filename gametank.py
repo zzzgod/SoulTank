@@ -4,6 +4,7 @@ from constant import *
 import music
 import gamedrop
 import gamebullet
+import gamebuff
 
 
 class Tank:
@@ -14,15 +15,8 @@ class Tank:
     def __init__(self):
         # 图片集
         self.images = None
-        # 血量
-        self.max_hp = 1
-        self.hp = 0
-        # 护甲
-        self.armor = 0
-        # 速度
-        self.speed = 0
-        # 子弹的射速
-        self.fire_rate = 1
+        # 坦克的属性集
+        self.status = None
         # 方向
         self.direction = 'L'
         # 根据当前图片的方向获取图片 surface
@@ -43,6 +37,8 @@ class Tank:
         self.flag = True
         # 血条框
         self.health_stick_full_rect = None
+        # 是否触墙
+        self.touch = 1
 
     # 移动
     def move(self):
@@ -54,22 +50,22 @@ class Tank:
         # 判断坦克的方向进行移动
         if self.direction == 'L':
             if self.x > 0:
-                self.x -= self.speed
+                self.x -= self.status.tank_speed
             else:
                 self.touch = 0
         elif self.direction == 'U':
             if self.y > 0:
-                self.y -= self.speed
+                self.y -= self.status.tank_speed
             else:
                 self.touch = 0
         elif self.direction == 'D':
             if self.y + self.rect.height < GAME_HEIGHT:
-                self.y += self.speed
+                self.y += self.status.tank_speed
             else:
                 self.touch = 0
         elif self.direction == 'R':
             if self.x + self.rect.width < GAME_WIDTH:
-                self.x += self.speed
+                self.x += self.status.tank_speed
             else:
                 self.touch = 0
         # 将小数坐标取整赋回
@@ -83,7 +79,7 @@ class Tank:
     def shot(self):
         return gamebullet.Bullet(self)
 
-    #
+    # 停止
     def stay(self):
         self.x = self.oldLeft
         self.y = self.oldTop
@@ -101,12 +97,12 @@ class Tank:
 
     # 展示坦克的方法
     def displayTank(self, MainGame):
-        if self.hp != self.max_hp:
+        if self.status.health != self.status.max_health:
             # 显示血条
             pygame.draw.rect(MainGame.window, Tank.health_stick_bg_color, self.health_stick_full_rect)
             # 当前血量的比例显示血条
             health_stick_rect = self.health_stick_full_rect
-            health_stick_rect.width = self.hp / self.max_hp * self.rect.width
+            health_stick_rect.width = self.status.health / self.status.max_health * self.rect.width
             pygame.draw.rect(MainGame.window, Tank.health_stick_fg_color, health_stick_rect)
         # 获取展示的对象
         self.image = self.images[self.direction]
@@ -129,14 +125,15 @@ class MyTank(Tank):
             'R': pygame.image.load(tank_info['img']['Right'])
         }
         # 坦克血量
-        self.hp = tank_info['Health']
-        self.max_hp = self.hp
+        base_health = tank_info['Health']
         # 护甲
-        self.armor = tank_info['Armor']
+        base_armor = tank_info['Armor']
         # 速度 决定移动的快慢
-        self.speed = tank_info['Speed']
+        base_speed = tank_info['Speed']
         # 子弹的射速
-        self.fire_rate = tank_info['FireRate']
+        base_fire_rate = tank_info['FireRate']
+        # 属性集
+        self.status = gamebuff.Status(base_health, base_fire_rate, base_armor, base_speed)
         # 根据方向获取图片
         self.image = self.images[self.direction]
         # 区域
@@ -196,16 +193,17 @@ class EnemyTank(Tank):
             self.x = left
             self.y = top
             # 坦克血量
-            self.hp = tank_info['Health']
-            self.max_hp = self.hp
+            base_health = tank_info['Health']
             # 护甲
-            self.armor = tank_info['Armor']
+            base_armor = tank_info['Armor']
             # 速度  决定移动的快慢
-            self.speed = tank_info['Speed']
+            base_speed = tank_info['Speed']
             # 子弹的射速
-            self.fire_rate = tank_info['FireRate']
+            base_fire_rate = tank_info['FireRate']
+            # 属性集
+            self.status = gamebuff.Status(base_health, base_fire_rate, base_armor, base_speed)
             # 下一次开炮的时间
-            self.next_fire = self.fire_rate * random.randint(7, 13) / 10
+            self.next_fire = self.status.fire_rate * random.randint(7, 13) / 10
             # 记录初始时间
             self.time = pygame.time.get_ticks()
             # 新增加一个步数变量 step
@@ -240,7 +238,7 @@ class EnemyTank(Tank):
             # 记录当前时间
             self.time = now_time
             # 确定下次开炮时间
-            self.next_fire = self.fire_rate * (random.random() * 0.6 + 0.7)
+            self.next_fire = self.status.fire_rate * (random.random() * 0.6 + 0.7)
             return gamebullet.EnemyBullet(self, self.info['Bullet'])
 
 
@@ -265,8 +263,8 @@ def randDirection():
 
 # 创建我方坦克的方法
 def createMytank(MainGame, tank_info: dict):
-    MainGame.my_tank = MyTank(tank_info)
     music.Music('img/start.wav')
+    return MyTank(tank_info)
 
 
 # 初始化敌方坦克，并将敌方坦克添加到列表中
@@ -287,7 +285,7 @@ def createEnemyTank(MainGame, tank_info: dict):
 
 
 # 循环遍历敌方坦克列表，展示敌方坦克
-def blit_enemy_tank(MainGame, Bullet):
+def blit_enemy_tank(MainGame):
     for enemyTank in MainGame.enemyTankList:
         # 判断当前敌方坦克是否活着
         if enemyTank.live:
@@ -309,11 +307,38 @@ def check_enemy_tank(MainGame, Bullet):
             enemyBullet = enemyTank.shot()
             # 敌方子弹是否是None，如果不为None则添加到敌方子弹列表中
             if enemyBullet:
+                # 加一次buff
+                enemyTank.status.buff_bullet(enemyBullet)
                 # 将敌方子弹存储到敌方子弹列表中
                 MainGame.enemyBulletList.append(enemyBullet)
         else:  # 不活着，从敌方坦克列表中移除
+            # 获取一个随机数
+            rand = random.random()
             # 添加掉落物
-            MainGame.dropList.append(gamedrop.Drop(enemyTank, 'AddBullet'))
+            if rand <= 0.4:
+                # 添加子弹补给包
+                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'AddBullet'))
+            elif rand <= 0.5:
+                # 添加回血包
+                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'Kit'))
+            elif rand <= 0.53:
+                # 添加隐身网
+                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'Net'))
+            elif rand <= 0.58:
+                # 添加紫色炮弹
+                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'PurpleBullet'))
+            elif rand <= 0.63:
+                # 狂暴
+                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'Rage'))
+            elif rand <= 0.68:
+                # 添加红色炮弹
+                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'RedBullet'))
+            elif rand <= 0.73:
+                # 添加护盾
+                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'Shield'))
+            elif rand <= 0.78:
+                # 添加雪花
+                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'Snow'))
             MainGame.enemyTankList.remove(enemyTank)
 
 
@@ -324,9 +349,8 @@ def calculate_bullet_damage(tank: Tank, bullet: gamebullet.Bullet):
     # 基础伤害
     damage = bullet.damage * (random.random() * 0.4 + 0.8)
     # 未击穿的伤害减益
-    if penetration < tank.armor:
+    if penetration < tank.status.armor:
         damage *= bullet.damage_reduction_rate
     # 对伤害取整
     damage = int(damage)
-    print(tank.armor)
     return damage

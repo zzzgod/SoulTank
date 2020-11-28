@@ -81,7 +81,7 @@ class MainGame:
         with open(map_path, 'r', encoding='utf-8') as f:
             MainGame.map_info = json.load(f)
             # 初始化我方坦克
-            gametank.createMytank(MainGame, MainGame.map_info['Player'])
+            MainGame.my_tank = gametank.createMytank(MainGame, MainGame.map_info['Player'])
             # 初始化敌方坦克，并将敌方坦克添加到列表中
             gametank.createEnemyTank(MainGame, MainGame.map_info['Enemies'])
             # 初始化墙壁
@@ -111,12 +111,12 @@ class MainGame:
             if MainGame.my_tank and MainGame.my_tank.live:
                 # 展示我方坦克
                 MainGame.my_tank.displayTank(MainGame)
-                if MainGame.my_tank.hp > 3:
-                    MainGame.window.blit(Text.getTextSufaceGreen('%d' % MainGame.my_tank.hp), (1220, 110))
-                elif MainGame.my_tank.hp > 1:
-                    MainGame.window.blit(Text.getTextSufaceYellow('%d' % MainGame.my_tank.hp), (1220, 110))
+                if MainGame.my_tank.status.health > 3:
+                    MainGame.window.blit(Text.getTextSufaceGreen('%d' % MainGame.my_tank.status.health), (1220, 110))
+                elif MainGame.my_tank.status.health > 1:
+                    MainGame.window.blit(Text.getTextSufaceYellow('%d' % MainGame.my_tank.status.health), (1220, 110))
                 else:
-                    MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.my_tank.hp), (1220, 110))
+                    MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.my_tank.status.health), (1220, 110))
             else:
                 # 删除我方坦克
                 del MainGame.my_tank
@@ -133,7 +133,7 @@ class MainGame:
             # 循环遍历墙壁列表，展示墙壁
             gamewall.blitWall(MainGame)
             # 循环遍历敌方坦克列表，展示敌方坦克
-            gametank.blit_enemy_tank(MainGame, Bullet)
+            gametank.blit_enemy_tank(MainGame)
             # 循环遍历显示我方坦克的子弹
             gamebullet.blitMyBullet(MainGame)
             # 循环遍历敌方子弹列表，展示敌方子弹

@@ -10,7 +10,7 @@ class Drop:
         self.drop_type = drop_type
         self.music = None
         if drop_type == 'AddBullet':
-            self.image = pygame.image.load('img/drop/AddBullet.gif')
+            self.image = pygame.image.load('img/drop/AddBullet.png')
             self.music = gamemusic.Music('img/get_item.wav')
         elif drop_type == 'Clock':
             self.image = pygame.image.load('img/drop/Clock.png')
@@ -63,25 +63,39 @@ def drop_hit_tank(drop, MainGame, tank_type):
                 if drop.drop_type == 'AddBullet':
                     if ran < 50:
                         MainGame.AP_num += 5
-                    elif ran<60:
-                        MainGame.APCR_num+=5
+                    elif ran < 60:
+                        MainGame.APCR_num += 5
                     else:
-                        MainGame.HE_num+=5
+                        MainGame.HE_num += 5
                 elif drop.drop_type == 'Kit':
-                    pass
+                    # 加血
+                    MainGame.my_tank.status.health = min(MainGame.my_tank.status.health + 100,
+                                                         MainGame.my_tank.status.max_health)
                 elif drop.drop_type == 'Net':
-                    pass
+                    # 隐身网
+                    MainGame.my_tank.status.immune_t = 10000
                 elif drop.drop_type == 'PurpleBullet':
-                    pass
+                    # 紫色炮弹
+                    MainGame.my_tank.status.add('Penetration', 0, 30, 10000)
                 elif drop.drop_type == 'Rage':
-                    pass
+                    # 狂暴状态
+                    # 射速1.5倍
+                    MainGame.my_tank.status.add('FireRate', 1, -0.333, 10000)
+                    # 速度+2
+                    MainGame.my_tank.status.add('TankSpeed', 0, 2, 10000)
                 elif drop.drop_type == 'RedBullet':
-                    pass
+                    # 红色炮弹
+                    MainGame.my_tank.status.add('Damage', 0, 60, 10000)
                 elif drop.drop_type == 'Shield':
-                    pass
+                    # 护盾
+                    MainGame.my_tank.status.immune_c += 1
                 elif drop.drop_type == 'Snow':
-                    pass
+                    # 雪花
+                    for enemy_tank in MainGame.enemyTankList:
+                        enemy_tank.status.add('TankSpeed', 1, -0.4, 5000)
                 elif drop.drop_type == 'Star':
+                    pass
+                elif drop.drop_type == 'Clock':
                     pass
                 else:
                     raise ValueError('掉落物格式不匹配。')

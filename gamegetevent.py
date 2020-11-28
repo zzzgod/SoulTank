@@ -119,33 +119,29 @@ def getEvent(MainGame):
                     MainGame.my_tank.direction = 'L'
                     # 修改坦克的开关状态
                     MainGame.my_tank.stop = False
-                    # MainGame.my_tank.move()
                     print('按下a键，坦克向左移动')
                 elif event.key == pygame.K_d:
                     # 切换方向
                     MainGame.my_tank.direction = 'R'
                     # 修改坦克的开关状态
                     MainGame.my_tank.stop = False
-                    # MainGame.my_tank.move()
                     print('按下d键，坦克向右移动')
                 elif event.key == pygame.K_w:
                     # 切换方向
                     MainGame.my_tank.direction = 'U'
                     # 修改坦克的开关状态
                     MainGame.my_tank.stop = False
-                    # MainGame.my_tank.move()
                 elif event.key == pygame.K_s:
                     # 切换方向
                     MainGame.my_tank.direction = 'D'
                     # 修改坦克的开关状态
                     MainGame.my_tank.stop = False
-                    # MainGame.my_tank.move()
                 elif event.key == pygame.K_j:
                     # 射击间隔大于1才可以创建
                     now_time = pygame.time.get_ticks()
                     global last_time
                     time_differ = now_time - last_time
-                    if time_differ > MainGame.my_tank.fire_rate:
+                    if time_differ > MainGame.my_tank.status.fire_rate:
                         # 判断的当前选中的是哪种炮弹
                         # 记录是否成功发射
                         flag = 0
@@ -154,16 +150,19 @@ def getEvent(MainGame):
                         if MainGame.bullet_now == 0 and MainGame.AP_num > 0:
                             flag = 1
                             my_bullet = MyBullet(MainGame.my_tank, 'myAP75')
+                            MainGame.my_tank.status.buff_bullet(my_bullet)
                             MainGame.AP_num -= 1
                         # 当前是高爆弹
                         if MainGame.bullet_now == 1 and MainGame.HE_num > 0:
                             flag = 1
                             my_bullet = MyBullet(MainGame.my_tank, 'myHE75')
+                            MainGame.my_tank.status.buff_bullet(my_bullet)
                             MainGame.HE_num -= 1
                         # 当前是高爆穿甲弹
                         if MainGame.bullet_now == 2 and MainGame.APCR_num > 0:
                             flag = 1
                             my_bullet = MyBullet(MainGame.my_tank, 'myAPCR75')
+                            MainGame.my_tank.status.buff_bullet(my_bullet)
                             MainGame.APCR_num -= 1
                         if flag:
                             # 创建我方坦克发射的子弹
