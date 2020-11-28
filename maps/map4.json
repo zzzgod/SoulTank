@@ -121,7 +121,8 @@
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["教官：今天的实战训练，我们将面对一种新的敌人。"]
+      "Content": ["教官：经过前几次的训练，想必你们已经对实战有了一",
+      "定的了解了。"]
     },
     {
       "Characters":
@@ -129,68 +130,132 @@
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["教官：它就是重型坦克，厚实的装甲，无与伦比的火炮",
-        "以及..."]},
-    {
-      "Characters":
-      {
-        "Left": {"img": "img/character/texas_1.png"},
-        "Right": {"img": "img/character/angel_1_shadow.png"}
-      },
-      "Content": ["我：稀烂的机动。"]},
+      "Content": ["教官：为了检验你们的作战能力，今天将举行考核。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["教官：准确的发言。所以你们知道该如何对付这种铁疙",
-      "瘩了吗！"]},
+      "Content": ["炮手：考核？又是笔试吗...真是够了。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["教官：除了拉开距离，还是拉开距离，它们的炮弹在近",
-      "距离百发百中，而每一发都是致命的！"]},
+      "Content": ["教官：帝国边境的维斯杜拉森林，将是你们的考核地。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["教官：即使是帝国最顶尖的坦克手，也没胆量与它肉搏。"]},
+      "Content": ["装填手：维斯杜拉森林...那里不是..."]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["驾驶员：我听说《侦查死神》即使是孤身面对一个重型",
-      "坦克排也能杀个七进七出，全身而退。"]},
+      "Content": ["教官：天蓝色的“幽灵虎”，和它的眷属居住于此，那",
+      "里无时不刻不充满着危机。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["教官：少废话！洗车还没洗够的小毛孩。523车驾驶员，",
-      "下周洗车的还有你一份。"]},
+      "Content": ["炮手：所以说！为什么要让我们去那种鬼地方！那不是",
+      "正规军该去的地方吗！"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["教官：咳咳，总之，利用你们的速度优势，灵活的攻击。",
-      "有危险要第一时间报告。"]},
+      "Content": ["教官：清理森林中的“幽灵”是正规军的任务，他们这",
+      "次又多了一个任务，护卫你们。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["教官：以上，作战开始！目标，歼灭所有敌人！"]}
+      "Content": ["我：“幽灵虎”..又是什么呢？"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["驾驶员：你不知道吗？“幽灵虎”，无数次目击，无数",
+      "次战斗，不曾被击毁。宛如维斯杜拉大森林的守护兽...."]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["教官：那种近似于传说的东西，几乎不可能遇到的。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["教官：不过如果真的遇到“幽灵虎”，按下3使用钨芯穿",
+      "甲弹吧。普通的穿甲弹对它不管用。不用担心，正规军",
+      "会保护你们的。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["驾驶员：这种时候是不是该说：“只要不遇到‘幽灵虎’，",
+      "我就和你结婚！”"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["我：喂，这种时候不要故意插旗了！"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["教官：...以上，作战开始！"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["..."]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["我：不出所料，果然..."]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["炮手：那是..."]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["我：没错，那恐怕就是“幽灵虎”。"]}
   ]
 }
