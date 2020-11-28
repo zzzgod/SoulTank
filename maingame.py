@@ -41,9 +41,9 @@ class MainGame:
     bullet_choice_rect = [pygame.rect.Rect(1160, 175, 100, 45), pygame.rect.Rect(1160, 250, 100, 45),
                           pygame.rect.Rect(1160, 325, 100, 45)]
     # 定义我方炮弹数量
-    AP_num = 10
-    HE_num = 10
-    APCR_num = 10
+    AP_num = 0
+    HE_num = 0
+    APCR_num = 0
     # 存储敌方子弹的列表
     enemyBulletList = []
     # 存储掉落物的列表
@@ -61,7 +61,8 @@ class MainGame:
     sprite_group = pygame.sprite.Group()
     # 游戏时钟
     clock = pygame.time.Clock()
-
+    # 掉落物概率
+    drops_probability = {}
     # 开始游戏
     @staticmethod
     def startGame(n):
@@ -88,6 +89,8 @@ class MainGame:
             MainGame.AP_num = MainGame.map_info['Bullets']['AP']
             MainGame.HE_num = MainGame.map_info['Bullets']['HE']
             MainGame.APCR_num = MainGame.map_info['Bullets']['APCR']
+            # 读取掉落物概率
+            MainGame.drops_probability = MainGame.map_info['DropsProbability']
         # 设置窗口的标题
         pygame.display.set_caption('Soul Tank')
         while True:

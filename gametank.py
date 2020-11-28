@@ -314,31 +314,14 @@ def check_enemy_tank(MainGame, Bullet):
         else:  # 不活着，从敌方坦克列表中移除
             # 获取一个随机数
             rand = random.random()
-            # 添加掉落物
-            if rand <= 0.4:
-                # 添加子弹补给包
-                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'AddBullet'))
-            elif rand <= 0.5:
-                # 添加回血包
-                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'Kit'))
-            elif rand <= 0.53:
-                # 添加隐身网
-                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'Net'))
-            elif rand <= 0.58:
-                # 添加紫色炮弹
-                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'PurpleBullet'))
-            elif rand <= 0.63:
-                # 狂暴
-                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'Rage'))
-            elif rand <= 0.68:
-                # 添加红色炮弹
-                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'RedBullet'))
-            elif rand <= 0.73:
-                # 添加护盾
-                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'Shield'))
-            elif rand <= 0.78:
-                # 添加雪花
-                MainGame.dropList.append(gamedrop.Drop(enemyTank, 'Snow'))
+            # 记录前缀和
+            record = 0
+            # 添加掉落物，按概率抽取
+            for key in MainGame.drops_probability:
+                record += MainGame.drops_probability[key]
+                if rand <= record:
+                    MainGame.dropList.append(gamedrop.Drop(enemyTank, key))
+                    break
             MainGame.enemyTankList.remove(enemyTank)
 
 
