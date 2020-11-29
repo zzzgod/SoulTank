@@ -32,7 +32,7 @@ def save():
                 if flag:
                     file.write(',\n')
                 flag = 1
-                file.write('\t\t{"BlockType": "%s", "x": %d, "y": %d}' % (block_names[indices[i][j]], i, j))
+                file.write('\t\t{"BlockType": "%s", "x": %d, "y": %d}' % (block_names[indices[i][j]], j, i))
     file.write('\n\t]\n}')
     file.close()
 
