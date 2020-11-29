@@ -60,7 +60,11 @@ if __name__ == '__main__':
     choice.set('0')
     # 生成一堆按钮
     for i in range(1, 9):
-        tk.Checkbutton(frame1, text=str(i), variable=choice, onvalue=str(i), offvalue='0', width=25,
+        if i < len(block_names):
+            s = block_names[i]
+        else:
+            s = '啥都没有'
+        tk.Checkbutton(frame1, text=s, variable=choice, onvalue=str(i), offvalue='0', width=25,
                        height=2, bg='yellow', pady=10).pack()
     # 保存按钮
     tk.Button(frame1, text='保存', width=10, bg='LightGreen', font=('songti', 18), command=save).pack()
