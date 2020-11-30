@@ -1,0 +1,223 @@
+{
+  "MapBlocks": [
+		{"BlockType": "Steel", "x": 1, "y": 0},
+		{"BlockType": "Wall", "x": 4, "y": 0},
+		{"BlockType": "Grass", "x": 7, "y": 0},
+		{"BlockType": "Water", "x": 11, "y": 0},
+		{"BlockType": "Water", "x": 12, "y": 0},
+		{"BlockType": "Water", "x": 13, "y": 0},
+		{"BlockType": "Water", "x": 14, "y": 0},
+		{"BlockType": "Water", "x": 17, "y": 0},
+		{"BlockType": "Water", "x": 18, "y": 0},
+		{"BlockType": "Wall", "x": 1, "y": 1},
+		{"BlockType": "Wall", "x": 8, "y": 1},
+		{"BlockType": "Steel", "x": 9, "y": 1},
+		{"BlockType": "Grass", "x": 10, "y": 1},
+		{"BlockType": "Water", "x": 12, "y": 1},
+		{"BlockType": "Water", "x": 13, "y": 1},
+		{"BlockType": "Steel", "x": 17, "y": 1},
+		{"BlockType": "Water", "x": 18, "y": 1},
+		{"BlockType": "Steel", "x": 0, "y": 2},
+		{"BlockType": "Steel", "x": 2, "y": 2},
+		{"BlockType": "Wall", "x": 3, "y": 2},
+		{"BlockType": "Wall", "x": 4, "y": 2},
+		{"BlockType": "Wall", "x": 5, "y": 2},
+		{"BlockType": "Wall", "x": 6, "y": 2},
+		{"BlockType": "Grass", "x": 9, "y": 2},
+		{"BlockType": "Grass", "x": 10, "y": 2},
+		{"BlockType": "Steel", "x": 15, "y": 2},
+		{"BlockType": "Wall", "x": 17, "y": 2},
+		{"BlockType": "Wall", "x": 18, "y": 2},
+		{"BlockType": "Wall", "x": 2, "y": 3},
+		{"BlockType": "Steel", "x": 5, "y": 3},
+		{"BlockType": "Grass", "x": 10, "y": 3},
+		{"BlockType": "Wall", "x": 12, "y": 3},
+		{"BlockType": "Steel", "x": 13, "y": 3},
+		{"BlockType": "Wall", "x": 16, "y": 3},
+		{"BlockType": "Steel", "x": 2, "y": 4},
+		{"BlockType": "Wall", "x": 4, "y": 4},
+		{"BlockType": "Grass", "x": 12, "y": 4},
+		{"BlockType": "Grass", "x": 13, "y": 4},
+		{"BlockType": "Steel", "x": 14, "y": 4},
+		{"BlockType": "Steel", "x": 17, "y": 4},
+		{"BlockType": "Wall", "x": 2, "y": 5},
+		{"BlockType": "Steel", "x": 3, "y": 5},
+		{"BlockType": "Steel", "x": 6, "y": 5},
+		{"BlockType": "Wall", "x": 14, "y": 5},
+		{"BlockType": "Grass", "x": 15, "y": 5},
+		{"BlockType": "Steel", "x": 2, "y": 6},
+		{"BlockType": "Wall", "x": 7, "y": 6},
+		{"BlockType": "Steel", "x": 8, "y": 6},
+		{"BlockType": "Grass", "x": 16, "y": 6},
+		{"BlockType": "Steel", "x": 17, "y": 6},
+		{"BlockType": "Water", "x": 0, "y": 7},
+		{"BlockType": "Steel", "x": 8, "y": 7},
+		{"BlockType": "Water", "x": 14, "y": 7},
+		{"BlockType": "Water", "x": 15, "y": 7},
+		{"BlockType": "Grass", "x": 16, "y": 7},
+		{"BlockType": "Wall", "x": 17, "y": 7},
+		{"BlockType": "Water", "x": 0, "y": 8},
+		{"BlockType": "Steel", "x": 1, "y": 8},
+		{"BlockType": "Wall", "x": 2, "y": 8},
+		{"BlockType": "Wall", "x": 10, "y": 8},
+		{"BlockType": "Grass", "x": 11, "y": 8},
+		{"BlockType": "Water", "x": 14, "y": 8},
+		{"BlockType": "Water", "x": 15, "y": 8},
+		{"BlockType": "Grass", "x": 16, "y": 8},
+		{"BlockType": "Grass", "x": 17, "y": 8},
+		{"BlockType": "Water", "x": 0, "y": 9},
+		{"BlockType": "Water", "x": 1, "y": 9},
+		{"BlockType": "Grass", "x": 2, "y": 9},
+		{"BlockType": "Grass", "x": 3, "y": 9},
+		{"BlockType": "Grass", "x": 9, "y": 9},
+		{"BlockType": "Grass", "x": 12, "y": 9},
+		{"BlockType": "Grass", "x": 13, "y": 9},
+		{"BlockType": "Grass", "x": 14, "y": 9},
+		{"BlockType": "Grass", "x": 15, "y": 9},
+		{"BlockType": "Grass", "x": 16, "y": 9},
+		{"BlockType": "Steel", "x": 17, "y": 9},
+		{"BlockType": "Grass", "x": 0, "y": 10},
+		{"BlockType": "Grass", "x": 1, "y": 10},
+		{"BlockType": "Grass", "x": 2, "y": 10},
+		{"BlockType": "Grass", "x": 3, "y": 10},
+		{"BlockType": "Steel", "x": 4, "y": 10},
+		{"BlockType": "Wall", "x": 5, "y": 10},
+		{"BlockType": "Grass", "x": 8, "y": 10},
+		{"BlockType": "Steel", "x": 9, "y": 10},
+		{"BlockType": "Grass", "x": 10, "y": 10},
+		{"BlockType": "Steel", "x": 13, "y": 10},
+		{"BlockType": "Wall", "x": 14, "y": 10},
+		{"BlockType": "Grass", "x": 15, "y": 10},
+		{"BlockType": "Steel", "x": 16, "y": 10},
+		{"BlockType": "Grass", "x": 10, "y": 11}
+	],
+  "Player": {"x": 350, "y": 300},
+  "Enemies": [{"EnemyType": "Light", "x": 100, "y": 100},
+    {"EnemyType": "Light", "x": 100, "y": 100},
+    {"EnemyType": "Light", "x": 100, "y": 100},
+    {"EnemyType": "Light", "x": 100, "y": 100},
+    {"EnemyType": "Light", "x": 100, "y": 100},
+    {"EnemyType": "Middle", "x": 100, "y": 100},
+    {"EnemyType": "Middle", "x": 100, "y": 100},
+    {"EnemyType": "Middle", "x": 100, "y": 100},
+    {"EnemyType": "Middle", "x": 100, "y": 100},
+    {"EnemyType": "Middle", "x": 100, "y": 100},
+    {"EnemyType": "Heavy", "x": 100, "y": 100},
+    {"EnemyType": "Heavy", "x": 100, "y": 100},
+    {"EnemyType": "Heavy", "x": 100, "y": 100},
+    {"EnemyType": "Heavy", "x": 100, "y": 100},
+    {"EnemyType": "Heavy", "x": 100, "y": 100}
+  ],
+  "DropsProbability": {
+    "AddBullet": 0.4,
+    "Clock": 0.05,
+    "Gasoline": 0.05,
+    "Kit": 0.1,
+    "Net": 0.05,
+    "PurpleBullet": 0.05,
+    "Rage": 0.05,
+    "RedBullet": 0.05,
+    "Shield": 0.05,
+    "Snow": 0.05,
+    "Star": 0.05
+  },
+  "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
+  "Bullets": {"AP": 30, "HE": 10, "APCR": 20},
+  "Time": 1800000,
+  "Dialogue": [
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["庆历四年春，滕子京谪守巴陵郡。",
+      "越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧",
+      "制，刻唐贤今人诗赋于其上，属予作文以记之。"]
+    },
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["予观夫巴陵胜状，在洞庭一湖。",
+      "衔远山，吞长江，浩浩汤汤，横无际涯，朝晖夕阴，气",
+      "象万千。此则岳阳楼之大观也，前人之述备矣。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["然则北通巫峡，南极潇湘，迁客骚人，多会于此，览物",
+      "之情，得无异乎？"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["若夫淫雨霏霏，连月不开，阴风怒号，浊浪排空，日星",
+      "隐曜，山岳潜形，商旅不行，樯倾楫摧，薄暮冥冥，虎",
+      "啸猿啼。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极",
+      "而悲者矣。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["至若春和景明，波澜不惊，上下天光，一碧万顷，沙鸥",
+      "翔集，锦鳞游泳，岸芷汀兰，郁郁青青。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌",
+      "互答，此乐何极！"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜",
+      "洋洋者矣。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["嗟夫！予尝求古仁人之心，或异二者之为，何哉？",
+      "不以物喜，不以己悲；居庙堂之高则忧其民；处江湖之",
+      "远则忧其君。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["是进亦忧，退亦忧。然则何时而乐耶？",
+      "其必曰“先天下之忧而忧，后天下之乐而乐”乎！"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["噫！微斯人，吾谁与归？",
+      "时六年九月十五日。"]
+    }
+  ]
+}
