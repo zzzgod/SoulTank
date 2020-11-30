@@ -1,16 +1,28 @@
 import os
 import tkinter as tk
 from tkinter.filedialog import asksaveasfile
+from tkinter.messagebox import showwarning
 
+player_count = 0
 labels = []
 indices = []
-block_names = ['Empty', 'Grass', 'Steel', 'Wall', 'Water']
+item_name = ['Empty', 'Grass', 'Steel', 'Wall', 'Water', 'LightTank', 'MediumTank', 'HeavyTank', 'Player']
 
 
 def set_img(i, j, choice):
     def f():
         n = int(choice.get())
-        if 0 <= n <= 4:
+        global player_count
+        if 0 <= n <= 8:
+            # 控制只能有一个玩家的坦克
+            if indices[i][j] == 8:
+                player_count -= 1
+            if n == 8:
+                if player_count >= 1:
+                    showwarning(title='警告',message='玩家数量不能多于1个。')
+                    return
+                else:
+                    player_count += 1
             labels[i][j]['image'] = imgs[n]
             indices[i][j] = n
         window.update()
@@ -23,16 +35,36 @@ def save():
     # 如果放弃保存
     if file is None:
         return
-    file.write('{\n\t"MapBlocks": [\n')
-    flag = 0
+    # 记录输出字符串, flag用来控制结束时不输出逗号
+    block = ''
+    flag_block = 0
+    enemy_tank = ''
+    flag_enemy_tank = 0
+    player = ''
     for i in range(12):
         for j in range(19):
-            if indices[i][j] != 0:
+            # 记录方块信息
+            if 1 <= indices[i][j] <= 4:
                 # 第一次不输入换行符
-                if flag:
-                    file.write(',\n')
-                flag = 1
-                file.write('\t\t{"BlockType": "%s", "x": %d, "y": %d}' % (block_names[indices[i][j]], j, i))
+                if flag_block:
+                    block += ',\n'
+                flag_block = 1
+                block += '\t\t{"BlockType": "%s", "x": %d, "y": %d}' % (item_name[indices[i][j]], j, i)
+            # 记录敌方坦克信息
+            elif 5 <= indices[i][j] <= 7:
+                if flag_enemy_tank:
+                    enemy_tank += ',\n'
+                flag_enemy_tank = 1
+                enemy_tank += '\t\t{"EnemyType": "%s", "x": %d, "y": %d}' % (item_name[indices[i][j]], j, i)
+            # 记录我方坦克信息
+            elif indices[i][j] == 8:
+                player = '\t"Player": {"x": %d, "y": %d},\n' % (j, i)
+    file.write('{\n\t"MapBlocks": [\n')
+    file.write(block)
+    file.write('\n\t],\n')
+    file.write(player)
+    file.write('\t"Enemies": [\n')
+    file.write(enemy_tank)
     file.write('\n\t]\n}')
     file.close()
 
@@ -45,7 +77,12 @@ if __name__ == '__main__':
             tk.PhotoImage(file='../img/blocks/grass.gif'),
             tk.PhotoImage(file='../img/blocks/steels.gif'),
             tk.PhotoImage(file='../img/blocks/walls.gif'),
-            tk.PhotoImage(file='../img/blocks/water.gif')]
+            tk.PhotoImage(file='../img/blocks/water.gif'),
+            tk.PhotoImage(file='../img/tank/LightTankUp.gif'),
+            tk.PhotoImage(file='../img/tank/MediumTankUp.gif'),
+            tk.PhotoImage(file='../img/tank/HeavyTankUp.gif'),
+            tk.PhotoImage(file='../img/tank/PlayerTankUp.gif'),
+            ]
     # 标题
     window.title('地图编辑器')
     # 设置窗口大小
@@ -60,8 +97,8 @@ if __name__ == '__main__':
     choice.set('0')
     # 生成一堆按钮
     for i in range(1, 9):
-        if i < len(block_names):
-            s = block_names[i]
+        if i < len(item_name):
+            s = item_name[i]
         else:
             s = '啥都没有'
         tk.Checkbutton(frame1, text=s, variable=choice, onvalue=str(i), offvalue='0', width=25,

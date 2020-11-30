@@ -139,11 +139,11 @@ class MyTank(Tank):
         # 区域
         self.rect = self.image.get_rect()
         # 对left和top进行赋值
-        self.rect.left = position['x']
-        self.rect.top = position['y']
+        self.rect.left = position['x'] * 60
+        self.rect.top = position['y'] * 60
         # 坐标，支持小数坐标
-        self.x = position['x']
-        self.y = position['y']
+        self.x = position['x'] * 60
+        self.y = position['y'] * 60
         # 血条框
         self.health_stick_full_rect = pygame.Rect(self.rect.left, self.rect.top - 14, self.rect.width, 4)
         f.close()
@@ -262,7 +262,7 @@ def randDirection():
 
 
 # 创建我方坦克的方法
-def createMytank(MainGame, tank_info: dict):
+def createMytank(tank_info: dict):
     music.Music('img/start.wav')
     return MyTank(tank_info)
 
@@ -271,16 +271,16 @@ def createMytank(MainGame, tank_info: dict):
 def createEnemyTank(MainGame, tank_info: dict):
     for tank in tank_info:
         if tank['EnemyType'] == "Light":
-            enemy = EnemyTank('LightTank', tank['x'], tank['y'])
+            enemy = EnemyTank('LightTank', tank['x'] * 60, tank['y'] * 60)
             MainGame.enemyTankList.append(enemy)
         elif tank['EnemyType'] == "Middle":
-            enemy = EnemyTank('MediumTank', tank['x'], tank['y'])
+            enemy = EnemyTank('MediumTank', tank['x'] * 60, tank['y'] * 60)
             MainGame.enemyTankList.append(enemy)
         elif tank['EnemyType'] == "Heavy":
-            enemy = EnemyTank('HeavyTank', tank['x'], tank['y'])
+            enemy = EnemyTank('HeavyTank', tank['x'] * 60, tank['y'] * 60)
             MainGame.enemyTankList.append(enemy)
         elif tank['EnemyType'] == "Heavy2":
-            enemy = EnemyTank('HeavyTank2', tank['x'], tank['y'])
+            enemy = EnemyTank('HeavyTank2', tank['x'] * 60, tank['y'] * 60)
             MainGame.enemyTankList.append(enemy)
 
 

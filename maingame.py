@@ -84,7 +84,7 @@ class MainGame:
         with open(map_path, 'r', encoding='utf-8') as f:
             MainGame.map_info = json.load(f)
             # 初始化我方坦克
-            MainGame.my_tank = gametank.createMytank(MainGame, MainGame.map_info['Player'])
+            MainGame.my_tank = gametank.createMytank(MainGame.map_info['Player'])
             # 初始化敌方坦克，并将敌方坦克添加到列表中
             gametank.createEnemyTank(MainGame, MainGame.map_info['Enemies'])
             # 初始化墙壁
