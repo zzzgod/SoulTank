@@ -90,17 +90,17 @@
   "Time": 180000,
   "Enemies": [
     {"EnemyType": "Middle", "x": 0, "y": 0},
-    {"EnemyType": "Middle", "x": 500, "y": 0},
-    {"EnemyType": "Middle", "x": 600, "y": 0},
-    {"EnemyType": "Middle", "x": 800, "y": 0},
-    {"EnemyType": "Heavy", "x": 500, "y": 0},
-    {"EnemyType": "Heavy", "x": 600, "y": 0},
-    {"EnemyType": "Heavy", "x": 800, "y": 0},
-    {"EnemyType": "Middle", "x": 400, "y": 120},
-    {"EnemyType": "Middle", "x": 500, "y": 120},
-    {"EnemyType": "Middle", "x": 800, "y": 120},
-    {"EnemyType": "Middle", "x": 700, "y": 0},
-    {"EnemyType": "Middle", "x": 1080, "y": 100}
+    {"EnemyType": "Middle", "x": 8, "y": 0},
+    {"EnemyType": "Middle", "x": 10, "y": 0},
+    {"EnemyType": "Middle", "x": 13, "y": 0},
+    {"EnemyType": "Heavy", "x": 8, "y": 0},
+    {"EnemyType": "Heavy", "x": 10, "y": 0},
+    {"EnemyType": "Heavy", "x": 13, "y": 0},
+    {"EnemyType": "Middle", "x": 7, "y": 2},
+    {"EnemyType": "Middle", "x": 8, "y": 2},
+    {"EnemyType": "Middle", "x": 13, "y": 2},
+    {"EnemyType": "Middle", "x": 15, "y": 0},
+    {"EnemyType": "Middle", "x": 18, "y": 2}
   ],
   "DropsProbability": {
     "AddBullet": 0.4,

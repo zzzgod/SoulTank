@@ -91,12 +91,12 @@
   ],
   "Player": {"x": 350, "y": 600},
   "Enemies": [
-    {"EnemyType": "Middle", "x": 1050, "y": 0}
-   ,{"EnemyType": "Middle", "x": 600, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 800, "y": 100},
-    {"EnemyType": "Middle", "x": 1050, "y": 0},
-    {"EnemyType": "Middle", "x": 100, "y": 100}
+    {"EnemyType": "Middle", "x": 17, "y": 0}
+   ,{"EnemyType": "Middle", "x": 10, "y": 2},
+    {"EnemyType": "Middle", "x": 2, "y": 2},
+    {"EnemyType": "Middle", "x": 13, "y": 2},
+    {"EnemyType": "Middle", "x": 17, "y": 0},
+    {"EnemyType": "Middle", "x": 2, "y": 2}
   ],
   "DropsProbability": {
     "AddBullet": 0.4,

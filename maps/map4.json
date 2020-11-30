@@ -105,13 +105,13 @@
   "Player": {"x": 600, "y": 660},
   "Time": 180000,
   "Enemies": [
-    {"EnemyType": "Heavy2", "x": 600, "y": 60},
-    {"EnemyType": "Middle", "x": 600, "y": 0},
-    {"EnemyType": "Middle", "x": 60, "y": 0},
-    {"EnemyType": "Middle", "x": 960, "y": 0},
-    {"EnemyType": "Light", "x": 600, "y": 0},
-    {"EnemyType": "Heavy", "x": 60, "y": 0},
-    {"EnemyType": "Light", "x": 960, "y": 0}
+    {"EnemyType": "Heavy2", "x": 10, "y": 1},
+    {"EnemyType": "Middle", "x": 10, "y": 0},
+    {"EnemyType": "Middle", "x": 1, "y": 0},
+    {"EnemyType": "Middle", "x": 16, "y": 0},
+    {"EnemyType": "Light", "x": 10, "y": 0},
+    {"EnemyType": "Heavy", "x": 1, "y": 0},
+    {"EnemyType": "Light", "x": 16, "y": 0}
   ],
   "DropsProbability": {
     "AddBullet": 0.4,
