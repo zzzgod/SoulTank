@@ -139,8 +139,8 @@ class MyTank(Tank):
         # 区域
         self.rect = self.image.get_rect()
         # 对left和top进行赋值
-        self.rect.left = position['x']
-        self.rect.top = position['y']
+        self.rect.left = position['x'] * 60
+        self.rect.top = position['y'] * 60
         # 坐标，支持小数坐标
         self.x = position['x'] * 60
         self.y = position['y'] * 60
