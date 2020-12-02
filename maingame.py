@@ -31,6 +31,7 @@ BG_COLOR = pygame.Color(0, 0, 0)
 class MainGame:
     window: pygame.Surface = None
     my_tank: gametank.MyTank = None
+    time_info="30:00"
     # 存储敌方坦克的列表
     enemyTankList = []
     # 存储我方子弹的列表
@@ -116,8 +117,8 @@ class MainGame:
             rest_time = MainGame.time + time_start - time_now
             minute = rest_time // 60000
             second = rest_time % 60000 // 1000
-            time_info = '%02d:%02d' % (minute, second)
-            MainGame.window.blit(Text.getTextSufaceGreen(time_info), (1180, 35))
+            MainGame.time_info = '%02d:%02d' % (minute, second)
+            MainGame.window.blit(Text.getTextSufaceGreen(MainGame.time_info), (1180, 35))
             # 绘制文字
             MainGame.window.blit(Text.getTextSufaceRed('%d' % len(MainGame.enemyTankList)), (1220, 110))
             # 绘制炮弹数量

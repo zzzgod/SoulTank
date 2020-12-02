@@ -40,7 +40,7 @@ class Drop:
             self.image = pygame.image.load('img/drop/Snow.png')
             self.music = gamemusic.Music('img/get_item.wav')
         elif drop_type == 'Star':
-            self.image = pygame.image.load('img/drop/Star.png')
+            self.image = pygame.image.load('img/drop/spare.png')
             self.music = gamemusic.Music('img/get_item.wav')
         else:
             raise ValueError('掉落物格式不匹配。')

@@ -41,21 +41,29 @@ def pause_menu(MainGame):
         if MainGame.my_tank and MainGame.my_tank.live:
             # 展示我方坦克
             MainGame.my_tank.displayTank(MainGame)
-            if MainGame.my_tank.hp > 3:
-                MainGame.window.blit(Text.getTextSufaceGreen('%d' % MainGame.my_tank.hp), (1220, 185))
-            elif MainGame.my_tank.hp > 1:
-                MainGame.window.blit(Text.getTextSufaceYellow('%d' % MainGame.my_tank.hp), (1220, 185))
+            if MainGame.my_tank.status.health > 3:
+                MainGame.window.blit(Text.getTextSufaceGreen('%d' % MainGame.my_tank.status.health), (1220, 185))
+            elif MainGame.my_tank.status.health > 1:
+                MainGame.window.blit(Text.getTextSufaceYellow('%d' % MainGame.my_tank.status.health), (1220, 185))
             else:
-                MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.my_tank.hp), (1220, 185))
+                MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.my_tank.status.health), (1220, 185))
         else:
             # 删除我方坦克
             del MainGame.my_tank
             MainGame.window.blit(Text.getTextSufaceRed('0'), (1220, 185))
             MainGame.my_tank = None
+        # 绘制炮弹数量
+        MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.AP_num), (1220, 260))
+        MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.HE_num), (1220, 335))
+        MainGame.window.blit(Text.getTextSufaceRed('%d' % MainGame.APCR_num), (1220, 410))
+        #时间
+        MainGame.window.blit(Text.getTextSufaceGreen(MainGame.time_info), (1180, 35))
+        # 绘制炮弹选择框
+        pygame.draw.rect(MainGame.window, blue, MainGame.bullet_choice_rect[MainGame.bullet_now], 4)
         # 循环遍历墙壁列表，展示墙壁
         gamewall.blitWall(MainGame)
         # 循环遍历敌方坦克列表，展示敌方坦克
-        gametank.blit_enemy_tank(MainGame, Bullet)
+        gametank.blit_enemy_tank(MainGame)
         # 循环遍历显示我方坦克的子弹
         gamebullet.blitMyBullet(MainGame)
         # 循环遍历敌方子弹列表，展示敌方子弹
