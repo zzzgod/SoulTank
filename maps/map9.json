@@ -105,22 +105,14 @@
 		{"BlockType": "Grass", "x": 17, "y": 11},
 		{"BlockType": "Grass", "x": 18, "y": 11}
 	],
-  "Player": {"x": 350, "y": 300},
-  "Enemies": [{"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100}
+  "Player": {"x": 10, "y": 11},
+  "Enemies": [
+    {"EnemyType": "Light", "x": 8, "y": 2},
+    {"EnemyType": "Middle", "x": 0, "y": 2},
+    {"EnemyType": "Middle", "x": 1, "y": 2},
+    {"EnemyType": "Middle", "x": 0, "y": 3},
+    {"EnemyType": "Heavy", "x": 18, "y": 4},
+    {"EnemyType": "Heavy", "x": 15, "y": 2}
   ],
   "DropsProbability": {
     "AddBullet": 0.4,

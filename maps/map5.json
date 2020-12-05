@@ -91,33 +91,29 @@
 	],
   "Player": {"x": 17, "y": 10},
   "Enemies": [{"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Light", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Middle", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100},
-    {"EnemyType": "Heavy", "x": 100, "y": 100}
+    {"EnemyType": "Light", "x": 0, "y": 2},
+    {"EnemyType": "Light", "x": 1, "y": 2},
+    {"EnemyType": "Middle", "x": 1, "y": 2},
+    {"EnemyType": "Middle", "x": 0, "y": 2},
+    {"EnemyType": "Middle", "x": 1, "y": 2},
+    {"EnemyType": "Middle", "x": 0, "y": 2},
+    {"EnemyType": "Middle", "x": 1, "y": 9},
+    {"EnemyType": "Middle", "x": 0, "y": 9},
+    {"EnemyType": "Heavy", "x": 17, "y": 0},
+    {"EnemyType": "Heavy", "x": 15, "y": 0}
   ],
   "DropsProbability": {
     "AddBullet": 0.4,
-    "Clock": 0.05,
-    "Gasoline": 0.05,
+    "Clock": 0,
+    "Gasoline": 0.4,
     "Kit": 0.1,
-    "Net": 0.05,
-    "PurpleBullet": 0.05,
-    "Rage": 0.05,
-    "RedBullet": 0.05,
-    "Shield": 0.05,
-    "Snow": 0.05,
-    "Star": 0.05
+    "Net": 0,
+    "PurpleBullet": 0,
+    "Rage": 0,
+    "RedBullet": 0,
+    "Shield": 0,
+    "Snow": 0,
+    "Star": 0
   },
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
   "Bullets": {"AP": 30, "HE": 10, "APCR": 20},
@@ -129,9 +125,7 @@
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["庆历四年春，滕子京谪守巴陵郡。",
-      "越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧",
-      "制，刻唐贤今人诗赋于其上，属予作文以记之。"]
+      "Content": ["教官：上次的作战，各位的表现都十分出色。"]
     },
     {
       "Characters":
@@ -139,83 +133,214 @@
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["予观夫巴陵胜状，在洞庭一湖。",
-      "衔远山，吞长江，浩浩汤汤，横无际涯，朝晖夕阴，气",
-      "象万千。此则岳阳楼之大观也，前人之述备矣。"]},
+      "Content": ["教官：这里特别嘉奖523车组，他们遇上了罕见的",
+      "“幽灵虎”，还独自击败了它。你们的实力已经足够加",
+      "入正规军了。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["然则北通巫峡，南极潇湘，迁客骚人，多会于此，览物",
-      "之情，得无异乎？"]},
+      "Content": ["炮手：好耶！正规军！我是不是已经毕业了？"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["若夫淫雨霏霏，连月不开，阴风怒号，浊浪排空，日星",
-      "隐曜，山岳潜形，商旅不行，樯倾楫摧，薄暮冥冥，虎",
-      "啸猿啼。"]},
+      "Content": ["教官：说是实力够了，也仅仅是战斗的实力。你们还有",
+      "很多要学的。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极",
-      "而悲者矣。"]},
+      "Content": ["炮手：唔…"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["至若春和景明，波澜不惊，上下天光，一碧万顷，沙鸥",
-      "翔集，锦鳞游泳，岸芷汀兰，郁郁青青。"]},
+      "Content": ["教官：不过，基于这次各车组出色的表现，我已经和上",
+      "级申请了你们的游学活动。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌",
-      "互答，此乐何极！"]},
+      "Content": ["教官：消息指出，国道106和西部铁路干线的交界处，",
+      "将在不久之后刮起飓风。参观飓风的同时，你们也将面",
+      "临特殊环境下的车辆保养问题。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["教官：届时我将教授你们在荒漠中行军的必要知识，当",
+      "然，也不排除遇到敌人的可能，那么这时候…"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜",
-      "洋洋者矣。"]},
+      "Content": ["驾驶员：我将成为第一个在飓风中飙车的男人！"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["嗟夫！予尝求古仁人之心，或异二者之为，何哉？",
-      "不以物喜，不以己悲；居庙堂之高则忧其民；处江湖之",
-      "远则忧其君。"]},
+      "Content": ["教官：如果你想清洗全排坦克的话，我就特许你吧，即",
+      "将第一个进入飓风的男人。"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1_shadow.png"},
         "Right": {"img": "img/character/angel_1.png"}
       },
-      "Content": ["是进亦忧，退亦忧。然则何时而乐耶？",
-      "其必曰“先天下之忧而忧，后天下之乐而乐”乎！"]},
+      "Content": ["…"]},
     {
       "Characters":
       {
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["噫！微斯人，吾谁与归？",
-      "时六年九月十五日。"]
+      "Content": ["茫茫戈壁，漫漫黄土，在帝国西部的荒漠上，伫立着一",
+      "座小镇。"]
+    },
+        {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["国道106和联通帝国西部的铁路干线交汇于此。有旅人",
+      "在此歇脚，一览大漠风光，也有探险者以此为起点，向",
+      "未知而神秘的荒漠迈去。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["起风了，飓风拔地而起，卷起了层层黄土，也卷起了儿",
+      "时童谣中的回忆。"]
+    },
+        {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["“大漠孤烟直，长河落日圆。”"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["而此时的风暴中，一场危机却即将到来…"]
+    },
+        {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["装填手：没想到你能把这么坚定的意志用在这么蠢的地",
+      "方…"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["驾驶员：少废话，沙尘太大了！我根本看不清前面的状",
+      "况。"]
+    },
+        {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["炮手：所以说，都开进来了，就不要停下来啊。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["我：等等，有情况！"]
+    },
+        {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["我：12点钟方向，有光…"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["教官：…喂喂，523，523，请注意，风暴外发现敌方坦",
+      "克…兹兹…请火速脱离…"]
+    },
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["我：是敌方坦克！倒车后退！"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["驾驶员：（换挡）啧，怎么这么近。"]
+    },
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["我：那是幽灵车，它们并不知道我们在哪，准备开火，",
+      "歼灭它们！"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["教官：我们发现敌方坦克的燃油可以短时间内大幅增加",
+      "发动机输出…兹兹…如果能获取的话…"]
+    },
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["驾驶员：了解，到时候就看我的吧。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["教官：…务必小心…"]
     }
   ]
 }

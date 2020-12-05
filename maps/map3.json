@@ -103,20 +103,20 @@
     {"EnemyType": "Middle", "x": 18, "y": 2}
   ],
   "DropsProbability": {
-    "AddBullet": 0.4,
-    "Clock": 0.05,
-    "Gasoline": 0.05,
-    "Kit": 0.1,
-    "Net": 0.05,
-    "PurpleBullet": 0.05,
-    "Rage": 0.05,
-    "RedBullet": 0.05,
-    "Shield": 0.05,
-    "Snow": 0.05,
-    "Star": 0.05
+    "AddBullet": 0.8,
+    "Clock": 0,
+    "Gasoline": 0,
+    "Kit": 0.2,
+    "Net": 0,
+    "PurpleBullet": 0,
+    "Rage": 0,
+    "RedBullet": 0,
+    "Shield": 0,
+    "Snow": 0,
+    "Star": 0
   },
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
-  "Bullets": {"AP": 50, "HE": 10, "APCR": 0},
+  "Bullets": {"AP": 30, "HE": 10, "APCR": 0},
   "Dialogue": [
     {
       "Characters":
@@ -188,6 +188,37 @@
       },
       "Content": ["教官：咳咳，总之，利用你们的速度优势，灵活的攻击。",
       "有危险要第一时间报告。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["教官：另外，为了帮助你们渡过难关，训练营在训练坦",
+      "克上准备了一些补给。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["教官：消灭敌方坦克时，你就会看到它。拾取补给，可",
+      "以让补充弹药和坦克耐久。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1.png"},
+        "Right": {"img": "img/character/angel_1_shadow.png"}
+      },
+      "Content": ["装填手：我说这次为什么炮弹给的那么少…原来是这样。"]},
+    {
+      "Characters":
+      {
+        "Left": {"img": "img/character/texas_1_shadow.png"},
+        "Right": {"img": "img/character/angel_1.png"}
+      },
+      "Content": ["教官：在真正的战斗中，敌人身上的装备可不会这么简",
+      "单的到手。利用好这次机会好好练习练习吧！"]},
     {
       "Characters":
       {
