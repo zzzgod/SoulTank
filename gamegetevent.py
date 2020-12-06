@@ -103,6 +103,7 @@ def getEvent(MainGame):
                     fullscreen = 1
             # 退出游戏
             elif event.key == pygame.K_BACKSPACE:
+                MainGame.enemyBatteryList.clear()
                 MainGame.enemyTankList.clear()
                 MainGame.myBulletList.clear()
                 MainGame.enemyBulletList.clear()

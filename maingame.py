@@ -11,7 +11,8 @@ from gamevictory import victory
 from gamedefeat import defeat
 import gamedrop
 import game_show_imformation
-import gametext
+import gamearchitecture
+from gamecheck import *
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
@@ -28,12 +29,15 @@ BG_COLOR = pygame.Color(0, 0, 0)
   
 '''
 
+
 class MainGame:
     window: pygame.Surface = None
     my_tank: gametank.MyTank = None
-    time_info="30:00"
+    time_info = "30:00"
     # 存储敌方坦克的列表
     enemyTankList = []
+    # 存储敌方炮塔的列表
+    enemyBatteryList = []
     # 存储我方子弹的列表
     myBulletList = []
     # 我方当前选中的炮弹
@@ -68,6 +72,7 @@ class MainGame:
     time_start = 0
     # 时间上限
     time = 0
+
     # 开始游戏
     @staticmethod
     def startGame(n):
@@ -85,9 +90,9 @@ class MainGame:
         with open(map_path, 'r', encoding='utf-8') as f:
             MainGame.map_info = json.load(f)
             # 初始化我方坦克
-            MainGame.my_tank = gametank.createMytank(MainGame.map_info['Player'])
-            # 初始化敌方坦克，并将敌方坦克添加到列表中
-            gametank.createEnemyTank(MainGame, MainGame.map_info['Enemies'])
+            MainGame.my_tank = createMytank(MainGame.map_info['Player'])
+            # 初始化敌人，并将敌人添加到列表中
+            create_enemy(MainGame, MainGame.map_info['Enemies'])
             # 初始化墙壁
             gamewall.createWall(MainGame, MainGame.map_info['MapBlocks'])
             # 读取我方炮弹数量
@@ -144,21 +149,25 @@ class MainGame:
                 MainGame.window.blit(Text.getTextSufaceRed('0'), (1220, 185))
                 MainGame.my_tank = None
             # 循环遍历敌方坦克列表，检查敌方坦克
-            gametank.check_enemy_tank(MainGame, Bullet)
+            check_enemy_tank(MainGame)
+            # 循环遍历敌方炮塔列表，检查敌方炮塔
+            check_enemy_battery(MainGame)
             # 循环遍历检查我方坦克的子弹
-            gamebullet.checkMyBullet(MainGame)
+            checkMyBullet(MainGame)
             # 循环遍历检查掉落物
             gamedrop.check_drop(MainGame)
             # 循环遍历敌方子弹列表，检查敌方子弹
-            gamebullet.checkEnemyBullet(MainGame)
+            checkEnemyBullet(MainGame)
             # 循环遍历墙壁列表，展示墙壁
             gamewall.blitWall(MainGame)
             # 循环遍历敌方坦克列表，展示敌方坦克
-            gametank.blit_enemy_tank(MainGame)
+            blit_enemy_tank(MainGame)
+            # 循环遍历敌方坦克列表，展示敌方炮塔
+            blit_enemy_architecture(MainGame)
             # 循环遍历显示我方坦克的子弹
-            gamebullet.blitMyBullet(MainGame)
+            blitMyBullet(MainGame)
             # 循环遍历敌方子弹列表，展示敌方子弹
-            gamebullet.blitEnemyBullet(MainGame)
+            blitEnemyBullet(MainGame)
             # 循环遍历掉落物列表，展示敌方掉落物
             gamedrop.blit_drop(MainGame)
             # 循环遍历草列表，展示草
@@ -173,6 +182,7 @@ class MainGame:
             # 判断是否有敌人剩余
             if not MainGame.enemyTankList:
                 if victory().startGame(n):
+                    MainGame.enemyBatteryList.clear()
                     MainGame.enemyTankList.clear()
                     MainGame.myBulletList.clear()
                     MainGame.enemyBulletList.clear()
@@ -195,6 +205,7 @@ class MainGame:
                     MainGame.my_tank.myTank_hit_enemyTank(MainGame)
             else:
                 if defeat().fail(n):
+                    MainGame.enemyBatteryList.clear()
                     MainGame.enemyTankList.clear()
                     MainGame.myBulletList.clear()
                     MainGame.dropList.clear()
@@ -208,3 +219,24 @@ class MainGame:
                     MainGame.dropList.clear()
                 return
             pygame.display.update()
+
+
+# 初始化敌人，并将敌人添加到列表中
+def create_enemy(MainGame, enemy_info: dict):
+    for enemy in enemy_info:
+        if enemy['EnemyType'] == "Light":
+            enemy = gametank.EnemyTank('LightTank', enemy['x'] * 60, enemy['y'] * 60)
+            MainGame.enemyTankList.append(enemy)
+        elif enemy['EnemyType'] == "Middle":
+            enemy = gametank.EnemyTank('MediumTank', enemy['x'] * 60, enemy['y'] * 60)
+            MainGame.enemyTankList.append(enemy)
+        elif enemy['EnemyType'] == "Heavy":
+            enemy = gametank.EnemyTank('HeavyTank', enemy['x'] * 60, enemy['y'] * 60)
+            MainGame.enemyTankList.append(enemy)
+        elif enemy['EnemyType'] == "Heavy2":
+            enemy = gametank.EnemyTank('HeavyTank2', enemy['x'] * 60, enemy['y'] * 60)
+            MainGame.enemyTankList.append(enemy)
+        elif enemy['EnemyType'] == "Battery":
+            enemy = gamearchitecture.Battery('Battery', enemy['x'] * 60, enemy['y'] * 60)
+            MainGame.enemyBatteryList.append(enemy)
+

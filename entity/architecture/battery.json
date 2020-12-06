@@ -1,0 +1,9 @@
+{
+  "Height": 2,
+  "Width": 2,
+  "Health": 1200,
+  "Bullet": "AP203",
+  "FireRate": 2000,
+  "Armor": 120,
+  "img": "img/architecture/battery.png"
+}
