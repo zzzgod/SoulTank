@@ -222,6 +222,10 @@ def bullet_hit_architecture(bullet, MainGame, arch_type):
                     enemyBattery.live = False
                     music.Music('img/enemy1_explode.wav')
                 bullet.live = False
+                # 创建爆炸对象
+                explode = gameExplode.Explode(enemyBattery)
+                # 将爆炸对象添加到爆炸列表中
+                MainGame.explodeList.append(explode)
                 # 添加伤害数字特效
                 sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(damage), font_size=54,
                                                color=pygame.color.Color(255, 109, 29))

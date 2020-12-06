@@ -1,8 +1,8 @@
 {
   "Speed": 6,
-  "Damage": 300,
+  "Damage": 1000,
   "Penetration": 85,
-  "FireRate": 4,
+  "FireRate": 10,
   "DamageReductionRate": 0.3,
-  "img": "img/bullet/AP122.gif"
+  "img": "img/bullet/HE203.png"
 }

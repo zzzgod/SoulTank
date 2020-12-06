@@ -120,8 +120,8 @@ class EnemyBatteryBullet(gamebullet.Bullet):
     def __init__(self, arch: Battery, bullet_type):
         super(EnemyBatteryBullet, self).__init__()
         f = None
-        if bullet_type == 'AP203':
-            f = open('entity/bullet/AP203.json')
+        if bullet_type == 'HE203':
+            f = open('entity/bullet/HE203.json')
         if f is not None:
             bullet_info: dict = json.load(f)
             # 子弹的贴图

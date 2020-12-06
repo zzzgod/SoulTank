@@ -110,7 +110,8 @@
     {"EnemyType": "Middle", "x": 1, "y": 10},
     {"EnemyType": "Middle", "x": 10, "y": 10},
     {"EnemyType": "Heavy", "x": 13, "y": 7},
-    {"EnemyType": "Heavy", "x": 13, "y": 5}
+    {"EnemyType": "Heavy", "x": 13, "y": 5},
+    {"EnemyType": "Battery", "x": 3, "y": 5}
   ],
   "DropsProbability": {
     "AddBullet": 0.4,

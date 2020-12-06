@@ -1,15 +1,12 @@
-import music
 from gamebullet import MyBullet
 import pygame, time
+import gamemusic
 import gamewall
-import gametank
-import gameExplode
-from gamebullet import Bullet
-import gamebullet
 import Text
 from constant import *
 import game_show_imformation
-import gamemusic
+import gamearchitecture
+from gamecheck import *
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
@@ -63,11 +60,15 @@ def pause_menu(MainGame):
         # 循环遍历墙壁列表，展示墙壁
         gamewall.blitWall(MainGame)
         # 循环遍历敌方坦克列表，展示敌方坦克
-        gametank.blit_enemy_tank(MainGame)
+        blit_enemy_tank(MainGame)
+        # 循环遍历敌方坦克列表，展示敌方炮塔
+        blit_enemy_architecture(MainGame)
         # 循环遍历显示我方坦克的子弹
-        gamebullet.blitMyBullet(MainGame)
+        blitMyBullet(MainGame)
         # 循环遍历敌方子弹列表，展示敌方子弹
-        gamebullet.blitEnemyBullet(MainGame)
+        blitEnemyBullet(MainGame)
+        # 循环遍历掉落物列表，展示敌方掉落物
+        gamedrop.blit_drop(MainGame)
         # 循环遍历草列表，展示草
         gamewall.blitGrass(MainGame)
         # 循环遍历爆炸列表，展示爆炸效果

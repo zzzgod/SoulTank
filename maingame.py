@@ -180,20 +180,36 @@ class MainGame:
             MainGame.sprite_group.update(time_now)
             MainGame.sprite_group.draw(MainGame.window)
             # 判断是否有敌人剩余
-            if not MainGame.enemyTankList:
-                if victory().startGame(n):
-                    MainGame.enemyBatteryList.clear()
-                    MainGame.enemyTankList.clear()
-                    MainGame.myBulletList.clear()
-                    MainGame.enemyBulletList.clear()
-                    MainGame.explodeList.clear()
-                    MainGame.explodebigList.clear()
-                    MainGame.explodesmallList.clear()
-                    MainGame.wallList.clear()
-                    MainGame.waterList.clear()
-                    MainGame.grassList.clear()
-                    MainGame.dropList.clear()
-                    return
+            if n==6:
+                if not MainGame.enemyBatteryList:
+                    if victory().startGame(n):
+                        MainGame.enemyBatteryList.clear()
+                        MainGame.enemyTankList.clear()
+                        MainGame.myBulletList.clear()
+                        MainGame.enemyBulletList.clear()
+                        MainGame.explodeList.clear()
+                        MainGame.explodebigList.clear()
+                        MainGame.explodesmallList.clear()
+                        MainGame.wallList.clear()
+                        MainGame.waterList.clear()
+                        MainGame.grassList.clear()
+                        MainGame.dropList.clear()
+                        return
+            else:
+                if not MainGame.enemyTankList:
+                    if victory().startGame(n):
+                        MainGame.enemyBatteryList.clear()
+                        MainGame.enemyTankList.clear()
+                        MainGame.myBulletList.clear()
+                        MainGame.enemyBulletList.clear()
+                        MainGame.explodeList.clear()
+                        MainGame.explodebigList.clear()
+                        MainGame.explodesmallList.clear()
+                        MainGame.wallList.clear()
+                        MainGame.waterList.clear()
+                        MainGame.grassList.clear()
+                        MainGame.dropList.clear()
+                        return
             # 如果坦克的开关是开启，才可以移动
             # 超时也是失败
             if MainGame.my_tank and MainGame.my_tank.live and rest_time >= 0:
