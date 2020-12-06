@@ -7,12 +7,13 @@ import gamebullet
 import gamebuff
 
 
-class Tank:
+class Tank(pygame.sprite.Sprite):
     health_stick_bg_color = pygame.color.Color(79, 79, 79)
     health_stick_fg_color = pygame.color.Color(57, 229, 225)
 
     # 添加距离左边left 距离上边top
     def __init__(self):
+        super().__init__()
         # 图片集
         self.images = None
         # 坦克的属性集
@@ -77,7 +78,7 @@ class Tank:
 
     # 射击
     def shot(self):
-        return gamebullet.Bullet(self)
+        pass
 
     # 停止
     def stay(self):
@@ -93,6 +94,10 @@ class Tank:
         for water in MainGame.waterList:
             if pygame.sprite.collide_rect(self, water):
                 # 将坐标设置为移动之前的坐标
+                self.stay()
+        # 和建筑的碰撞
+        for arch in MainGame.enemyBatteryList:
+            if pygame.sprite.collide_rect(self, arch):
                 self.stay()
 
     # 展示坦克的方法
@@ -239,13 +244,7 @@ class EnemyTank(Tank):
             self.time = now_time
             # 确定下次开炮时间
             self.next_fire = self.status.fire_rate * (random.random() * 0.6 + 0.7)
-            return gamebullet.EnemyBullet(self, self.info['Bullet'])
-
-
-# 敌方坦克与我方坦克是否发生碰撞
-def enemyTank_hit_myTank(enemyTank, MainGame):
-    if pygame.sprite.collide_rect(enemyTank, MainGame.my_tank):
-        enemyTank.stay()
+            return gamebullet.EnemyTankBullet(self, self.info['Bullet'])
 
 
 # 随机生成敌方坦克的方向
@@ -259,81 +258,3 @@ def randDirection():
         return "L"
     elif num == 4:
         return 'R'
-
-
-# 创建我方坦克的方法
-def createMytank(tank_info: dict):
-    music.Music('img/start.wav')
-    return MyTank(tank_info)
-
-
-# 初始化敌方坦克，并将敌方坦克添加到列表中
-def createEnemyTank(MainGame, tank_info: dict):
-    for tank in tank_info:
-        if tank['EnemyType'] == "Light":
-            enemy = EnemyTank('LightTank', tank['x'] * 60, tank['y'] * 60)
-            MainGame.enemyTankList.append(enemy)
-        elif tank['EnemyType'] == "Middle":
-            enemy = EnemyTank('MediumTank', tank['x'] * 60, tank['y'] * 60)
-            MainGame.enemyTankList.append(enemy)
-        elif tank['EnemyType'] == "Heavy":
-            enemy = EnemyTank('HeavyTank', tank['x'] * 60, tank['y'] * 60)
-            MainGame.enemyTankList.append(enemy)
-        elif tank['EnemyType'] == "Heavy2":
-            enemy = EnemyTank('HeavyTank2', tank['x'] * 60, tank['y'] * 60)
-            MainGame.enemyTankList.append(enemy)
-
-
-# 循环遍历敌方坦克列表，展示敌方坦克
-def blit_enemy_tank(MainGame):
-    for enemyTank in MainGame.enemyTankList:
-        # 判断当前敌方坦克是否活着
-        if enemyTank.live:
-            enemyTank.displayTank(MainGame)
-
-
-# 循环遍历敌方坦克列表，检查敌方坦克
-def check_enemy_tank(MainGame, Bullet):
-    for enemyTank in MainGame.enemyTankList:
-        # 判断当前敌方坦克是否活着
-        if enemyTank.live:
-            enemyTank.randMove()
-            # 调用检测是否与墙壁碰撞
-            enemyTank.hit_wall(MainGame)
-            # 检测敌方坦克是否与我方坦克发生碰撞
-            if MainGame.my_tank and MainGame.my_tank.live:
-                enemyTank_hit_myTank(enemyTank, MainGame)
-            # 发射子弹
-            enemyBullet = enemyTank.shot()
-            # 敌方子弹是否是None，如果不为None则添加到敌方子弹列表中
-            if enemyBullet:
-                # 加一次buff
-                enemyTank.status.buff_bullet(enemyBullet)
-                # 将敌方子弹存储到敌方子弹列表中
-                MainGame.enemyBulletList.append(enemyBullet)
-        else:  # 不活着，从敌方坦克列表中移除
-            # 获取一个随机数
-            rand = random.random()
-            # 记录前缀和
-            record = 0
-            # 添加掉落物，按概率抽取
-            for key in MainGame.drops_probability:
-                record += MainGame.drops_probability[key]
-                if rand <= record:
-                    MainGame.dropList.append(gamedrop.Drop(enemyTank, key))
-                    break
-            MainGame.enemyTankList.remove(enemyTank)
-
-
-# 计算子弹伤害
-def calculate_bullet_damage(tank: Tank, bullet: gamebullet.Bullet):
-    # 子弹穿透力
-    penetration = bullet.penetration * (random.random() * 0.4 + 0.8)
-    # 基础伤害
-    damage = bullet.damage * (random.random() * 0.4 + 0.8)
-    # 未击穿的伤害减益
-    if penetration < tank.status.armor:
-        damage *= bullet.damage_reduction_rate
-    # 对伤害取整
-    damage = int(damage)
-    return damage
