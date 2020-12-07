@@ -155,3 +155,49 @@ class EnemyBatteryBullet(gamebullet.Bullet):
         self.rect.left += self.speed_x
         self.rect.top += self.speed_y
 
+class Command(Architecture):
+    def __init__(self, arch_type, left, top):
+        super(Command, self).__init__()
+        # 设置位置坐标
+        self.x = left
+        self.y = top
+        f = None
+        # 读取配置信息
+        if arch_type == 'Command':
+            f = open('entity/architecture/command.json')
+        if f is not None:
+            self.info = json.load(f)
+            self.width = self.info['Width'] * 60
+            self.height = self.info['Height'] * 60
+            self.health = self.info['Health']
+            self.max_health = self.health
+            self.armor = self.info['Armor']
+            self.initial_image = pygame.image.load(self.info['img'])
+            self.image = self.initial_image
+        else:
+            raise ValueError('不合法的建筑名。')
+        # 碰撞框
+        self.rect = self.image.get_rect()
+        self.rect.left = self.x
+        self.rect.top = self.y
+        # 初始中心
+        self.center = self.rect.center
+        # 更新血条框的位置
+        self.health_stick_full_rect = pygame.Rect(self.x, self.y - 14, self.width, 4)
+
+    def aim(self):
+        rect = self.image.get_rect(center=self.center)
+        return rect
+
+    def display(self, MainGame):
+        if self.health != self.max_health:
+            # 显示血条
+            pygame.draw.rect(MainGame.window, health_stick_bg_color, self.health_stick_full_rect)
+            # 当前血量的比例显示血条
+            health_stick_rect = self.health_stick_full_rect
+            health_stick_rect.width = self.health / self.max_health * self.width
+            pygame.draw.rect(MainGame.window, health_stick_fg_color, health_stick_rect)
+        # 瞄准，获得当前图片位置
+        rect = self.aim()
+        # 调用blit方法展示
+        MainGame.window.blit(self.image, (rect.left, rect.top))

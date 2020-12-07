@@ -38,6 +38,8 @@ class MainGame:
     enemyTankList = []
     # 存储敌方炮塔的列表
     enemyBatteryList = []
+    #存储敌方指挥部的列表
+    enemyCommandList = []
     # 存储我方子弹的列表
     myBulletList = []
     # 我方当前选中的炮弹
@@ -152,6 +154,8 @@ class MainGame:
             check_enemy_tank(MainGame)
             # 循环遍历敌方炮塔列表，检查敌方炮塔
             check_enemy_battery(MainGame)
+            # 循环遍历敌方指挥部列表，检查敌方指挥部
+            check_enemy_command(MainGame)
             # 循环遍历检查我方坦克的子弹
             checkMyBullet(MainGame)
             # 循环遍历检查掉落物
@@ -199,6 +203,7 @@ class MainGame:
                 if not MainGame.enemyTankList:
                     if victory().startGame(n):
                         MainGame.enemyBatteryList.clear()
+                        MainGame.enemyCommandList.clear()
                         MainGame.enemyTankList.clear()
                         MainGame.myBulletList.clear()
                         MainGame.enemyBulletList.clear()
@@ -222,6 +227,7 @@ class MainGame:
             else:
                 if defeat().fail(n):
                     MainGame.enemyBatteryList.clear()
+                    MainGame.enemyCommandList.clear()
                     MainGame.enemyTankList.clear()
                     MainGame.myBulletList.clear()
                     MainGame.dropList.clear()
@@ -255,4 +261,7 @@ def create_enemy(MainGame, enemy_info: dict):
         elif enemy['EnemyType'] == "Battery":
             enemy = gamearchitecture.Battery('Battery', enemy['x'] * 60, enemy['y'] * 60)
             MainGame.enemyBatteryList.append(enemy)
+        elif enemy['EnemyType'] == "Command":
+            enemy = gamearchitecture.Command('Command', enemy['x'] * 60, enemy['y'] * 60)
+            MainGame.enemyCommandList.append(enemy)
 

@@ -3,7 +3,7 @@
   "Width": 2,
   "Health": 1200,
   "Bullet": "HE203",
-  "FireRate": 10000,
+  "FireRate": 5000,
   "Armor": 120,
   "img": "img/architecture/battery.png"
 }

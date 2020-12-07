@@ -1,0 +1,9 @@
+{
+  "Height": 2,
+  "Width": 2,
+  "Health": 3000,
+  "Bullet": "HE203",
+  "FireRate": 5000,
+  "Armor": 0,
+  "img": "img/architecture/base.png"
+}

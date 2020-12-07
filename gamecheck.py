@@ -106,8 +106,11 @@ def blit_enemy_tank(MainGame):
 
 # 循环遍历敌方建筑列表，展示敌方坦克
 def blit_enemy_architecture(MainGame):
+    for arch in MainGame.enemyCommandList:
+        arch.display(MainGame)
     for arch in MainGame.enemyBatteryList:
         arch.display(MainGame)
+
 
 
 # 循环遍历敌方坦克列表，检查敌方坦克
@@ -185,6 +188,7 @@ def checkMyBullet(MainGame):
             hit_wall(myBullet, MainGame)
             # 检测是否和炮塔发生碰撞
             bullet_hit_architecture(myBullet, MainGame, 'EnemyBattery')
+            bullet_hit_architecture(myBullet, MainGame, 'EnemyCommand')
         # 否则在列表中删除
         else:
             MainGame.myBulletList.remove(myBullet)
@@ -233,6 +237,26 @@ def bullet_hit_architecture(bullet, MainGame, arch_type):
                 break
     elif arch_type == 'PlayerBattery':
         pass
+    elif arch_type == 'EnemyCommand':
+        # 循环遍历敌方炮塔列表，判断是否发生碰撞
+        for enemyCommand in MainGame.enemyCommandList:
+            if pygame.sprite.collide_rect(enemyCommand, bullet):
+                # 修改敌方炮塔和我方子弹的状态
+                damage = calculate_bullet_damage_architecture(enemyCommand, bullet)
+                enemyCommand.health -= damage
+                if enemyCommand.health <= 0:
+                    enemyCommand.live = False
+                    music.Music('img/enemy1_explode.wav')
+                bullet.live = False
+                # 创建爆炸对象
+                explode = gameExplode.Explode(enemyCommand)
+                # 将爆炸对象添加到爆炸列表中
+                MainGame.explodeList.append(explode)
+                # 添加伤害数字特效
+                sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(damage), font_size=54,
+                                               color=pygame.color.Color(255, 109, 29))
+                MainGame.sprite_group.add(sprite)
+                break
 
 
 # 循环遍历敌方炮塔列表，检查敌方炮塔
@@ -249,6 +273,15 @@ def check_enemy_battery(MainGame):
         # 死了，从敌方炮塔列表中移除
         else:
             MainGame.enemyBatteryList.remove(enemy_battery)
+
+def check_enemy_command(MainGame):
+    for enemy_command in MainGame.enemyCommandList:
+        # 判断当前敌方炮塔是否活着
+        if enemy_command.live:
+            pass
+        # 死了，从敌方炮塔列表中移除
+        else:
+            MainGame.enemyCommandList.remove(enemy_command)
 
 
 # 计算子弹伤害

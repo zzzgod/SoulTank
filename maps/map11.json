@@ -111,7 +111,8 @@
     {"EnemyType": "Heavy", "x": 8, "y": 4},
     {"EnemyType": "Heavy", "x": 10, "y": 4},
     {"EnemyType": "Heavy", "x": 9, "y": 3},
-    {"EnemyType": "Heavy", "x": 9, "y": 5}
+    {"EnemyType": "Heavy", "x": 9, "y": 5},
+    {"EnemyType": "Command", "x": 17, "y": 1}
   ],
   "DropsProbability": {
     "AddBullet": 0.4,
