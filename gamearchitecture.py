@@ -177,7 +177,10 @@ class myBattery(Architecture):
             health_stick_rect.width = self.health / self.max_health * self.width
             pygame.draw.rect(MainGame.window, health_stick_fg_color, health_stick_rect)
         # 瞄准，获得当前图片位置
-        rect = self.aim(MainGame.enemyTankList[0])
+        if len(MainGame.enemyTankList)!=0:
+            rect = self.aim(MainGame.enemyTankList[0])
+        else:
+            rect = self.aim(MainGame.my_tank)
         # 调用blit方法展示
         MainGame.window.blit(self.image, (rect.left, rect.top))
 
