@@ -99,6 +99,15 @@ class Tank(pygame.sprite.Sprite):
         for arch in MainGame.enemyBatteryList:
             if pygame.sprite.collide_rect(self, arch):
                 self.stay()
+        for arch in MainGame.myBatteryList:
+            if pygame.sprite.collide_rect(self, arch):
+                self.stay()
+        for arch in MainGame.enemyCommandList:
+            if pygame.sprite.collide_rect(self, arch):
+                self.stay()
+        for arch in MainGame.myCommandList:
+            if pygame.sprite.collide_rect(self, arch):
+                self.stay()
 
     # 展示坦克的方法
     def displayTank(self, MainGame):

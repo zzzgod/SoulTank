@@ -99,8 +99,9 @@
 		{"BlockType": "Grass", "x": 11, "y": 11},
 		{"BlockType": "Grass", "x": 16, "y": 11},
 		{"BlockType": "Grass", "x": 17, "y": 11},
-		{"BlockType": "Water", "x": 18, "y": 11}
-	],
+		{"BlockType": "Water", "x": 18, "y": 11},
+        {"BlockType": "Wall", "x": 8, "y": 9}
+  ],
   "Player": {"x": 12, "y": 9},
   "Enemies": [
     {"EnemyType": "Light", "x": 15, "y": 3},
@@ -115,7 +116,8 @@
     {"EnemyType": "Heavy", "x": 5, "y": 2},
     {"EnemyType": "Heavy", "x": 6, "y": 2},
     {"EnemyType": "Heavy", "x": 4, "y": 9},
-    {"EnemyType": "Heavy", "x": 5, "y": 9}
+    {"EnemyType": "Heavy", "x": 5, "y": 9},
+    {"EnemyType": "myBattery", "x": 9, "y": 9}
   ],
   "DropsProbability": {
     "AddBullet": 0.4,

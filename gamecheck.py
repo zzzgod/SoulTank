@@ -110,6 +110,10 @@ def blit_enemy_architecture(MainGame):
         arch.display(MainGame)
     for arch in MainGame.enemyBatteryList:
         arch.display(MainGame)
+    for arch in MainGame.myCommandList:
+        arch.display(MainGame)
+    for arch in MainGame.myBatteryList:
+        arch.display(MainGame)
 
 
 
@@ -210,6 +214,10 @@ def checkEnemyBullet(MainGame):
             bullet_hit_tank(enemyBullet, MainGame, 'PlayerTank')
             # 检测敌方子弹是否与墙壁碰撞
             hit_wall(enemyBullet, MainGame)
+            #检测敌方子弹是否与我方指挥部碰撞
+            bullet_hit_architecture(enemyBullet, MainGame, 'MyCommand')
+            bullet_hit_architecture(enemyBullet, MainGame, 'MyBattery')
+
         else:
             MainGame.enemyBulletList.remove(enemyBullet)
 
@@ -257,6 +265,46 @@ def bullet_hit_architecture(bullet, MainGame, arch_type):
                                                color=pygame.color.Color(255, 109, 29))
                 MainGame.sprite_group.add(sprite)
                 break
+    elif arch_type == 'MyCommand':
+        # 循环遍历我方炮塔列表，判断是否发生碰撞
+        for myCommand in MainGame.myCommandList:
+            if pygame.sprite.collide_rect(myCommand, bullet):
+                # 修改敌方炮塔和我方子弹的状态
+                damage = calculate_bullet_damage_architecture(myCommand, bullet)
+                myCommand.health -= damage
+                if myCommand.health <= 0:
+                    myCommand.live = False
+                    music.Music('img/enemy1_explode.wav')
+                bullet.live = False
+                # 创建爆炸对象
+                explode = gameExplode.Explode(myCommand)
+                # 将爆炸对象添加到爆炸列表中
+                MainGame.explodeList.append(explode)
+                # 添加伤害数字特效
+                sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(damage), font_size=54,
+                                               color=pygame.color.Color(255, 109, 29))
+                MainGame.sprite_group.add(sprite)
+                break
+    if arch_type == 'MyBattery':
+        # 循环遍历敌方炮塔列表，判断是否发生碰撞
+        for myBattery in MainGame.myBatteryList:
+            if pygame.sprite.collide_rect(myBattery, bullet):
+                # 修改敌方炮塔和我方子弹的状态
+                damage = calculate_bullet_damage_architecture(myBattery, bullet)
+                myBattery.health -= damage
+                if myBattery.health <= 0:
+                    myBattery.live = False
+                    music.Music('img/enemy1_explode.wav')
+                bullet.live = False
+                # 创建爆炸对象
+                explode = gameExplode.Explode(myBattery)
+                # 将爆炸对象添加到爆炸列表中
+                MainGame.explodeList.append(explode)
+                # 添加伤害数字特效
+                sprite = gametext.FlashMessage(bullet.rect.left, bullet.rect.top, 300, str(damage), font_size=54,
+                                               color=pygame.color.Color(255, 109, 29))
+                MainGame.sprite_group.add(sprite)
+                break
 
 
 # 循环遍历敌方炮塔列表，检查敌方炮塔
@@ -274,6 +322,20 @@ def check_enemy_battery(MainGame):
         else:
             MainGame.enemyBatteryList.remove(enemy_battery)
 
+def check_my_battery(MainGame):
+    for my_battery in MainGame.myBatteryList:
+        # 判断当前敌方炮塔是否活着
+        if my_battery.live:
+            # 发射子弹
+            bullet = my_battery.shot()
+            # 敌方子弹是否是None，如果不为None则添加到敌方子弹列表中
+            if bullet:
+                # 将敌方子弹存储到敌方子弹列表中
+                MainGame.myBulletList.append(bullet)
+        # 死了，从敌方炮塔列表中移除
+        else:
+            MainGame.myBatteryList.remove(my_battery)
+
 def check_enemy_command(MainGame):
     for enemy_command in MainGame.enemyCommandList:
         # 判断当前敌方炮塔是否活着
@@ -282,6 +344,15 @@ def check_enemy_command(MainGame):
         # 死了，从敌方炮塔列表中移除
         else:
             MainGame.enemyCommandList.remove(enemy_command)
+
+def check_my_command(MainGame):
+    for my_command in MainGame.myCommandList:
+        # 判断当前敌方炮塔是否活着
+        if my_command.live:
+            pass
+        # 死了，从敌方炮塔列表中移除
+        else:
+            MainGame.myCommandList.remove(my_command)
 
 
 # 计算子弹伤害

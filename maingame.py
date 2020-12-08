@@ -13,6 +13,7 @@ import gamedrop
 import game_show_imformation
 import gamearchitecture
 from gamecheck import *
+import v_or_d
 
 BG_COLOR = pygame.Color(0, 0, 0)
 
@@ -40,6 +41,10 @@ class MainGame:
     enemyBatteryList = []
     #存储敌方指挥部的列表
     enemyCommandList = []
+    #存储我方指挥部的列表
+    myCommandList = []
+    #存储我方炮台
+    myBatteryList = []
     # 存储我方子弹的列表
     myBulletList = []
     # 我方当前选中的炮弹
@@ -154,8 +159,12 @@ class MainGame:
             check_enemy_tank(MainGame)
             # 循环遍历敌方炮塔列表，检查敌方炮塔
             check_enemy_battery(MainGame)
+            # 循环遍历我方炮塔列表，检查我方炮塔
+            check_my_battery(MainGame)
             # 循环遍历敌方指挥部列表，检查敌方指挥部
             check_enemy_command(MainGame)
+            # 循环遍历我方指挥部列表，检查我方指挥部
+            check_my_command(MainGame)
             # 循环遍历检查我方坦克的子弹
             checkMyBullet(MainGame)
             # 循环遍历检查掉落物
@@ -183,62 +192,8 @@ class MainGame:
             # 显示特效
             MainGame.sprite_group.update(time_now)
             MainGame.sprite_group.draw(MainGame.window)
-            # 判断是否有敌人剩余
-            if n==6:
-                if not MainGame.enemyBatteryList:
-                    if victory().startGame(n):
-                        MainGame.enemyBatteryList.clear()
-                        MainGame.enemyTankList.clear()
-                        MainGame.myBulletList.clear()
-                        MainGame.enemyBulletList.clear()
-                        MainGame.explodeList.clear()
-                        MainGame.explodebigList.clear()
-                        MainGame.explodesmallList.clear()
-                        MainGame.wallList.clear()
-                        MainGame.waterList.clear()
-                        MainGame.grassList.clear()
-                        MainGame.dropList.clear()
-                        return
-            else:
-                if not MainGame.enemyTankList:
-                    if victory().startGame(n):
-                        MainGame.enemyBatteryList.clear()
-                        MainGame.enemyCommandList.clear()
-                        MainGame.enemyTankList.clear()
-                        MainGame.myBulletList.clear()
-                        MainGame.enemyBulletList.clear()
-                        MainGame.explodeList.clear()
-                        MainGame.explodebigList.clear()
-                        MainGame.explodesmallList.clear()
-                        MainGame.wallList.clear()
-                        MainGame.waterList.clear()
-                        MainGame.grassList.clear()
-                        MainGame.dropList.clear()
-                        return
-            # 如果坦克的开关是开启，才可以移动
-            # 超时也是失败
-            if MainGame.my_tank and MainGame.my_tank.live and rest_time >= 0:
-                if not MainGame.my_tank.stop:
-                    MainGame.my_tank.move()
-                    # 检测我方坦克是否与墙壁发生碰撞
-                    MainGame.my_tank.hit_wall(MainGame)
-                    # 检测我方坦克是否与敌方坦克发生碰撞
-                    MainGame.my_tank.myTank_hit_enemyTank(MainGame)
-            else:
-                if defeat().fail(n):
-                    MainGame.enemyBatteryList.clear()
-                    MainGame.enemyCommandList.clear()
-                    MainGame.enemyTankList.clear()
-                    MainGame.myBulletList.clear()
-                    MainGame.dropList.clear()
-                    MainGame.enemyBulletList.clear()
-                    MainGame.explodeList.clear()
-                    MainGame.explodebigList.clear()
-                    MainGame.explodesmallList.clear()
-                    MainGame.wallList.clear()
-                    MainGame.waterList.clear()
-                    MainGame.grassList.clear()
-                    MainGame.dropList.clear()
+            # 判断是否有敌人剩余rest_time
+            if v_or_d.V_or_D(n, MainGame, rest_time):
                 return
             pygame.display.update()
 
@@ -261,7 +216,13 @@ def create_enemy(MainGame, enemy_info: dict):
         elif enemy['EnemyType'] == "Battery":
             enemy = gamearchitecture.Battery('Battery', enemy['x'] * 60, enemy['y'] * 60)
             MainGame.enemyBatteryList.append(enemy)
+        elif enemy['EnemyType'] == "myBattery":
+            enemy = gamearchitecture.myBattery('Battery', enemy['x'] * 60, enemy['y'] * 60)
+            MainGame.myBatteryList.append(enemy)
         elif enemy['EnemyType'] == "Command":
             enemy = gamearchitecture.Command('Command', enemy['x'] * 60, enemy['y'] * 60)
             MainGame.enemyCommandList.append(enemy)
+        elif enemy['EnemyType'] == "myCommand":
+            my = gamearchitecture.Command('Command', enemy['x'] * 60, enemy['y'] * 60)
+            MainGame.myCommandList.append(my)
 
