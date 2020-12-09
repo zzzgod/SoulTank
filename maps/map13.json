@@ -117,11 +117,11 @@
     "Gasoline": 0.05,
     "Kit": 0.1,
     "Net": 0.05,
-    "PurpleBullet": 0.05,
+    "PurpleBullet": 0,
     "Rage": 0.05,
     "RedBullet": 0.05,
     "Shield": 0.05,
-    "Snow": 0.05,
+    "Snow": 0.15,
     "Star": 0.05
   },
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],

@@ -131,7 +131,7 @@
   },
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
   "Bullets": {"AP": 30, "HE": 10, "APCR": 20},
-  "Time": 1800000,
+  "Time": 180000,
   "Dialogue": [
     {
       "Characters":

@@ -155,17 +155,17 @@
     "Clock": 0.05,
     "Gasoline": 0.05,
     "Kit": 0.1,
-    "Net": 0.05,
-    "PurpleBullet": 0.05,
-    "Rage": 0.05,
+    "Net": 0,
+    "PurpleBullet": 0,
+    "Rage": 0.25,
     "RedBullet": 0.05,
-    "Shield": 0.05,
-    "Snow": 0.05,
+    "Shield": 0,
+    "Snow": 0,
     "Star": 0.05
   },
   "Items": [{"ItemType": "SpeedUp", "x": 0, "y": 0}],
   "Bullets": {"AP": 30, "HE": 10, "APCR": 20},
-  "Time": 1800000,
+  "Time": 180000,
   "Dialogue": [
     {
       "Characters":
