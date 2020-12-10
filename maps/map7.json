@@ -132,9 +132,9 @@
         "Left": {"img": "img/character/texas_1.png"},
         "Right": {"img": "img/character/angel_1_shadow.png"}
       },
-      "Content": ["庆历四年春，滕子京谪守巴陵郡。",
-      "越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧",
-      "制，刻唐贤今人诗赋于其上，属予作文以记之。"]
+      "Content": ["剧情未完成。本关为歼灭模式。",
+      "目标为歼灭所有敌人。",
+      "新增掉落物：延时指令。增加关卡时间。"]
     },
     {
       "Characters":
